@@ -2,12 +2,11 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import FindGamesScreen from "./app/screens/FindGamesScreen";
 
+import "react-native-gesture-handler";
+import Navigator from "./app/screens/Navigator";
+
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <FindGamesScreen></FindGamesScreen>
-    </View>
-  );
+  return <Navigator></Navigator>;
 }
 
 const styles = StyleSheet.create({
