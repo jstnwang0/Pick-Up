@@ -1,12 +1,18 @@
 import React from "react";
-import { Button, Text, SafeAreaView } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
-function Profile({ navigation }) {
+export default function Profile() {
   return (
-    <SafeAreaView>
-      <Button title="Profile" onPress={() => navigation.navigate("Profile2")} />
-    </SafeAreaView>
+    <View style={styles.container}>
+      <Text>Profile Page</Text>
+    </View>
   );
 }
 
-export default Profile;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});

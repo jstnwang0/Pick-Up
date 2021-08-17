@@ -22,18 +22,18 @@ const HomeStackScreen = () => (
     ></HomeStack.Screen>
     <HomeStack.Screen
       name="Home2"
-      options={{
-        animationEnabled: true,
-        presentation: "modal",
-      }}
+      // options={{
+      //   animationEnabled: true,
+      //   presentation: "modal",
+      // }}
       component={Home2}
     />
     <HomeStack.Screen
       name="Profile2"
-      options={{
-        animationEnabled: true,
-        presentation: "modal",
-      }}
+      // options={{
+      //   animationEnabled: true,
+      //   presentation: "modal",
+      // }}
       component={Profile2}
     ></HomeStack.Screen>
   </HomeStack.Navigator>
