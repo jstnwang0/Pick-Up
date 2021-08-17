@@ -57,7 +57,7 @@ function HomeTabScreen({ navigation }) {
         <HomeTab.Navigator
           screenOptions={{
             headerShown: false,
-            tabBarStyle: styles.tabBar,
+            tabBarStyle: StyleSheet.compose(styles.tabBar, styles.shadow),
             tabBarContentContainerStyle: styles.tabBarContainer,
             swipeEnabled: false,
             tabBarShowLabel: false,
@@ -190,7 +190,6 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     marginBottom: -30,
     justifyContent: "center",
-    ...this.shadow,
   },
   tabBarContainer: {
     backgroundColor: colors.lightGray,
