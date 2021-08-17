@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     height: "100%",
     alignItems: "center",
     justifyContent: "center",
-    top: 8,
+    paddingTop: 20,
   },
   active: {
     width: 35,
