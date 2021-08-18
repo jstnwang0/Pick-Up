@@ -19,6 +19,7 @@ import {
 } from "react-native";
 import colors from "../config/colors";
 import { HomeTabContext } from "../contexts/HomeTabContext";
+import FontText from "../assets/Fonts/FontText";
 
 const width = Dimensions.get("screen").width;
 const MainStack = createStackNavigator();
@@ -94,10 +95,10 @@ function HomeTabScreen({ navigation }) {
             }}
           ></Animated.View>
           <View style={{ left: 5, ...styles.center }}>
-            <Text>Find Games</Text>
+            <FontText style={styles.text}>Find Games</FontText>
           </View>
           <View style={{ right: 5, ...styles.center }}>
-            <Text>My Games</Text>
+            <FontText style={styles.text}>My Games</FontText>
           </View>
         </View>
       </View>
@@ -128,7 +129,6 @@ function MenuTabScreen() {
         headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: {
-          // position: "absolute",
           marginTop: -30,
           borderTopLeftRadius: 30,
           borderTopRightRadius: 30,
@@ -214,5 +214,9 @@ const styles = StyleSheet.create({
     shadowColor: "black",
     shadowOpacity: 0.1,
     shadowRadius: 3,
+  },
+  text: {
+    fontSize: 15,
+    color: colors.darkText,
   },
 });
