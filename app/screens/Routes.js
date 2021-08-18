@@ -77,23 +77,26 @@ function HomeTabScreen({ navigation }) {
             style={{
               position: "absolute",
               height: "80%",
-              width: width * 0.9 * 0.45,
+              width: width * 0.9 * 0.45 + 10,
               backgroundColor: "white",
               borderRadius: 20,
               transform: [
                 {
                   translateX: animateValue.interpolate({
                     inputRange: [-1, 1],
-                    outputRange: [(-width * 0.9) / 4, (width * 0.9) / 4],
+                    outputRange: [
+                      (-width * 0.9) / 4 + 5,
+                      (width * 0.9) / 4 - 5,
+                    ],
                   }),
                 },
               ],
             }}
           ></Animated.View>
-          <View style={styles.center}>
+          <View style={{ left: 5, ...styles.center }}>
             <Text>Find Games</Text>
           </View>
-          <View style={styles.center}>
+          <View style={{ right: 5, ...styles.center }}>
             <Text>My Games</Text>
           </View>
         </View>
