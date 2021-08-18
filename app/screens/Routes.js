@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import Profile from "./Profile";
 import DirectMessages from "./DirectMessages";
 import FindGames from "./FindGames";
@@ -9,6 +8,7 @@ import { ChatIcon, GamesIcon, ProfileIcon } from "./TabBarIcons";
 import MyGames from "./MyGames";
 import {
   Animated,
+  Button,
   Dimensions,
   SafeAreaView,
   StatusBar,
@@ -20,87 +20,13 @@ import {
 import colors from "../config/colors";
 import { HomeTabContext } from "../contexts/HomeTabContext";
 import FontText from "../assets/Fonts/FontText";
+import PagerView from "react-native-pager-view";
+import HomeTabScreen from "./HomeTabScreen";
 
 const width = Dimensions.get("screen").width;
 const MainStack = createStackNavigator();
 const MenuTab = createBottomTabNavigator();
-const HomeTab = createMaterialTopTabNavigator();
 const ChatTab = createBottomTabNavigator();
-
-function HomeTabScreen({ navigation }) {
-  const [animateValue] = useState(new Animated.Value(-1));
-
-  const homeTabContext = {
-    animateRight: () => {
-      animate(1);
-    },
-    animateLeft: () => {
-      animate(-1);
-    },
-  };
-  animate = (newState) => {
-    Animated.timing(animateValue, {
-      toValue: newState,
-      duration: 250,
-      useNativeDriver: true,
-    }).start();
-  };
-
-  return (
-    <HomeTabContext.Provider value={homeTabContext}>
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: "white",
-          paddingTop: 30,
-        }}
-      >
-        <HomeTab.Navigator
-          screenOptions={{
-            headerShown: false,
-            tabBarStyle: StyleSheet.compose(styles.tabBar, styles.shadow),
-            tabBarContentContainerStyle: styles.tabBarContainer,
-            swipeEnabled: false,
-            tabBarShowLabel: false,
-            tabBarIndicator: () => null,
-          }}
-        >
-          <HomeTab.Screen
-            name="FindGames"
-            component={FindGames}
-          ></HomeTab.Screen>
-          <HomeTab.Screen name="MyGames" component={MyGames}></HomeTab.Screen>
-        </HomeTab.Navigator>
-        {/* Box that matches gray bar for indicator */}
-        <View pointerEvents="none" style={styles.indicatorBarContainer}>
-          {/* Indicator */}
-          <Animated.View
-            style={{
-              ...styles.indicator,
-              transform: [
-                {
-                  translateX: animateValue.interpolate({
-                    inputRange: [-1, 1],
-                    outputRange: [
-                      (-width * 0.9) / 4 + 5,
-                      (width * 0.9) / 4 - 5,
-                    ],
-                  }),
-                },
-              ],
-            }}
-          ></Animated.View>
-          <View style={{ left: 5, ...styles.center }}>
-            <FontText style={styles.text}>Find Games</FontText>
-          </View>
-          <View style={{ right: 5, ...styles.center }}>
-            <FontText style={styles.text}>My Games</FontText>
-          </View>
-        </View>
-      </View>
-    </HomeTabContext.Provider>
-  );
-}
 
 function ChatTabScreen() {
   return (
@@ -217,9 +143,9 @@ const styles = StyleSheet.create({
     },
   },
   menuTabBar: {
-    marginTop: -30,
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
+    marginTop: -25,
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
   },
   text: {
     fontSize: 15,

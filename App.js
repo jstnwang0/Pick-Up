@@ -4,8 +4,10 @@ import "react-native-gesture-handler";
 import Providers from "./app/screens/Providers";
 import AppLoading from "expo-app-loading";
 import { useFonts, Manrope_400Regular } from "@expo-google-fonts/manrope";
-import { StyleSheet, Text, View } from "react-native";
+import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import * as Location from "expo-location";
+import { NavigationContainer } from "@react-navigation/native";
+import MyGames from "./app/screens/MyGames";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -17,4 +19,16 @@ export default function App() {
   } else {
     return <AppLoading></AppLoading>;
   }
+
+  // const Tab = createMaterialTopTabNavigator();
+  // return (
+  //   <NavigationContainer>
+  //     <SafeAreaView style={{ flex: 1 }}>
+  //       <Tab.Navigator>
+  //         <Tab.Screen name="First" component={MyGames}></Tab.Screen>
+  //         <Tab.Screen name="Second" component={MyGames}></Tab.Screen>
+  //       </Tab.Navigator>
+  //     </SafeAreaView>
+  //   </NavigationContainer>
+  // );
 }

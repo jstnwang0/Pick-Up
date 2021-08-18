@@ -8,20 +8,10 @@ import {
   View,
 } from "react-native";
 import MapView from "react-native-maps";
-import { HomeTabContext } from "../contexts/HomeTabContext";
 import * as Location from "expo-location";
 import { LocationPermsContext } from "../contexts/LocationPermsContext";
 
 export default function FindGames({ navigation }) {
-  const { animateLeft } = useContext(HomeTabContext);
-  useEffect(() => {
-    const animator = navigation.addListener("tabPress", (e) => {
-      animateLeft();
-    });
-
-    return animator;
-  }, [navigation]);
-
   const map = useRef(null);
   let locationPerms = useContext(LocationPermsContext);
 
@@ -47,7 +37,6 @@ export default function FindGames({ navigation }) {
     }
   });
 
-  map.onMa;
   return (
     <View style={{ flex: 1 }}>
       <MapView
@@ -55,8 +44,8 @@ export default function FindGames({ navigation }) {
         style={styles.map}
         showsUserLocation={true}
         showsMyLocationButton={false}
-        compassOffset={{ x: -10, y: 10 }}
-        mapPadding={{ top: 30, bottom: 30 }}
+        compassOffset={{ x: -10, y: 15 }}
+        mapPadding={{ top: 20, bottom: 25 }}
       ></MapView>
       {locationPerms ? (
         <TouchableOpacity
@@ -65,7 +54,7 @@ export default function FindGames({ navigation }) {
           style={{
             height: 50,
             width: 50,
-            marginTop: 40,
+            marginTop: 35,
             marginLeft: 10,
             backgroundColor: "white",
             borderRadius: 15,
