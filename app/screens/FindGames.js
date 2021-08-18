@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import { StyleSheet, Text, View } from "react-native";
+import MapView from "react-native-maps";
 import { HomeTabContext } from "../contexts/HomeTabContext";
 
 export default function FindGames({ navigation }) {
@@ -14,7 +15,15 @@ export default function FindGames({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text>Find Games Page</Text>
+      <MapView
+        style={styles.map}
+        showsUserLocation={true}
+        followsUserLocation={true}
+        showsMyLocationButton={true}
+        // showsCompass={false}
+        // rotateEnabled={false}
+        mapPadding={{ top: 35, bottom: 30 }}
+      ></MapView>
     </View>
   );
 }
@@ -24,5 +33,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject,
   },
 });

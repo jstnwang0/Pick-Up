@@ -76,11 +76,7 @@ function HomeTabScreen({ navigation }) {
           {/* Indicator */}
           <Animated.View
             style={{
-              position: "absolute",
-              height: "80%",
-              width: width * 0.9 * 0.45 + 10,
-              backgroundColor: "white",
-              borderRadius: 20,
+              ...styles.indicator,
               transform: [
                 {
                   translateX: animateValue.interpolate({
@@ -128,12 +124,7 @@ function MenuTabScreen() {
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,
-        tabBarStyle: {
-          marginTop: -30,
-          borderTopLeftRadius: 30,
-          borderTopRightRadius: 30,
-          ...styles.shadow,
-        },
+        tabBarStyle: StyleSheet.compose(styles.menuTabBar, styles.shadow),
       }}
     >
       <MenuTab.Screen
@@ -210,10 +201,22 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     flexDirection: "row",
   },
+  indicator: {
+    position: "absolute",
+    height: "80%",
+    width: width * 0.9 * 0.45 + 10,
+    backgroundColor: "white",
+    borderRadius: 20,
+  },
   shadow: {
     shadowColor: "black",
     shadowOpacity: 0.1,
     shadowRadius: 3,
+  },
+  menuTabBar: {
+    marginTop: -30,
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
   },
   text: {
     fontSize: 15,
