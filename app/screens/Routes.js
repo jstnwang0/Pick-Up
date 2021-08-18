@@ -212,6 +212,9 @@ const styles = StyleSheet.create({
     shadowColor: "black",
     shadowOpacity: 0.1,
     shadowRadius: 3,
+    shadowOffset: {
+      height: 1,
+    },
   },
   menuTabBar: {
     marginTop: -30,
