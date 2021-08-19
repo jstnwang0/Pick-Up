@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import {
   View,
   Text,
@@ -13,15 +13,16 @@ import PagerView from "react-native-pager-view";
 import { roundToNearestPixel } from "react-native/Libraries/Utilities/PixelRatio";
 import FontText from "../assets/Fonts/FontText";
 import colors from "../config/colors";
-import { HomeTabContext } from "../contexts/HomeTabContext";
 import FindGames from "./FindGames";
 import MyGames from "./MyGames";
 
 const width = Dimensions.get("screen").width;
 function HomeTabScreen() {
   const [animateValue] = useState(new Animated.Value(-1));
+  const [findGamesDisabled, setFindGamesDisabled] = useState(false);
+  const [myGamesDisabled, setMyGamesDisabled] = useState(false);
 
-  animate = (newState) => {
+  const animateSlide = (newState) => {
     Animated.timing(animateValue, {
       toValue: newState,
       duration: 250,
@@ -29,7 +30,25 @@ function HomeTabScreen() {
     }).start();
   };
 
-  const ref = useRef(null);
+  const ref = useRef("");
+
+  const pressFindGames = () => {
+    setMyGamesDisabled(true);
+    ref.current.setPage(0);
+    animateSlide(-1);
+    setTimeout(() => {
+      setMyGamesDisabled(false);
+    }, 250);
+  };
+
+  const pressMyGames = () => {
+    setFindGamesDisabled(true);
+    ref.current.setPage(1);
+    animateSlide(1);
+    setTimeout(() => {
+      setFindGamesDisabled(false);
+    }, 250);
+  };
 
   return (
     <View
@@ -84,11 +103,20 @@ function HomeTabScreen() {
               ],
             }}
           ></Animated.View>
+        </View>
+        <View
+          style={{
+            position: "absolute",
+            width: "100%",
+            height: 60,
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <TouchableWithoutFeedback
-            onPress={() => {
-              ref.current.setPage(0);
-              animate(-1);
-            }}
+            disabled={findGamesDisabled}
+            onPress={pressFindGames}
           >
             <View
               style={{
@@ -96,18 +124,15 @@ function HomeTabScreen() {
                 height: "100%",
                 justifyContent: "center",
                 alignItems: "center",
-                left: 5,
               }}
             >
-              <FontText>Find Games</FontText>
+              <FontText style={{ left: 5 }}>Find Games</FontText>
             </View>
           </TouchableWithoutFeedback>
 
           <TouchableWithoutFeedback
-            onPress={() => {
-              ref.current.setPage(1);
-              animate(1);
-            }}
+            disabled={myGamesDisabled}
+            onPress={pressMyGames}
           >
             <View
               style={{
@@ -115,15 +140,14 @@ function HomeTabScreen() {
                 height: "100%",
                 justifyContent: "center",
                 alignItems: "center",
-                right: 5,
               }}
             >
-              <FontText>My Games</FontText>
+              <FontText style={{ right: 5 }}>My Games</FontText>
             </View>
           </TouchableWithoutFeedback>
         </View>
       </View>
-      <PagerView ref={ref} style={{ flex: 1 }}>
+      <PagerView ref={ref} scrollEnabled={false} style={{ flex: 1 }}>
         <View style={{ width: "100%", height: "100%" }}>
           <FindGames></FindGames>
         </View>
@@ -142,7 +166,7 @@ const styles = StyleSheet.create({
     shadowColor: "black",
     shadowOpacity: 0.1,
     shadowOffset: {
-      height: 1,
+      height: 2,
     },
     shadowRadius: 3,
   },

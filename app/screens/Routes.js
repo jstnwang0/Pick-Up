@@ -18,7 +18,6 @@ import {
   View,
 } from "react-native";
 import colors from "../config/colors";
-import { HomeTabContext } from "../contexts/HomeTabContext";
 import FontText from "../assets/Fonts/FontText";
 import PagerView from "react-native-pager-view";
 import HomeTabScreen from "./HomeTabScreen";
@@ -139,7 +138,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 3,
     shadowOffset: {
-      height: 1,
+      height: -2,
     },
   },
   menuTabBar: {
