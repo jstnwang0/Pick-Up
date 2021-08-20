@@ -17,7 +17,7 @@ import FindGames from "./FindGames";
 import MyGames from "./MyGames";
 
 const width = Dimensions.get("screen").width;
-function HomeTabScreen() {
+function HomeTab({ navigation }) {
   const [animateValue] = useState(new Animated.Value(-1));
   const [findGamesDisabled, setFindGamesDisabled] = useState(false);
   const [myGamesDisabled, setMyGamesDisabled] = useState(false);
@@ -149,7 +149,7 @@ function HomeTabScreen() {
       </View>
       <PagerView ref={ref} scrollEnabled={false} style={{ flex: 1 }}>
         <View style={{ width: "100%", height: "100%" }}>
-          <FindGames></FindGames>
+          <FindGames navigation={navigation}></FindGames>
         </View>
         <View style={{ width: "100%", height: "100%" }}>
           <MyGames></MyGames>
@@ -159,7 +159,7 @@ function HomeTabScreen() {
   );
 }
 
-export default HomeTabScreen;
+export default HomeTab;
 
 const styles = StyleSheet.create({
   shadow: {

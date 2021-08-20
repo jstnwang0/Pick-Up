@@ -8,6 +8,7 @@ import React, {
 import {
   Animated,
   Button,
+  Dimensions,
   Image,
   Pressable,
   StyleSheet,
@@ -16,11 +17,14 @@ import {
   TouchableWithoutFeedback,
   View,
 } from "react-native";
-import MapView, { Marker } from "react-native-maps";
+import MapView, { Callout, Marker } from "react-native-maps";
 import * as Location from "expo-location";
 import { LocationPermsContext } from "../contexts/LocationPermsContext";
+import colors from "../config/colors";
 
 export default function FindGames({ navigation }) {
+  const width = Dimensions.get("screen").width;
+
   const map = useRef(null);
   let locationPerms = useContext(LocationPermsContext);
 
@@ -108,11 +112,45 @@ export default function FindGames({ navigation }) {
           }}
         >
           <Image
-            source={require("../assets/navigation.png")}
+            source={require("../assets/NavigationIcon.png")}
             style={{ height: 25, width: 25 }}
           />
         </TouchableOpacity>
       </Animated.View>
+
+      <View
+        style={{
+          position: "absolute",
+          height: 50,
+          width: 50,
+          marginTop: 35,
+          marginLeft: width - 60,
+          backgroundColor: colors.darkText,
+          borderRadius: 15,
+          ...styles.shadow,
+          justifyContent: "center",
+          alignItems: "center",
+          zIndex: 5,
+        }}
+      >
+        <TouchableOpacity
+          activeOpacity={0.3}
+          onPress={() => {
+            navigation.navigate("Filters");
+          }}
+          style={{
+            height: "100%",
+            width: "100%",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Image
+            source={require("../assets/FilterIcon.png")}
+            style={{ height: 25, width: 25 }}
+          />
+        </TouchableOpacity>
+      </View>
 
       <Pressable
         onPressIn={() => {
@@ -127,9 +165,32 @@ export default function FindGames({ navigation }) {
           showsUserLocation={true}
           showsMyLocationButton={false}
           zoomTapEnabled={false}
-          compassOffset={{ x: -10, y: 15 }}
+          onRegionChange={() => {
+            animateValue.setValue(1);
+            setFaded(false);
+          }}
+          compassOffset={{ x: -10, y: 75 }}
           mapPadding={{ top: 20, bottom: 25 }}
-        ></MapView>
+        >
+          <Marker
+            key="0"
+            coordinate={{ latitude: 33.581, longitude: -117.6123 }}
+            // centerOffset={{ x: 0, y: -180 }}
+            image={require("../assets/SoccerMarker.png")}
+            onPress={() => {
+              navigation.navigate("GameDetails");
+            }}
+          >
+            {/* <Image
+              source={require("../assets/SoccerMarker.png")}
+              style={{ height: 200 }}
+              resizeMode="contain"
+              onPress
+            /> */}
+
+            <Callout tooltip={true}></Callout>
+          </Marker>
+        </MapView>
       </Pressable>
     </View>
   );

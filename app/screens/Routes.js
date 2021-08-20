@@ -6,21 +6,10 @@ import DirectMessages from "./DirectMessages";
 import FindGames from "./FindGames";
 import { ChatIcon, GamesIcon, ProfileIcon } from "./TabBarIcons";
 import MyGames from "./MyGames";
-import {
-  Animated,
-  Button,
-  Dimensions,
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useWindowDimensions,
-  View,
-} from "react-native";
-import colors from "../config/colors";
-import FontText from "../assets/Fonts/FontText";
-import PagerView from "react-native-pager-view";
-import HomeTabScreen from "./HomeTabScreen";
+import { Dimensions, StyleSheet } from "react-native";
+import HomeTab from "./HomeTab";
+import GameDetails from "./GameDetails";
+import Filters from "./Filters";
 
 const width = Dimensions.get("screen").width;
 const MainStack = createStackNavigator();
@@ -54,7 +43,7 @@ function MenuTabScreen() {
     >
       <MenuTab.Screen
         name="HomeTab"
-        component={HomeTabScreen}
+        component={HomeTab}
         options={{
           tabBarIcon: ({ focused }) => <GamesIcon focused={focused} />,
         }}
@@ -80,10 +69,23 @@ function MenuTabScreen() {
 function MainStackScreen() {
   return (
     <MainStack.Navigator screenOptions={{ headerShown: false }}>
+      <MainStack.Screen name="MenuTab" component={MenuTabScreen} />
       <MainStack.Screen
-        name="MenuTab"
-        component={MenuTabScreen}
-      ></MainStack.Screen>
+        name="GameDetails"
+        component={GameDetails}
+        options={{ presentation: "modal" }}
+      />
+      <MainStack.Screen
+        name="Filters"
+        component={Filters}
+        options={{
+          presentation: "transparentModal",
+          transitionSpec: {
+            open: { animation: "timing", config: { duration: 100 } },
+            close: { animation: "timing", config: { duration: 150 } },
+          },
+        }}
+      />
     </MainStack.Navigator>
   );
 }
@@ -95,44 +97,6 @@ function Routes() {
 export default Routes;
 
 const styles = StyleSheet.create({
-  center: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  tabBar: {
-    height: 100,
-    alignSelf: "center",
-    width: width,
-    borderBottomLeftRadius: 30,
-    borderBottomRightRadius: 30,
-    backgroundColor: "white",
-    marginBottom: -30,
-    justifyContent: "center",
-  },
-  tabBarContainer: {
-    backgroundColor: colors.lightGray,
-    height: 60,
-    marginHorizontal: "5%",
-    borderRadius: 25,
-  },
-  indicatorBarContainer: {
-    position: "absolute",
-    top: 50,
-    width: width * 0.9,
-    height: 60,
-    alignSelf: "center",
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "row",
-  },
-  indicator: {
-    position: "absolute",
-    height: "80%",
-    width: width * 0.9 * 0.45 + 10,
-    backgroundColor: "white",
-    borderRadius: 20,
-  },
   shadow: {
     shadowColor: "black",
     shadowOpacity: 0.1,
@@ -145,9 +109,5 @@ const styles = StyleSheet.create({
     marginTop: -25,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
-  },
-  text: {
-    fontSize: 15,
-    color: colors.darkText,
   },
 });

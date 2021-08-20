@@ -6,6 +6,7 @@ import AppLoading from "expo-app-loading";
 import { useFonts, Manrope_400Regular } from "@expo-google-fonts/manrope";
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import * as Location from "expo-location";
+import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import MyGames from "./app/screens/MyGames";
 
@@ -15,7 +16,12 @@ export default function App() {
   });
 
   if (fontsLoaded) {
-    return <Providers></Providers>;
+    return (
+      <View style={{ flex: 1 }}>
+        <Providers></Providers>
+        <StatusBar></StatusBar>
+      </View>
+    );
   } else {
     return <AppLoading></AppLoading>;
   }
