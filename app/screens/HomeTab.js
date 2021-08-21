@@ -11,10 +11,11 @@ import {
 } from "react-native";
 import PagerView from "react-native-pager-view";
 import { roundToNearestPixel } from "react-native/Libraries/Utilities/PixelRatio";
-import FontText from "../assets/Fonts/FontText";
+import { FontText } from "../assets/Fonts/FontText";
 import colors from "../config/colors";
 import FindGames from "./FindGames";
 import MyGames from "./MyGames";
+import * as Haptics from "expo-haptics";
 
 const width = Dimensions.get("screen").width;
 function HomeTab({ navigation }) {
@@ -36,6 +37,7 @@ function HomeTab({ navigation }) {
     setMyGamesDisabled(true);
     ref.current.setPage(0);
     animateSlide(-1);
+
     setTimeout(() => {
       setMyGamesDisabled(false);
     }, 250);

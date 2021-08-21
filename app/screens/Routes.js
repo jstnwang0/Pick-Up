@@ -6,10 +6,18 @@ import DirectMessages from "./DirectMessages";
 import FindGames from "./FindGames";
 import { ChatIcon, GamesIcon, ProfileIcon } from "./TabBarIcons";
 import MyGames from "./MyGames";
-import { Dimensions, StyleSheet } from "react-native";
+import {
+  Dimensions,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import HomeTab from "./HomeTab";
 import GameDetails from "./GameDetails";
 import Filters from "./Filters";
+
+import * as Haptics from "expo-haptics";
 
 const width = Dimensions.get("screen").width;
 const MainStack = createStackNavigator();
@@ -32,7 +40,7 @@ function ChatTabScreen() {
   );
 }
 
-function MenuTabScreen() {
+function MenuTabScreen({ navigation }) {
   return (
     <MenuTab.Navigator
       screenOptions={{
@@ -46,6 +54,16 @@ function MenuTabScreen() {
         component={HomeTab}
         options={{
           tabBarIcon: ({ focused }) => <GamesIcon focused={focused} />,
+          tabBarButton: (props) => (
+            <TouchableOpacity
+              {...props}
+              activeOpacity={0.6}
+              style={{ flex: 1 }}
+              onPressIn={() => {
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+              }}
+            />
+          ),
         }}
       ></MenuTab.Screen>
       <MenuTab.Screen
@@ -53,6 +71,16 @@ function MenuTabScreen() {
         component={ChatTabScreen}
         options={{
           tabBarIcon: ({ focused }) => <ChatIcon focused={focused} />,
+          tabBarButton: (props) => (
+            <TouchableOpacity
+              {...props}
+              activeOpacity={0.6}
+              style={{ flex: 1 }}
+              onPressIn={() => {
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+              }}
+            />
+          ),
         }}
       ></MenuTab.Screen>
       <MenuTab.Screen
@@ -60,6 +88,16 @@ function MenuTabScreen() {
         component={Profile}
         options={{
           tabBarIcon: ({ focused }) => <ProfileIcon focused={focused} />,
+          tabBarButton: (props) => (
+            <TouchableOpacity
+              {...props}
+              activeOpacity={0.6}
+              style={{ flex: 1 }}
+              onPressIn={() => {
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+              }}
+            />
+          ),
         }}
       ></MenuTab.Screen>
     </MenuTab.Navigator>

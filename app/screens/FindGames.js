@@ -22,9 +22,9 @@ import * as Location from "expo-location";
 import { LocationPermsContext } from "../contexts/LocationPermsContext";
 import colors from "../config/colors";
 
-export default function FindGames({ navigation }) {
-  const width = Dimensions.get("screen").width;
+import * as Haptics from "expo-haptics";
 
+export default function FindGames({ navigation }) {
   const map = useRef(null);
   let locationPerms = useContext(LocationPermsContext);
 
@@ -124,7 +124,8 @@ export default function FindGames({ navigation }) {
           height: 50,
           width: 50,
           marginTop: 35,
-          marginLeft: width - 60,
+          right: 0,
+          marginRight: 10,
           backgroundColor: colors.darkText,
           borderRadius: 15,
           ...styles.shadow,
@@ -137,6 +138,9 @@ export default function FindGames({ navigation }) {
           activeOpacity={0.3}
           onPress={() => {
             navigation.navigate("Filters");
+          }}
+          onPressIn={() => {
+            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
           }}
           style={{
             height: "100%",
