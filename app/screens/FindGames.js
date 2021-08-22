@@ -139,9 +139,6 @@ export default function FindGames({ navigation }) {
           onPress={() => {
             navigation.navigate("Filters");
           }}
-          onPressIn={() => {
-            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-          }}
           style={{
             height: "100%",
             width: "100%",
