@@ -1,4 +1,6 @@
 import React from "react";
+import { Picker } from "@react-native-picker/picker";
+
 import {
   StyleSheet,
   Text,
@@ -25,6 +27,7 @@ export default function CreateGame({ navigation }) {
 
   const [number, onChangeNumber] = React.useState(null);
   const [number2, onChangeNumber2] = React.useState(null);
+  const [selectedSport, setSelectedSport] = React.useState();
 
   return (
     <View style={{ flex: 1, alignItems: "center", backgroundColor: "white" }}>
@@ -73,7 +76,17 @@ export default function CreateGame({ navigation }) {
         <View style={{ marginTop: 25 }}>
           <FontText style={styles.textTitle}>Sports Type</FontText>
         </View>
-        <View style={{ marginVertical: 5, zIndex: 1 }}></View>
+        <View style={{ marginVertical: 5, zIndex: 1 }}>
+          <Picker
+            selectedValue={selectedSport}
+            onValueChange={(itemValue, itemIndex) =>
+              setSelectedSport(itemValue)
+            }
+          >
+            <Picker.Item label="Java" value="java" />
+            <Picker.Item label="JavaScript" value="js" />
+          </Picker>
+        </View>
         <View style={{ marginTop: 10 }}>
           <FontText style={styles.textTitle}>Game Title</FontText>
         </View>
