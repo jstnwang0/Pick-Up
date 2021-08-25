@@ -11,6 +11,7 @@ import {
 import { FontText, FontTextBold } from "../components/FontText";
 import SwipeDownBar from "../components/SwipeDownBar";
 import colors from "../config/colors";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 
 export default function CreateGame({ navigation }) {
   const [open, setOpen] = React.useState(false);
@@ -23,8 +24,9 @@ export default function CreateGame({ navigation }) {
     { label: "Frisbee", value: "frisbee" },
   ]);
 
-  const [text, onChangeText] = React.useState("Useless Text");
   const [number, onChangeNumber] = React.useState(null);
+  const [number2, onChangeNumber2] = React.useState(null);
+
   return (
     <View style={{ flex: 1, alignItems: "center", backgroundColor: "white" }}>
       <SwipeDownBar />
@@ -82,11 +84,12 @@ export default function CreateGame({ navigation }) {
             setValue={setValue}
             setItems={setItems}
             placeholder="Select Sports"
-            placeholderStyle={{ color: "grey" }}
+            placeholderStyle={{ color: colors.mediumGray }}
             dropDownContainerStyle={{
               borderWidth: 0,
               backgroundColor: colors.lightGray,
             }}
+            fontSize="16"
           />
         </View>
         <View style={{ marginTop: 10 }}>
@@ -98,6 +101,20 @@ export default function CreateGame({ navigation }) {
             onChangeText={onChangeNumber}
             value={number}
             placeholder="Enter Game Title"
+            placeholderTextColor="#8392A5"
+          />
+        </View>
+        <View style={{ marginTop: 30 }}>
+          <FontText style={styles.textTitle}>Game Details</FontText>
+        </View>
+        <View style={{ height: 150 }}>
+          <TextInput
+            style={styles.inputmulti}
+            onChangeText={onChangeNumber2}
+            value={number2}
+            multiline
+            placeholder="Enter Game Details"
+            placeholderTextColor="#8392A5"
           />
         </View>
       </View>
@@ -108,12 +125,25 @@ export default function CreateGame({ navigation }) {
 const styles = StyleSheet.create({
   input: {
     backgroundColor: colors.lightGray,
-    height: 50,
     borderRadius: 8,
     borderLeftWidth: 10,
     borderColor: colors.lightGray,
     width: "100%",
     marginTop: 5,
+    fontSize: 15,
+    height: 50,
+  },
+  inputmulti: {
+    backgroundColor: colors.lightGray,
+    borderRadius: 8,
+    borderLeftWidth: 10,
+    borderColor: colors.lightGray,
+    width: "100%",
+    padding: 2,
+    paddingTop: 10,
+    marginTop: 5,
+    fontSize: 15,
+    height: 100,
   },
   textTitle: {
     fontSize: 16,
