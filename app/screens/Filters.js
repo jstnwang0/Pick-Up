@@ -7,7 +7,7 @@ import {
   TouchableWithoutFeedback,
   View,
 } from "react-native";
-import { FontText, FontTextBold } from "../assets/Fonts/FontText";
+import { FontText, FontTextBold } from "../components/FontText";
 import colors from "../config/colors";
 
 import * as Haptics from "expo-haptics";
@@ -243,7 +243,7 @@ export default function Filters({ navigation }) {
           }}
         >
           <TouchableOpacity
-            activeOpacity={0.3}
+            activeOpacity={0.6}
             style={{
               width: "100%",
               height: "100%",
@@ -251,13 +251,15 @@ export default function Filters({ navigation }) {
               alignItems: "center",
             }}
             onPressIn={() => {
-              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
             }}
             onPress={() => {
               navigation.goBack();
             }}
           >
-            <FontText style={{ fontSize: 20, color: "white" }}>APPLY</FontText>
+            <FontTextBold style={{ fontSize: 20, color: "white" }}>
+              APPLY
+            </FontTextBold>
           </TouchableOpacity>
         </View>
       </View>

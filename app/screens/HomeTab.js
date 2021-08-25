@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import PagerView from "react-native-pager-view";
 import { roundToNearestPixel } from "react-native/Libraries/Utilities/PixelRatio";
-import { FontText } from "../assets/Fonts/FontText";
+import { FontText } from "../components/FontText";
 import colors from "../config/colors";
 import FindGames from "./FindGames";
 import MyGames from "./MyGames";
@@ -56,17 +56,14 @@ function HomeTab({ navigation }) {
     <View
       style={{
         flex: 1,
-        backgroundColor: "white",
       }}
     >
       <View
         style={{
-          height: 80,
+          height: 120,
           width: "100%",
-          marginTop: 30,
-          marginBottom: -25,
+          marginBottom: -20,
           backgroundColor: "white",
-          justifyContent: "center",
           alignItems: "center",
           borderBottomLeftRadius: 20,
           borderBottomRightRadius: 20,
@@ -76,6 +73,7 @@ function HomeTab({ navigation }) {
       >
         <View
           style={{
+            marginTop: 50,
             width: width * 0.95,
             height: 60,
             borderRadius: 15,
@@ -109,6 +107,7 @@ function HomeTab({ navigation }) {
         <View
           style={{
             position: "absolute",
+            marginTop: 50,
             width: "100%",
             height: 60,
             flexDirection: "row",

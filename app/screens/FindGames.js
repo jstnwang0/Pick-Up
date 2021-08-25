@@ -23,6 +23,7 @@ import { LocationPermsContext } from "../contexts/LocationPermsContext";
 import colors from "../config/colors";
 
 import * as Haptics from "expo-haptics";
+import { FontText } from "../components/FontText";
 
 export default function FindGames({ navigation }) {
   const map = useRef(null);
@@ -82,12 +83,46 @@ export default function FindGames({ navigation }) {
 
   return (
     <View style={{ flex: 1 }}>
+      <Pressable
+        onPressIn={() => {
+          animateValue.setValue(1);
+          setFaded(false);
+        }}
+        style={{ flex: 1 }}
+      >
+        <MapView
+          ref={map}
+          style={styles.map}
+          showsUserLocation={true}
+          showsMyLocationButton={false}
+          zoomTapEnabled={false}
+          onRegionChange={() => {
+            animateValue.setValue(1);
+            setFaded(false);
+          }}
+          compassOffset={{ x: -10, y: 70 }}
+          mapPadding={{ top: 20, bottom: 25 }}
+        >
+          <Marker
+            key="0"
+            coordinate={{ latitude: 37.86792, longitude: -122.27137 }}
+            centerOffset={{ x: 0, y: -25 }}
+            image={require("../assets/SoccerMarker.png")}
+            onPress={() => {
+              navigation.navigate("GameDetails");
+            }}
+          >
+            <Callout tooltip={true}></Callout>
+          </Marker>
+        </MapView>
+      </Pressable>
+
       <Animated.View
         style={{
           position: "absolute",
           height: 50,
           width: 50,
-          marginTop: 35,
+          marginTop: 30,
           marginLeft: 10,
           backgroundColor: "white",
           borderRadius: 15,
@@ -98,7 +133,6 @@ export default function FindGames({ navigation }) {
           ...styles.shadow,
           justifyContent: "center",
           alignItems: "center",
-          zIndex: 5,
         }}
       >
         <TouchableOpacity
@@ -123,7 +157,7 @@ export default function FindGames({ navigation }) {
           position: "absolute",
           height: 50,
           width: 50,
-          marginTop: 35,
+          marginTop: 30,
           right: 0,
           marginRight: 10,
           backgroundColor: colors.darkText,
@@ -131,7 +165,6 @@ export default function FindGames({ navigation }) {
           ...styles.shadow,
           justifyContent: "center",
           alignItems: "center",
-          zIndex: 5,
         }}
       >
         <TouchableOpacity
@@ -153,46 +186,35 @@ export default function FindGames({ navigation }) {
         </TouchableOpacity>
       </View>
 
-      <Pressable
-        onPressIn={() => {
-          animateValue.setValue(1);
-          setFaded(false);
+      <View
+        style={{
+          position: "absolute",
+          width: 150,
+          height: 45,
+          alignSelf: "center",
+          borderRadius: 30,
+          bottom: 0,
+          marginBottom: 40,
+          backgroundColor: colors.darkGreen,
         }}
-        style={{ flex: 1 }}
       >
-        <MapView
-          ref={map}
-          style={styles.map}
-          showsUserLocation={true}
-          showsMyLocationButton={false}
-          zoomTapEnabled={false}
-          onRegionChange={() => {
-            animateValue.setValue(1);
-            setFaded(false);
+        <TouchableOpacity
+          activeOpacity={0.6}
+          onPress={() => {
+            navigation.navigate("CreateGame");
           }}
-          compassOffset={{ x: -10, y: 75 }}
-          mapPadding={{ top: 20, bottom: 25 }}
+          style={{
+            height: "100%",
+            width: "100%",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
         >
-          <Marker
-            key="0"
-            coordinate={{ latitude: 33.581, longitude: -117.6123 }}
-            // centerOffset={{ x: 0, y: -180 }}
-            image={require("../assets/SoccerMarker.png")}
-            onPress={() => {
-              navigation.navigate("GameDetails");
-            }}
-          >
-            {/* <Image
-              source={require("../assets/SoccerMarker.png")}
-              style={{ height: 200 }}
-              resizeMode="contain"
-              onPress
-            /> */}
-
-            <Callout tooltip={true}></Callout>
-          </Marker>
-        </MapView>
-      </Pressable>
+          <FontText style={{ color: "white", fontSize: 16 }}>
+            + Create Game
+          </FontText>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }

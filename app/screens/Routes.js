@@ -18,6 +18,7 @@ import GameDetails from "./GameDetails";
 import Filters from "./Filters";
 
 import * as Haptics from "expo-haptics";
+import CreateGame from "./CreateGame";
 
 const width = Dimensions.get("screen").width;
 const MainStack = createStackNavigator();
@@ -60,7 +61,7 @@ function MenuTabScreen({ navigation }) {
               activeOpacity={0.6}
               style={{ flex: 1 }}
               onPressIn={() => {
-                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
               }}
             />
           ),
@@ -77,7 +78,7 @@ function MenuTabScreen({ navigation }) {
               activeOpacity={0.6}
               style={{ flex: 1 }}
               onPressIn={() => {
-                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
               }}
             />
           ),
@@ -94,7 +95,7 @@ function MenuTabScreen({ navigation }) {
               activeOpacity={0.6}
               style={{ flex: 1 }}
               onPressIn={() => {
-                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
               }}
             />
           ),
@@ -123,6 +124,11 @@ function MainStackScreen() {
             close: { animation: "timing", config: { duration: 150 } },
           },
         }}
+      />
+      <MainStack.Screen
+        name="CreateGame"
+        component={CreateGame}
+        options={{ presentation: "modal" }}
       />
     </MainStack.Navigator>
   );
