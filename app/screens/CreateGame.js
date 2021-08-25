@@ -1,5 +1,4 @@
 import React from "react";
-import DropDownPicker from "react-native-dropdown-picker";
 import {
   StyleSheet,
   Text,
@@ -74,24 +73,7 @@ export default function CreateGame({ navigation }) {
         <View style={{ marginTop: 25 }}>
           <FontText style={styles.textTitle}>Sports Type</FontText>
         </View>
-        <View style={{ marginVertical: 5, zIndex: 1 }}>
-          <DropDownPicker
-            style={styles.dropdown}
-            open={open}
-            value={value}
-            items={items}
-            setOpen={setOpen}
-            setValue={setValue}
-            setItems={setItems}
-            placeholder="Select Sports"
-            placeholderStyle={{ color: colors.mediumGray }}
-            dropDownContainerStyle={{
-              borderWidth: 0,
-              backgroundColor: colors.lightGray,
-            }}
-            fontSize="16"
-          />
-        </View>
+        <View style={{ marginVertical: 5, zIndex: 1 }}></View>
         <View style={{ marginTop: 10 }}>
           <FontText style={styles.textTitle}>Game Title</FontText>
         </View>
@@ -104,6 +86,11 @@ export default function CreateGame({ navigation }) {
             placeholderTextColor="#8392A5"
           />
         </View>
+        <View style={{ marginTop: 30 }}>
+          <FontText style={styles.textTitle}>Date & Time</FontText>
+        </View>
+        <View></View>
+
         <View style={{ marginTop: 30 }}>
           <FontText style={styles.textTitle}>Game Details</FontText>
         </View>
