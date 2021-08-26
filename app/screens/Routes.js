@@ -18,7 +18,7 @@ import GameDetails from "./GameDetails";
 import Filters from "./Filters";
 
 import * as Haptics from "expo-haptics";
-import CreateGame from "./CreateGame";
+import { CreateGame, PickSport } from "./CreateGame";
 
 const width = Dimensions.get("screen").width;
 const MainStack = createStackNavigator();
@@ -129,6 +129,17 @@ function MainStackScreen() {
         name="CreateGame"
         component={CreateGame}
         options={{ presentation: "modal" }}
+      />
+      <MainStack.Screen
+        name="PickSport"
+        component={PickSport}
+        options={{
+          presentation: "transparentModal",
+          // transitionSpec: {
+          //   open: { animation: "timing", config: { duration: 100 } },
+          //   close: { animation: "timing", config: { duration: 150 } },
+          // },
+        }}
       />
     </MainStack.Navigator>
   );

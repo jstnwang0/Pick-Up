@@ -4,9 +4,11 @@ import Routes from "./Routes";
 import * as Location from "expo-location";
 import { LocationPermsContext } from "../contexts/LocationPermsContext";
 import { Button, View } from "react-native";
+import { SportsTypeContext } from "../contexts/SportsTypeContext";
 
 export default function Providers() {
   const [locationPerms, setLocationPerms] = useState(false);
+  const [sportsType, setSportsType] = useState("Football");
 
   useEffect(() => {
     (async () => {
@@ -20,9 +22,11 @@ export default function Providers() {
 
   return (
     <LocationPermsContext.Provider value={locationPerms}>
-      <NavigationContainer>
-        <Routes />
-      </NavigationContainer>
+      <SportsTypeContext.Provider value={{ sportsType, setSportsType }}>
+        <NavigationContainer>
+          <Routes />
+        </NavigationContainer>
+      </SportsTypeContext.Provider>
     </LocationPermsContext.Provider>
   );
 }

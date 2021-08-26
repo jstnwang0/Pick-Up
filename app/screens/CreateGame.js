@@ -1,33 +1,160 @@
-import React from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Picker } from "@react-native-picker/picker";
 
 import {
+  Animated,
   StyleSheet,
   Text,
   View,
   Image,
   TextInput,
   TouchableWithoutFeedback,
+  TouchableOpacity,
 } from "react-native";
 import { FontText, FontTextBold } from "../components/FontText";
 import SwipeDownBar from "../components/SwipeDownBar";
+
+import { useCardAnimation } from "@react-navigation/stack";
 import colors from "../config/colors";
-import { Colors } from "react-native/Libraries/NewAppScreen";
+import * as Haptics from "expo-haptics";
+import { SportsTypeContext } from "../contexts/SportsTypeContext";
 
-export default function CreateGame({ navigation }) {
-  const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState(null);
-  const [items, setItems] = React.useState([
-    { label: "Football", value: "football" },
-    { label: "Soccer", value: "soccer" },
-    { label: "Basketball", value: "basketball" },
-    { label: "Spikeball", value: "spikeball" },
-    { label: "Frisbee", value: "frisbee" },
-  ]);
+export const PickSport = ({ navigation }) => {
+  const { current } = useCardAnimation();
+  const { sportsType, setSportsType } = useContext(SportsTypeContext);
+  const [initial] = useState(sportsType);
 
-  const [number, onChangeNumber] = React.useState(null);
-  const [number2, onChangeNumber2] = React.useState(null);
-  const [selectedSport, setSelectedSport] = React.useState();
+  return (
+    <View style={{ flex: 1 }}>
+      <TouchableWithoutFeedback
+        onPress={() => {
+          navigation.goBack();
+        }}
+      >
+        <View
+          style={{
+            position: "absolute",
+            width: "100%",
+            height: "100%",
+            backgroundColor: "black",
+            opacity: 0.6,
+          }}
+        ></View>
+      </TouchableWithoutFeedback>
+      <Animated.View
+        style={{
+          position: "absolute",
+          width: "90%",
+          bottom: 0,
+          alignSelf: "center",
+          borderRadius: 20,
+          transform: [
+            {
+              translateY: current.progress.interpolate({
+                inputRange: [0, 1],
+                outputRange: [400, 0],
+              }),
+            },
+          ],
+        }}
+      >
+        <View style={{ backgroundColor: "white", borderRadius: 20 }}>
+          <View
+            style={{
+              height: 60,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <FontTextBold style={{ fontSize: 20, color: colors.mediumGray }}>
+              Sports Type
+            </FontTextBold>
+          </View>
+
+          <View
+            style={{
+              borderTopColor: colors.mediumGray,
+              borderTopWidth: 0.5,
+              borderBottomColor: colors.mediumGray,
+              borderBottomWidth: 0.5,
+            }}
+          >
+            <Picker
+              selectedValue={sportsType}
+              onValueChange={(itemValue, itemIndex) => {
+                setSportsType(itemValue);
+              }}
+              itemStyle={{ fontFamily: "Manrope_400Regular" }}
+            >
+              <Picker.Item label="Football" value="Football" />
+              <Picker.Item label="Soccer" value="Soccer" />
+              <Picker.Item label="Basketball" value="Basketball" />
+              <Picker.Item label="Spikeball" value="Spikeball" />
+              <Picker.Item label="Frisbee" value="Frisbee" />
+              <Picker.Item label="Volleyball" value="Volleyball" />
+            </Picker>
+          </View>
+
+          <View
+            style={{
+              height: 60,
+              width: "100%",
+            }}
+          >
+            <TouchableOpacity
+              activeOpacity={0.3}
+              style={{
+                justifyContent: "center",
+                alignItems: "center",
+                flex: 1,
+              }}
+              onPress={() => {
+                navigation.goBack();
+              }}
+            >
+              <FontTextBold style={{ fontSize: 20, color: colors.blue }}>
+                Confirm
+              </FontTextBold>
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View
+          style={{
+            backgroundColor: "white",
+            marginTop: 15,
+            marginBottom: 25,
+
+            height: 60,
+            borderRadius: 20,
+          }}
+        >
+          <TouchableOpacity
+            activeOpacity={0.3}
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+              flex: 1,
+            }}
+            onPress={() => {
+              setSportsType(initial);
+              navigation.goBack();
+            }}
+          >
+            <FontTextBold style={{ fontSize: 20, color: colors.red }}>
+              Cancel
+            </FontTextBold>
+          </TouchableOpacity>
+        </View>
+      </Animated.View>
+    </View>
+  );
+};
+
+export const CreateGame = ({ navigation }) => {
+  const { sportsType, setSportsType } = useContext(SportsTypeContext);
+
+  const [number, setNumber] = React.useState(null);
+  const [number2, setNumber2] = React.useState(null);
 
   return (
     <View style={{ flex: 1, alignItems: "center", backgroundColor: "white" }}>
@@ -35,7 +162,8 @@ export default function CreateGame({ navigation }) {
       <View
         style={{
           flex: 1,
-          width: "90%",
+          paddingHorizontal: 20,
+          width: "100%",
           marginTop: 20,
         }}
       >
@@ -76,33 +204,31 @@ export default function CreateGame({ navigation }) {
         <View style={{ marginTop: 25 }}>
           <FontText style={styles.textTitle}>Sports Type</FontText>
         </View>
-        <View style={{ marginVertical: 5, zIndex: 1 }}>
-          <Picker
-            selectedValue={selectedSport}
-            onValueChange={(itemValue, itemIndex) =>
-              setSelectedSport(itemValue)
-            }
-          >
-            <Picker.Item label="Java" value="java" />
-            <Picker.Item label="JavaScript" value="js" />
-          </Picker>
-        </View>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("PickSport");
+          }}
+        >
+          <View style={styles.picker}>
+            <Text>{sportsType}</Text>
+          </View>
+        </TouchableOpacity>
+
         <View style={{ marginTop: 10 }}>
           <FontText style={styles.textTitle}>Game Title</FontText>
         </View>
         <View style={{ height: 50 }}>
           <TextInput
             style={styles.input}
-            onChangeText={onChangeNumber}
+            onChangeText={setNumber}
             value={number}
             placeholder="Enter Game Title"
-            placeholderTextColor="#8392A5"
+            placeholderTextColor={colors.mediumGray}
           />
         </View>
         <View style={{ marginTop: 30 }}>
           <FontText style={styles.textTitle}>Date & Time</FontText>
         </View>
-        <View></View>
 
         <View style={{ marginTop: 30 }}>
           <FontText style={styles.textTitle}>Game Details</FontText>
@@ -110,23 +236,32 @@ export default function CreateGame({ navigation }) {
         <View style={{ height: 150 }}>
           <TextInput
             style={styles.inputmulti}
-            onChangeText={onChangeNumber2}
+            onChangeText={setNumber2}
             value={number2}
             multiline
             placeholder="Enter Game Details"
-            placeholderTextColor="#8392A5"
+            placeholderTextColor={colors.mediumGray}
           />
         </View>
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
+  picker: {
+    backgroundColor: colors.lightGray,
+    height: 50,
+    borderRadius: 8,
+    marginTop: 5,
+    justifyContent: "center",
+    paddingLeft: 10,
+  },
   input: {
+    fontFamily: "Manrope_400Regular",
     backgroundColor: colors.lightGray,
     borderRadius: 8,
-    borderLeftWidth: 10,
+    paddingLeft: 10,
     borderColor: colors.lightGray,
     width: "100%",
     marginTop: 5,
@@ -134,9 +269,10 @@ const styles = StyleSheet.create({
     height: 50,
   },
   inputmulti: {
+    fontFamily: "Manrope_400Regular",
     backgroundColor: colors.lightGray,
     borderRadius: 8,
-    borderLeftWidth: 10,
+    paddingLeft: 10,
     borderColor: colors.lightGray,
     width: "100%",
     padding: 2,

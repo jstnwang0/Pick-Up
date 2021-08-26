@@ -203,6 +203,9 @@ export default function FindGames({ navigation }) {
           onPress={() => {
             navigation.navigate("CreateGame");
           }}
+          onPressIn={() => {
+            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+          }}
           style={{
             height: "100%",
             width: "100%",
