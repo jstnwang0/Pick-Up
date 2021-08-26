@@ -87,6 +87,7 @@ export const PickSport = ({ navigation }) => {
               }}
               itemStyle={{ fontFamily: "Manrope_400Regular", fontSize: 18 }}
             >
+              <Picker.Item label="Choose a sport..." value={null} />
               <Picker.Item label="Football" value="Football" />
               <Picker.Item label="Soccer" value="Soccer" />
               <Picker.Item label="Basketball" value="Basketball" />
@@ -212,7 +213,13 @@ export const CreateGame = ({ navigation }) => {
           }}
         >
           <View style={styles.picker}>
-            <FontText style={{ fontSize: 15 }}>{sportsCreate}</FontText>
+            {sportsCreate ? (
+              <FontText style={{ fontSize: 15 }}>{sportsCreate}</FontText>
+            ) : (
+              <FontText style={{ fontSize: 15, color: colors.mediumGray }}>
+                Choose a sport...
+              </FontText>
+            )}
           </View>
         </TouchableOpacity>
 
@@ -231,8 +238,31 @@ export const CreateGame = ({ navigation }) => {
           />
         </View>
         <View style={{ marginTop: 30 }}>
-          <FontText style={styles.textTitle}>Date & Time</FontText>
+          <FontText style={styles.textTitle}>Date</FontText>
         </View>
+        <TouchableOpacity
+          activeOpacity={0.3}
+          onPress={() => {
+            navigation.navigate("PickSport");
+          }}
+        >
+          <View style={styles.picker}>
+            <FontText style={{ fontSize: 15 }}>{sportsCreate}</FontText>
+          </View>
+        </TouchableOpacity>
+        <View style={{ marginTop: 30 }}>
+          <FontText style={styles.textTitle}>Time</FontText>
+        </View>
+        <TouchableOpacity
+          activeOpacity={0.3}
+          onPress={() => {
+            navigation.navigate("PickSport");
+          }}
+        >
+          <View style={styles.picker}>
+            <FontText style={{ fontSize: 15 }}>{sportsCreate}</FontText>
+          </View>
+        </TouchableOpacity>
 
         <View style={{ marginTop: 30 }}>
           <FontText style={styles.textTitle}>Game Details</FontText>

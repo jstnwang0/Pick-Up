@@ -10,7 +10,7 @@ import { FilterContext } from "../contexts/FilterContext";
 export default function Providers() {
   const [locationPerms, setLocationPerms] = useState(false);
 
-  const [sportsCreate, setSportsCreate] = useState("Football");
+  const [sportsCreate, setSportsCreate] = useState(null);
 
   const [friendsOnly, setFriendsOnly] = useState(false);
   const [sportsFilter, setSportsFilter] = useState([]);
