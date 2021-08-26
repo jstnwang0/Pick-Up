@@ -11,6 +11,7 @@ import {
   TouchableWithoutFeedback,
   TouchableOpacity,
   Keyboard,
+  ScrollView,
 } from "react-native";
 import { FontText, FontTextBold } from "../components/FontText";
 import SwipeDownBar from "../components/SwipeDownBar";
@@ -49,6 +50,7 @@ export const PickSport = ({ navigation }) => {
           bottom: 0,
           alignSelf: "center",
           borderRadius: 20,
+          marginBottom: 20,
           transform: [
             {
               translateY: current.progress.interpolate({
@@ -124,8 +126,6 @@ export const PickSport = ({ navigation }) => {
           style={{
             backgroundColor: "white",
             marginTop: 15,
-            marginBottom: 25,
-
             height: 60,
             borderRadius: 20,
           }}
@@ -175,7 +175,7 @@ export const CreateGame = ({ navigation }) => {
             width: "100%",
             height: 40,
             alignItems: "center",
-            marginTop: 10,
+            backgroundColor: "white",
           }}
         >
           <TouchableWithoutFeedback
@@ -203,30 +203,28 @@ export const CreateGame = ({ navigation }) => {
             Create a Game
           </FontTextBold>
         </View>
-        <View style={{ marginTop: 25 }}>
-          <FontText style={styles.textTitle}>Sports Type</FontText>
-        </View>
-        <TouchableOpacity
-          activeOpacity={0.3}
-          onPress={() => {
-            navigation.navigate("PickSport");
-          }}
-        >
-          <View style={styles.picker}>
-            {sportsCreate ? (
-              <FontText style={{ fontSize: 15 }}>{sportsCreate}</FontText>
-            ) : (
-              <FontText style={{ fontSize: 15, color: colors.mediumGray }}>
-                Choose a sport...
-              </FontText>
-            )}
-          </View>
-        </TouchableOpacity>
 
-        <View style={{ marginTop: 10 }}>
+        <ScrollView style={{ marginTop: 10 }}>
+          <FontText style={styles.textTitle}>Sports Type</FontText>
+
+          <TouchableOpacity
+            activeOpacity={0.3}
+            onPress={() => {
+              navigation.navigate("PickSport");
+            }}
+          >
+            <View style={styles.picker}>
+              {sportsCreate ? (
+                <FontText style={{ fontSize: 15 }}>{sportsCreate}</FontText>
+              ) : (
+                <FontText style={{ fontSize: 15, color: colors.mediumGray }}>
+                  Choose a sport...
+                </FontText>
+              )}
+            </View>
+          </TouchableOpacity>
+
           <FontText style={styles.textTitle}>Game Title</FontText>
-        </View>
-        <View style={{ height: 50 }}>
           <TextInput
             style={styles.inputTitle}
             onChangeText={setTitle}
@@ -236,38 +234,7 @@ export const CreateGame = ({ navigation }) => {
             returnKeyType="done"
             autoCorrect={false}
           />
-        </View>
-        <View style={{ marginTop: 30 }}>
-          <FontText style={styles.textTitle}>Date</FontText>
-        </View>
-        <TouchableOpacity
-          activeOpacity={0.3}
-          onPress={() => {
-            navigation.navigate("PickSport");
-          }}
-        >
-          <View style={styles.picker}>
-            <FontText style={{ fontSize: 15 }}>{sportsCreate}</FontText>
-          </View>
-        </TouchableOpacity>
-        <View style={{ marginTop: 30 }}>
-          <FontText style={styles.textTitle}>Time</FontText>
-        </View>
-        <TouchableOpacity
-          activeOpacity={0.3}
-          onPress={() => {
-            navigation.navigate("PickSport");
-          }}
-        >
-          <View style={styles.picker}>
-            <FontText style={{ fontSize: 15 }}>{sportsCreate}</FontText>
-          </View>
-        </TouchableOpacity>
-
-        <View style={{ marginTop: 30 }}>
           <FontText style={styles.textTitle}>Game Details</FontText>
-        </View>
-        <View style={{ height: 150 }}>
           <TextInput
             style={styles.inputDetails}
             onChangeText={setDetails}
@@ -279,7 +246,29 @@ export const CreateGame = ({ navigation }) => {
             blurOnSubmit={true}
             autoCorrect={false}
           />
-        </View>
+          <FontText style={styles.textTitle}>Date</FontText>
+          <TouchableOpacity
+            activeOpacity={0.3}
+            onPress={() => {
+              navigation.navigate("PickSport");
+            }}
+          >
+            <View style={styles.picker}>
+              <FontText style={{ fontSize: 15 }}>{sportsCreate}</FontText>
+            </View>
+          </TouchableOpacity>
+          <FontText style={styles.textTitle}>Time</FontText>
+          <TouchableOpacity
+            activeOpacity={0.3}
+            onPress={() => {
+              navigation.navigate("PickSport");
+            }}
+          >
+            <View style={styles.picker}>
+              <FontText style={{ fontSize: 15 }}>{sportsCreate}</FontText>
+            </View>
+          </TouchableOpacity>
+        </ScrollView>
       </View>
     </View>
   );
@@ -316,6 +305,7 @@ const styles = StyleSheet.create({
     height: 50,
   },
   textTitle: {
+    marginTop: 10,
     fontSize: 16,
   },
   dropdown: {

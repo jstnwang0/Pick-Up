@@ -101,7 +101,7 @@ export default function FindGames({ navigation }) {
             setFaded(false);
           }}
           compassOffset={{ x: -10, y: 70 }}
-          mapPadding={{ top: 20, bottom: 25 }}
+          mapPadding={{ top: 15, bottom: 15 }}
         >
           <Marker
             key="0"
@@ -194,7 +194,7 @@ export default function FindGames({ navigation }) {
           alignSelf: "center",
           borderRadius: 30,
           bottom: 0,
-          marginBottom: 40,
+          marginBottom: 30,
           backgroundColor: colors.darkGreen,
           ...styles.shadow,
         }}

@@ -222,7 +222,7 @@ export default function Filters({ navigation }) {
           <FilterButton
             title={"<1"}
             onPress={() => {
-              setLocalTimeOne(!timeOne);
+              setLocalTimeOne(!localTimeOne);
             }}
             active={localTimeOne}
             width={"23%"}
@@ -230,7 +230,7 @@ export default function Filters({ navigation }) {
           <FilterButton
             title={"1 - 2"}
             onPress={() => {
-              setLocalTimeTwo(!timeTwo);
+              setLocalTimeTwo(!localTimeTwo);
             }}
             active={localTimeTwo}
             width={"23%"}
@@ -238,7 +238,7 @@ export default function Filters({ navigation }) {
           <FilterButton
             title={"2 - 3"}
             onPress={() => {
-              setLocalTimeThree(!timeThree);
+              setLocalTimeThree(!localTimeThree);
             }}
             active={localTimeThree}
             width={"23%"}
@@ -246,7 +246,7 @@ export default function Filters({ navigation }) {
           <FilterButton
             title={"3+"}
             onPress={() => {
-              setLocalTimeFour(!timeFour);
+              setLocalTimeFour(!localTimeFour);
             }}
             active={localTimeFour}
             width={"23%"}

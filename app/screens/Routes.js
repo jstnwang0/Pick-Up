@@ -161,8 +161,8 @@ const styles = StyleSheet.create({
     },
   },
   menuTabBar: {
-    marginTop: -25,
-    borderTopLeftRadius: 25,
-    borderTopRightRadius: 25,
+    marginTop: -15,
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
   },
 });

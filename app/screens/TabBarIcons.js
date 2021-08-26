@@ -44,13 +44,13 @@ const styles = StyleSheet.create({
     paddingTop: 20,
   },
   active: {
-    width: 35,
-    height: 35,
+    width: 30,
+    height: 30,
     tintColor: colors.darkGreen,
   },
   inactive: {
-    width: 35,
-    height: 35,
+    width: 30,
+    height: 30,
     tintColor: colors.mediumGray,
   },
 });

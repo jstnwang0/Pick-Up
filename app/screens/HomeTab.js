@@ -62,11 +62,11 @@ function HomeTab({ navigation }) {
         style={{
           height: 120,
           width: "100%",
-          marginBottom: -20,
+          marginBottom: -15,
           backgroundColor: "white",
           alignItems: "center",
-          borderBottomLeftRadius: 20,
-          borderBottomRightRadius: 20,
+          borderBottomLeftRadius: 15,
+          borderBottomRightRadius: 15,
           zIndex: 1,
           ...styles.shadow,
         }}
