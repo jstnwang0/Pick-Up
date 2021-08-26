@@ -196,6 +196,7 @@ export default function FindGames({ navigation }) {
           bottom: 0,
           marginBottom: 40,
           backgroundColor: colors.darkGreen,
+          ...styles.shadow,
         }}
       >
         <TouchableOpacity
