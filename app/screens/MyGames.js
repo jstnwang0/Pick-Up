@@ -35,7 +35,7 @@ export default function MyGames({ navigation }) {
         <View style={{ flex: 3, justifyContent: "center" }}>
           <View
             style={{
-              backgroundColor: "green",
+              backgroundColor: colors.darkGreen,
               width: 80,
               height: 40,
               marginLeft: 7,
@@ -77,7 +77,7 @@ export default function MyGames({ navigation }) {
         <View style={{ flex: 3, justifyContent: "center" }}>
           <View
             style={{
-              backgroundColor: "#E9EFEB",
+              backgroundColor: "#CBEBD8",
               width: 80,
               height: 40,
               borderRadius: 20,
@@ -91,7 +91,7 @@ export default function MyGames({ navigation }) {
               source={require("../assets/ByYou.png")}
               style={{ width: 20, height: 20 }}
             />
-            <FontText style={{ color: "#259D63" }}>By You</FontText>
+            <FontText style={{ color: colors.darkGreen }}>By You</FontText>
           </View>
         </View>
       </View>
