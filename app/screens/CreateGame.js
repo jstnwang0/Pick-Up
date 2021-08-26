@@ -10,6 +10,7 @@ import {
   TextInput,
   TouchableWithoutFeedback,
   TouchableOpacity,
+  Keyboard,
 } from "react-native";
 import { FontText, FontTextBold } from "../components/FontText";
 import SwipeDownBar from "../components/SwipeDownBar";
@@ -21,8 +22,8 @@ import { SportsTypeContext } from "../contexts/SportsTypeContext";
 
 export const PickSport = ({ navigation }) => {
   const { current } = useCardAnimation();
-  const { sportsType, setSportsType } = useContext(SportsTypeContext);
-  const [initial] = useState(sportsType);
+  const { sportsCreate, setSportsCreate } = useContext(SportsTypeContext);
+  const [initialSport] = useState(sportsCreate);
 
   return (
     <View style={{ flex: 1 }}>
@@ -44,7 +45,7 @@ export const PickSport = ({ navigation }) => {
       <Animated.View
         style={{
           position: "absolute",
-          width: "90%",
+          width: "95%",
           bottom: 0,
           alignSelf: "center",
           borderRadius: 20,
@@ -61,12 +62,12 @@ export const PickSport = ({ navigation }) => {
         <View style={{ backgroundColor: "white", borderRadius: 20 }}>
           <View
             style={{
-              height: 60,
+              height: 50,
               justifyContent: "center",
               alignItems: "center",
             }}
           >
-            <FontTextBold style={{ fontSize: 20, color: colors.mediumGray }}>
+            <FontTextBold style={{ fontSize: 18, color: colors.mediumGray }}>
               Sports Type
             </FontTextBold>
           </View>
@@ -80,11 +81,11 @@ export const PickSport = ({ navigation }) => {
             }}
           >
             <Picker
-              selectedValue={sportsType}
+              selectedValue={sportsCreate}
               onValueChange={(itemValue, itemIndex) => {
-                setSportsType(itemValue);
+                setSportsCreate(itemValue);
               }}
-              itemStyle={{ fontFamily: "Manrope_400Regular" }}
+              itemStyle={{ fontFamily: "Manrope_400Regular", fontSize: 18 }}
             >
               <Picker.Item label="Football" value="Football" />
               <Picker.Item label="Soccer" value="Soccer" />
@@ -112,7 +113,7 @@ export const PickSport = ({ navigation }) => {
                 navigation.goBack();
               }}
             >
-              <FontTextBold style={{ fontSize: 20, color: colors.blue }}>
+              <FontTextBold style={{ fontSize: 18, color: colors.blue }}>
                 Confirm
               </FontTextBold>
             </TouchableOpacity>
@@ -136,11 +137,11 @@ export const PickSport = ({ navigation }) => {
               flex: 1,
             }}
             onPress={() => {
-              setSportsType(initial);
+              setSportsCreate(initialSport);
               navigation.goBack();
             }}
           >
-            <FontTextBold style={{ fontSize: 20, color: colors.red }}>
+            <FontTextBold style={{ fontSize: 18, color: colors.red }}>
               Cancel
             </FontTextBold>
           </TouchableOpacity>
@@ -151,10 +152,10 @@ export const PickSport = ({ navigation }) => {
 };
 
 export const CreateGame = ({ navigation }) => {
-  const { sportsType, setSportsType } = useContext(SportsTypeContext);
+  const { sportsCreate, setSportsCreate } = useContext(SportsTypeContext);
 
-  const [number, setNumber] = React.useState(null);
-  const [number2, setNumber2] = React.useState(null);
+  const [title, setTitle] = React.useState(null);
+  const [details, setDetails] = React.useState(null);
 
   return (
     <View style={{ flex: 1, alignItems: "center", backgroundColor: "white" }}>
@@ -205,12 +206,13 @@ export const CreateGame = ({ navigation }) => {
           <FontText style={styles.textTitle}>Sports Type</FontText>
         </View>
         <TouchableOpacity
+          activeOpacity={0.3}
           onPress={() => {
             navigation.navigate("PickSport");
           }}
         >
           <View style={styles.picker}>
-            <Text>{sportsType}</Text>
+            <FontText style={{ fontSize: 15 }}>{sportsCreate}</FontText>
           </View>
         </TouchableOpacity>
 
@@ -219,11 +221,13 @@ export const CreateGame = ({ navigation }) => {
         </View>
         <View style={{ height: 50 }}>
           <TextInput
-            style={styles.input}
-            onChangeText={setNumber}
-            value={number}
+            style={styles.inputTitle}
+            onChangeText={setTitle}
+            value={title}
             placeholder="Enter Game Title"
             placeholderTextColor={colors.mediumGray}
+            returnKeyType="done"
+            autoCorrect={false}
           />
         </View>
         <View style={{ marginTop: 30 }}>
@@ -235,12 +239,15 @@ export const CreateGame = ({ navigation }) => {
         </View>
         <View style={{ height: 150 }}>
           <TextInput
-            style={styles.inputmulti}
-            onChangeText={setNumber2}
-            value={number2}
+            style={styles.inputDetails}
+            onChangeText={setDetails}
+            value={details}
             multiline
             placeholder="Enter Game Details"
             placeholderTextColor={colors.mediumGray}
+            returnKeyType="done"
+            blurOnSubmit={true}
+            autoCorrect={false}
           />
         </View>
       </View>
@@ -257,29 +264,26 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingLeft: 10,
   },
-  input: {
+  inputDetails: {
     fontFamily: "Manrope_400Regular",
     backgroundColor: colors.lightGray,
     borderRadius: 8,
     paddingLeft: 10,
-    borderColor: colors.lightGray,
     width: "100%",
-    marginTop: 5,
-    fontSize: 15,
-    height: 50,
-  },
-  inputmulti: {
-    fontFamily: "Manrope_400Regular",
-    backgroundColor: colors.lightGray,
-    borderRadius: 8,
-    paddingLeft: 10,
-    borderColor: colors.lightGray,
-    width: "100%",
-    padding: 2,
     paddingTop: 10,
     marginTop: 5,
     fontSize: 15,
     height: 100,
+  },
+  inputTitle: {
+    fontFamily: "Manrope_400Regular",
+    backgroundColor: colors.lightGray,
+    borderRadius: 8,
+    paddingLeft: 10,
+    width: "100%",
+    marginTop: 5,
+    fontSize: 15,
+    height: 50,
   },
   textTitle: {
     fontSize: 16,

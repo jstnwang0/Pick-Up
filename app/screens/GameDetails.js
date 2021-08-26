@@ -12,7 +12,7 @@ import { FontText, FontTextBold } from "../components/FontText";
 import colors from "../config/colors";
 import SwipeDownBar from "../components/SwipeDownBar";
 
-export default function PickSport() {
+export default function GameDetails() {
   return (
     <View style={{ flex: 1, padding: 20, backgroundColor: "white" }}>
       <SwipeDownBar />

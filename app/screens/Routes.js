@@ -61,7 +61,7 @@ function MenuTabScreen({ navigation }) {
               activeOpacity={0.6}
               style={{ flex: 1 }}
               onPressIn={() => {
-                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
               }}
             />
           ),
@@ -78,7 +78,7 @@ function MenuTabScreen({ navigation }) {
               activeOpacity={0.6}
               style={{ flex: 1 }}
               onPressIn={() => {
-                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
               }}
             />
           ),
@@ -95,7 +95,7 @@ function MenuTabScreen({ navigation }) {
               activeOpacity={0.6}
               style={{ flex: 1 }}
               onPressIn={() => {
-                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
               }}
             />
           ),

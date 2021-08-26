@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Image,
   StyleSheet,
@@ -11,6 +11,7 @@ import { FontText, FontTextBold } from "../components/FontText";
 import colors from "../config/colors";
 
 import * as Haptics from "expo-haptics";
+import { FilterContext } from "../contexts/FilterContext";
 
 function FilterButton(props) {
   return (
@@ -36,26 +37,44 @@ function FilterButton(props) {
 }
 
 export default function Filters({ navigation }) {
-  const [friendsOnly, setFriendsOnly] = useState(false);
-  const [sports, setSports] = useState([]);
-  const [timeOne, setTimeOne] = useState(false);
-  const [timeTwo, setTimeTwo] = useState(false);
-  const [timeThree, setTimeThree] = useState(false);
-  const [timeFour, setTimeFour] = useState(false);
+  const { friendsOnly, setFriendsOnly } = useContext(FilterContext);
+  const { sportsFilter, setSportsFilter } = useContext(FilterContext);
+  const { timeOne, setTimeOne } = useContext(FilterContext);
+  const { timeTwo, setTimeTwo } = useContext(FilterContext);
+  const { timeThree, setTimeThree } = useContext(FilterContext);
+  const { timeFour, setTimeFour } = useContext(FilterContext);
+
+  const [localFriendsOnly, setLocalFriendsOnly] = useState(friendsOnly);
+  const [localSportsFilter, setLocalSportsFilter] = useState(sportsFilter);
+  const [localTimeOne, setLocalTimeOne] = useState(timeOne);
+  const [localTimeTwo, setLocalTimeTwo] = useState(timeTwo);
+  const [localTimeThree, setLocalTimeThree] = useState(timeThree);
+  const [localTimeFour, setLocalTimeFour] = useState(timeFour);
 
   const sportsOnPress = (sport) => {
-    if (!sports.includes(sport)) {
-      setSports([...sports, sport]);
+    if (!localSportsFilter.includes(sport)) {
+      setLocalSportsFilter([...localSportsFilter, sport]);
     } else {
-      const array = [...sports];
+      const array = [...localSportsFilter];
       array.splice(array.indexOf(sport), 1);
-      setSports(array);
+      setLocalSportsFilter(array);
     }
   };
+
+  const apply = () => {
+    setFriendsOnly(localFriendsOnly);
+    setSportsFilter(localSportsFilter);
+    setTimeOne(localTimeOne);
+    setTimeTwo(localTimeTwo);
+    setTimeThree(localTimeThree);
+    setTimeFour(localTimeFour);
+  };
+
   return (
     <View style={styles.container}>
       <TouchableWithoutFeedback
         onPress={() => {
+          apply();
           navigation.goBack();
         }}
       >
@@ -127,17 +146,17 @@ export default function Filters({ navigation }) {
           <FilterButton
             title={"Everyone"}
             onPress={() => {
-              setFriendsOnly(false);
+              setLocalFriendsOnly(false);
             }}
-            active={!friendsOnly}
+            active={!localFriendsOnly}
             width={"48%"}
           />
           <FilterButton
             title={"Friends"}
             onPress={() => {
-              setFriendsOnly(true);
+              setLocalFriendsOnly(true);
             }}
-            active={friendsOnly}
+            active={localFriendsOnly}
             width={"48%"}
           />
         </View>
@@ -150,7 +169,7 @@ export default function Filters({ navigation }) {
             onPress={() => {
               sportsOnPress("basketball");
             }}
-            active={sports.includes("basketball")}
+            active={localSportsFilter.includes("basketball")}
             width={"31%"}
           />
           <FilterButton
@@ -158,7 +177,7 @@ export default function Filters({ navigation }) {
             onPress={() => {
               sportsOnPress("soccer");
             }}
-            active={sports.includes("soccer")}
+            active={localSportsFilter.includes("soccer")}
             width={"31%"}
           />
           <FilterButton
@@ -166,7 +185,7 @@ export default function Filters({ navigation }) {
             onPress={() => {
               sportsOnPress("volleyball");
             }}
-            active={sports.includes("volleyball")}
+            active={localSportsFilter.includes("volleyball")}
             width={"31%"}
           />
         </View>
@@ -176,7 +195,7 @@ export default function Filters({ navigation }) {
             onPress={() => {
               sportsOnPress("frisbee");
             }}
-            active={sports.includes("frisbee")}
+            active={localSportsFilter.includes("frisbee")}
             width={"31%"}
           />
           <FilterButton
@@ -184,7 +203,7 @@ export default function Filters({ navigation }) {
             onPress={() => {
               sportsOnPress("spikeball");
             }}
-            active={sports.includes("spikeball")}
+            active={localSportsFilter.includes("spikeball")}
             width={"31%"}
           />
           <FilterButton
@@ -192,7 +211,7 @@ export default function Filters({ navigation }) {
             onPress={() => {
               sportsOnPress("football");
             }}
-            active={sports.includes("football")}
+            active={localSportsFilter.includes("football")}
             width={"31%"}
           />
         </View>
@@ -203,33 +222,33 @@ export default function Filters({ navigation }) {
           <FilterButton
             title={"<1"}
             onPress={() => {
-              setTimeOne(!timeOne);
+              setLocalTimeOne(!timeOne);
             }}
-            active={timeOne}
+            active={localTimeOne}
             width={"23%"}
           />
           <FilterButton
             title={"1 - 2"}
             onPress={() => {
-              setTimeTwo(!timeTwo);
+              setLocalTimeTwo(!timeTwo);
             }}
-            active={timeTwo}
+            active={localTimeTwo}
             width={"23%"}
           />
           <FilterButton
             title={"2 - 3"}
             onPress={() => {
-              setTimeThree(!timeThree);
+              setLocalTimeThree(!timeThree);
             }}
-            active={timeThree}
+            active={localTimeThree}
             width={"23%"}
           />
           <FilterButton
             title={"3+"}
             onPress={() => {
-              setTimeFour(!timeFour);
+              setLocalTimeFour(!timeFour);
             }}
-            active={timeFour}
+            active={localTimeFour}
             width={"23%"}
           />
         </View>
@@ -251,9 +270,10 @@ export default function Filters({ navigation }) {
               alignItems: "center",
             }}
             onPressIn={() => {
-              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
             }}
             onPress={() => {
+              apply();
               navigation.goBack();
             }}
           >
