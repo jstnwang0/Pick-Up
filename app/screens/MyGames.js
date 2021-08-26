@@ -1,18 +1,149 @@
 import React, { useEffect, useContext } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import colors from "../config/colors";
+import { Image, StyleSheet, Text, View } from "react-native";
+import { FontText, FontTextBold } from "../components/FontText";
 
 export default function MyGames({ navigation }) {
   return (
-    <View style={styles.container}>
-      <Text>My Games Page</Text>
+    <View style={styles.big}>
+      <View style={{ marginTop: 20, ...styles.container }}>
+        <View
+          style={{
+            width: 100,
+            justifyContent: "center",
+          }}
+        >
+          <View
+            style={{
+              width: 85,
+              height: 85,
+              alignSelf: "center",
+              borderRadius: 10,
+              justifyContent: "center",
+            }}
+          >
+            <View
+              style={{
+                width: 70,
+                height: 70,
+                borderRadius: 70 / 2,
+                borderWidth: 2,
+                backgroundColor: "white",
+                alignSelf: "center",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Image
+                source={require("../assets/basketballIcon.png")}
+                style={{ width: 60, height: 60 }}
+              />
+            </View>
+          </View>
+        </View>
+
+        <View style={{ flex: 5, justifyContent: "center" }}>
+          <FontTextBold style={{ fontSize: 20 }}>Basketball Game</FontTextBold>
+          <FontText>Sunday, Aug 08, 2021, 10:00am</FontText>
+        </View>
+        <View style={{ flex: 3, justifyContent: "center" }}>
+          <View
+            style={{
+              // alignSelf: "center",
+              backgroundColor: "green",
+              width: 90,
+              height: 40,
+              borderRadius: 20,
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "row",
+            }}
+          >
+            <Image
+              source={require("../assets/Check.png")}
+              style={{ width: 20, height: 20 }}
+            />
+            <FontText style={{ color: "white" }}>Joined</FontText>
+          </View>
+        </View>
+      </View>
+      <View style={{ marginTop: 20, ...styles.container }}>
+        <View
+          style={{
+            width: 100,
+            justifyContent: "center",
+          }}
+        >
+          <View
+            style={{
+              width: 85,
+              height: 85,
+              alignSelf: "center",
+              borderRadius: 10,
+              justifyContent: "center",
+            }}
+          >
+            <View
+              style={{
+                width: 70,
+                height: 70,
+                borderRadius: 70 / 2,
+                borderWidth: 2,
+                backgroundColor: "white",
+                alignSelf: "center",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Image
+                source={require("../assets/basketballIcon.png")}
+                style={{ width: 60, height: 60 }}
+              />
+            </View>
+          </View>
+        </View>
+
+        <View style={{ flex: 5, justifyContent: "center" }}>
+          <FontTextBold style={{ fontSize: 20 }}>Basketball Game</FontTextBold>
+          <FontText>Sunday, Aug 08, 2021, 10:00am</FontText>
+        </View>
+        <View style={{ flex: 3, justifyContent: "center" }}>
+          <View
+            style={{
+              // alignSelf: "center",
+              backgroundColor: "#E9EFEB",
+              width: 90,
+              height: 40,
+              borderRadius: 20,
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "row",
+            }}
+          >
+            <Image
+              source={require("../assets/ByYou.png")}
+              style={{ width: 20, height: 20 }}
+            />
+            <FontText style={{ color: "#259D63" }}>By You</FontText>
+          </View>
+        </View>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  big: {
     flex: 1,
+    padding: 20,
     alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: "white",
+  },
+  container: {
+    width: "100%",
+    height: 100,
+    backgroundColor: colors.lightGray,
+    borderRadius: 25,
+    flexDirection: "row",
   },
 });
