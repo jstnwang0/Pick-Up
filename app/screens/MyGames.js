@@ -9,50 +9,36 @@ export default function MyGames({ navigation }) {
       <View style={{ marginTop: 20, ...styles.container }}>
         <View
           style={{
-            width: 100,
+            flex: 2.5,
             justifyContent: "center",
           }}
         >
-          <View
-            style={{
-              width: 85,
-              height: 85,
-              alignSelf: "center",
-              borderRadius: 10,
-              justifyContent: "center",
-            }}
-          >
-            <View
-              style={{
-                width: 70,
-                height: 70,
-                borderRadius: 70 / 2,
-                borderWidth: 2,
-                backgroundColor: "white",
-                alignSelf: "center",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
+          <View style={styles.leftLogoSection}>
+            <View style={styles.circleOutline}>
               <Image
                 source={require("../assets/basketballIcon.png")}
-                style={{ width: 60, height: 60 }}
+                style={{ width: 50, height: 50 }}
               />
             </View>
           </View>
         </View>
 
-        <View style={{ flex: 5, justifyContent: "center" }}>
+        <View
+          style={{
+            flex: 5,
+            justifyContent: "center",
+          }}
+        >
           <FontTextBold style={{ fontSize: 20 }}>Basketball Game</FontTextBold>
           <FontText>Sunday, Aug 08, 2021, 10:00am</FontText>
         </View>
         <View style={{ flex: 3, justifyContent: "center" }}>
           <View
             style={{
-              // alignSelf: "center",
               backgroundColor: "green",
-              width: 90,
+              width: 80,
               height: 40,
+              marginLeft: 7,
               borderRadius: 20,
               justifyContent: "center",
               alignItems: "center",
@@ -70,34 +56,15 @@ export default function MyGames({ navigation }) {
       <View style={{ marginTop: 20, ...styles.container }}>
         <View
           style={{
-            width: 100,
+            flex: 2.5,
             justifyContent: "center",
           }}
         >
-          <View
-            style={{
-              width: 85,
-              height: 85,
-              alignSelf: "center",
-              borderRadius: 10,
-              justifyContent: "center",
-            }}
-          >
-            <View
-              style={{
-                width: 70,
-                height: 70,
-                borderRadius: 70 / 2,
-                borderWidth: 2,
-                backgroundColor: "white",
-                alignSelf: "center",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
+          <View style={styles.leftLogoSection}>
+            <View style={styles.circleOutline}>
               <Image
                 source={require("../assets/basketballIcon.png")}
-                style={{ width: 60, height: 60 }}
+                style={{ width: 50, height: 50 }}
               />
             </View>
           </View>
@@ -110,13 +77,13 @@ export default function MyGames({ navigation }) {
         <View style={{ flex: 3, justifyContent: "center" }}>
           <View
             style={{
-              // alignSelf: "center",
               backgroundColor: "#E9EFEB",
-              width: 90,
+              width: 80,
               height: 40,
               borderRadius: 20,
               justifyContent: "center",
               alignItems: "center",
+              marginLeft: 7,
               flexDirection: "row",
             }}
           >
@@ -145,5 +112,22 @@ const styles = StyleSheet.create({
     backgroundColor: colors.lightGray,
     borderRadius: 25,
     flexDirection: "row",
+  },
+  leftLogoSection: {
+    width: 85,
+    height: 85,
+    alignSelf: "center",
+    borderRadius: 10,
+    justifyContent: "center",
+  },
+  circleOutline: {
+    width: 60,
+    height: 60,
+    borderRadius: 60 / 2,
+    borderWidth: 2,
+    backgroundColor: "white",
+    alignSelf: "center",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
