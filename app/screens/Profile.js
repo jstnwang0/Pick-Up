@@ -1,5 +1,12 @@
 import React from "react";
-import { Image, StyleSheet, Text, View, SafeAreaView } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  ScrollView,
+} from "react-native";
 import { FontText, FontTextBold } from "../components/FontText";
 import colors from "../config/colors";
 
@@ -96,11 +103,51 @@ export default function Profile() {
           paddingHorizontal: 20,
         }}
       >
-        <FontText style={{ fontSize: 16 }}>
+        <FontText style={{ fontSize: 15 }}>
           Incoming sophomore at UC Berkeley, transferring to El Camino CC to
           play juco, then going to the NFL. Future Hall of Famer
         </FontText>
       </View>
+      <View
+        style={{
+          width: "90%",
+          height: 1,
+          backgroundColor: colors.mediumGray,
+          marginVertical: 15,
+        }}
+      />
+      <ScrollView style={{ marginBottom: 15 }}>
+        <View style={styles.pictureRow}>
+          <Image
+            source={require("../assets/FootballPlayerPost.png")}
+            style={styles.picture}
+          />
+          <Image
+            source={require("../assets/FootballPlayerPost.png")}
+            style={styles.picture}
+          />
+        </View>
+        <View style={styles.pictureRow}>
+          <Image
+            source={require("../assets/FootballPlayerPost.png")}
+            style={styles.picture}
+          />
+          <Image
+            source={require("../assets/FootballPlayerPost.png")}
+            style={styles.picture}
+          />
+        </View>
+        <View style={styles.pictureRow}>
+          <Image
+            source={require("../assets/FootballPlayerPost.png")}
+            style={styles.picture}
+          />
+          <Image
+            source={require("../assets/FootballPlayerPost.png")}
+            style={styles.picture}
+          />
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -119,5 +166,18 @@ const styles = StyleSheet.create({
   },
   textStyleTwo: {
     fontSize: 21,
+  },
+  picture: {
+    flex: 1,
+    marginRight: 10,
+    aspectRatio: 1,
+  },
+  pictureRow: {
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    alignItems: "center",
+    width: "100%",
+    marginVertical: 5,
+    paddingLeft: 10,
   },
 });
