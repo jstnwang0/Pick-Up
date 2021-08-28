@@ -63,33 +63,12 @@ export default function Friends({ navigation }) {
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <View style={{ alignItems: "center", paddingBottom: 20 }}>
-        {/* <View style={styles.topBar}>
-          <TouchableWithoutFeedback
-            onPress={() => {
-              navigation.goBack();
-            }}
-          >
-            <View
-              style={{
-                height: 40,
-                width: 40,
-                backgroundColor: colors.lightGray,
-                justifyContent: "center",
-                alignItems: "center",
-                borderRadius: 5,
-              }}
-            >
-              <Image
-                source={require("../assets/back.png")}
-                style={{ height: 30, width: 30 }}
-              />
-            </View>
-          </TouchableWithoutFeedback>
+        <View style={styles.topBar}>
+          <BackButton navigation={navigation} />
           <FontTextBold style={{ fontSize: 20, marginLeft: 15 }}>
             Friends
           </FontTextBold>
-        </View> */}
-        <BackButton navigation={navigation} />
+        </View>
         <View
           style={{
             marginTop: 15,
@@ -201,7 +180,7 @@ const styles = StyleSheet.create({
   topBar: {
     width: "100%",
     marginTop: 50,
-    marginLeft: 20,
+    marginLeft: 50,
     flexDirection: "row",
     alignItems: "center",
   },

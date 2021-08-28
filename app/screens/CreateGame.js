@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { Picker } from "@react-native-picker/picker";
+import BackButton from "../components/BackButton";
 
 import {
   Animated,
@@ -178,27 +179,7 @@ export const CreateGame = ({ navigation }) => {
             backgroundColor: "white",
           }}
         >
-          <TouchableWithoutFeedback
-            onPress={() => {
-              navigation.goBack();
-            }}
-          >
-            <View
-              style={{
-                height: 40,
-                width: 40,
-                backgroundColor: colors.lightGray,
-                justifyContent: "center",
-                alignItems: "center",
-                borderRadius: 5,
-              }}
-            >
-              <Image
-                source={require("../assets/back.png")}
-                style={{ height: 30, width: 30 }}
-              />
-            </View>
-          </TouchableWithoutFeedback>
+          <BackButton navigation={navigation} />
           <FontTextBold style={{ fontSize: 20, marginLeft: 15 }}>
             Create a Game
           </FontTextBold>
