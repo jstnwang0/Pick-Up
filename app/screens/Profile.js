@@ -6,11 +6,12 @@ import {
   View,
   SafeAreaView,
   ScrollView,
+  TouchableWithoutFeedback,
 } from "react-native";
 import { FontText, FontTextBold } from "../components/FontText";
 import colors from "../config/colors";
 
-export default function Profile() {
+export default function Profile({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <View
@@ -71,14 +72,21 @@ export default function Profile() {
             marginLeft: -80,
           }}
         >
-          <View>
+          <TouchableWithoutFeedback
+            onPress={() => {
+              navigation.navigate("Friends");
+            }}
+          >
             <View>
-              <FontText style={styles.textStyleOne}>Friends</FontText>
+              <View>
+                <FontText style={styles.textStyleOne}>Friends</FontText>
+              </View>
+              <View>
+                <FontTextBold style={styles.textStyleTwo}>200+</FontTextBold>
+              </View>
             </View>
-            <View>
-              <FontTextBold style={styles.textStyleTwo}>200+</FontTextBold>
-            </View>
-          </View>
+          </TouchableWithoutFeedback>
+
           <View
             style={{
               backgroundColor: colors.mediumGray,

@@ -6,6 +6,7 @@ import DirectMessages from "./DirectMessages";
 import FindGames from "./FindGames";
 import { ChatIcon, GamesIcon, ProfileIcon } from "./TabBarIcons";
 import MyGames from "./MyGames";
+
 import {
   Dimensions,
   StyleSheet,
@@ -19,6 +20,7 @@ import Filters from "./Filters";
 
 import * as Haptics from "expo-haptics";
 import { CreateGame, PickSport } from "./CreateGame";
+import Friends from "./Friends";
 
 const width = Dimensions.get("screen").width;
 const MainStack = createStackNavigator();
@@ -125,6 +127,7 @@ function MainStackScreen() {
           },
         }}
       />
+      <MainStack.Screen name="Friends" component={Friends} />
       <MainStack.Screen
         name="CreateGame"
         component={CreateGame}
