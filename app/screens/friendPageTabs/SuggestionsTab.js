@@ -1,18 +1,15 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, TextInput, View } from "react-native";
+import colors from "../../config/colors";
 
 export default function SuggestionsTab() {
-  return (
-    <View style={styles.container}>
-      <Text>SuggestionsTab Page</Text>
-    </View>
-  );
+  return <View style={styles.container}></View>;
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: "white",
   },
 });

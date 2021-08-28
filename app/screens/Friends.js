@@ -16,6 +16,7 @@ import SuggestionsTab from "./friendPageTabs/SuggestionsTab";
 import RequestsTab from "./friendPageTabs/RequestsTab";
 import FriendsTab from "./friendPageTabs/FriendsTab";
 import BackButton from "../components/BackButton";
+import SearchBar from "../components/SearchBar";
 
 const width = Dimensions.get("screen").width;
 export default function Friends({ navigation }) {
@@ -161,6 +162,10 @@ export default function Friends({ navigation }) {
           </TouchableWithoutFeedback>
         </View>
       </View>
+      <View style={{ alignItems: "center" }}>
+        <SearchBar />
+      </View>
+
       <PagerView ref={ref} scrollEnabled={false} style={{ flex: 1 }}>
         <View style={{ width: "100%", height: "100%" }}>
           <SuggestionsTab></SuggestionsTab>
