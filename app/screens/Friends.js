@@ -15,6 +15,7 @@ import PagerView from "react-native-pager-view";
 import SuggestionsTab from "./friendPageTabs/SuggestionsTab";
 import RequestsTab from "./friendPageTabs/RequestsTab";
 import FriendsTab from "./friendPageTabs/FriendsTab";
+import BackButton from "../components/BackButton";
 
 const width = Dimensions.get("screen").width;
 export default function Friends({ navigation }) {
@@ -62,7 +63,7 @@ export default function Friends({ navigation }) {
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <View style={{ alignItems: "center", paddingBottom: 20 }}>
-        <View style={styles.topBar}>
+        {/* <View style={styles.topBar}>
           <TouchableWithoutFeedback
             onPress={() => {
               navigation.goBack();
@@ -87,7 +88,8 @@ export default function Friends({ navigation }) {
           <FontTextBold style={{ fontSize: 20, marginLeft: 15 }}>
             Friends
           </FontTextBold>
-        </View>
+        </View> */}
+        <BackButton navigation={navigation} />
         <View
           style={{
             marginTop: 15,
