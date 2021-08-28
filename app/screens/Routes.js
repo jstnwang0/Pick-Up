@@ -127,7 +127,11 @@ function MainStackScreen() {
           },
         }}
       />
-      <MainStack.Screen name="Friends" component={Friends} />
+      <MainStack.Screen
+        name="Friends"
+        component={Friends}
+        options={{ gestureEnabled: false }}
+      />
       <MainStack.Screen
         name="CreateGame"
         component={CreateGame}

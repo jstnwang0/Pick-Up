@@ -20,8 +20,7 @@ import * as Haptics from "expo-haptics";
 const width = Dimensions.get("screen").width;
 function HomeTab({ navigation }) {
   const [animateValue] = useState(new Animated.Value(-1));
-  const [findGamesDisabled, setFindGamesDisabled] = useState(false);
-  const [myGamesDisabled, setMyGamesDisabled] = useState(false);
+  const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const animateSlide = (newState) => {
     Animated.timing(animateValue, {
@@ -34,21 +33,21 @@ function HomeTab({ navigation }) {
   const ref = useRef("");
 
   const pressFindGames = () => {
-    setMyGamesDisabled(true);
+    setButtonDisabled(true);
     ref.current.setPage(0);
     animateSlide(-1);
 
     setTimeout(() => {
-      setMyGamesDisabled(false);
+      setButtonDisabled(false);
     }, 250);
   };
 
   const pressMyGames = () => {
-    setFindGamesDisabled(true);
+    setButtonDisabled(true);
     ref.current.setPage(1);
     animateSlide(1);
     setTimeout(() => {
-      setFindGamesDisabled(false);
+      setButtonDisabled(false);
     }, 250);
   };
 
@@ -74,7 +73,7 @@ function HomeTab({ navigation }) {
         <View
           style={{
             marginTop: 50,
-            width: width * 0.95,
+            width: width * 0.9,
             height: 60,
             borderRadius: 15,
             backgroundColor: colors.lightGray,
@@ -87,7 +86,7 @@ function HomeTab({ navigation }) {
             style={{
               position: "absolute",
               backgroundColor: "white",
-              width: (width * 0.95) / 2 - 5,
+              width: (width * 0.9) / 2 - 5,
               height: 45,
               borderRadius: 12,
               transform: [
@@ -95,20 +94,20 @@ function HomeTab({ navigation }) {
                   translateX: animateValue.interpolate({
                     inputRange: [-1, 1],
                     outputRange: [
-                      (-width * 0.95) / 4 + 5,
-                      (width * 0.95) / 4 - 5,
+                      (-width * 0.9) / 4 + 5,
+                      (width * 0.9) / 4 - 5,
                     ],
                   }),
                 },
               ],
             }}
-          ></Animated.View>
+          />
         </View>
         <View
           style={{
             position: "absolute",
             marginTop: 50,
-            width: "100%",
+            width: width * 0.9,
             height: 60,
             flexDirection: "row",
             justifyContent: "center",
@@ -116,7 +115,7 @@ function HomeTab({ navigation }) {
           }}
         >
           <TouchableWithoutFeedback
-            disabled={findGamesDisabled}
+            disabled={buttonDisabled}
             onPress={pressFindGames}
           >
             <View
@@ -127,12 +126,12 @@ function HomeTab({ navigation }) {
                 alignItems: "center",
               }}
             >
-              <FontText style={{ left: 5 }}>Find Games</FontText>
+              <FontText style={{ left: 5, fontSize: 15 }}>Find Games</FontText>
             </View>
           </TouchableWithoutFeedback>
 
           <TouchableWithoutFeedback
-            disabled={myGamesDisabled}
+            disabled={buttonDisabled}
             onPress={pressMyGames}
           >
             <View
@@ -143,7 +142,7 @@ function HomeTab({ navigation }) {
                 alignItems: "center",
               }}
             >
-              <FontText style={{ right: 5 }}>My Games</FontText>
+              <FontText style={{ right: 5, fontSize: 15 }}>My Games</FontText>
             </View>
           </TouchableWithoutFeedback>
         </View>
