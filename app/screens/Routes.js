@@ -140,9 +140,21 @@ function MainStackScreen() {
         component={CreateGame}
         options={{ presentation: "modal" }}
       />
-      <MainStack.Screen name="AddPost" component={AddPost} />
-      <MainStack.Screen name="EditProfile" component={EditProfile} />
-      <MainStack.Screen name="Settings" component={Settings} />
+      <MainStack.Screen
+        name="AddPost"
+        component={AddPost}
+        options={{ gestureEnabled: false }}
+      />
+      <MainStack.Screen
+        name="EditProfile"
+        component={EditProfile}
+        options={{ gestureEnabled: false }}
+      />
+      <MainStack.Screen
+        name="Settings"
+        component={Settings}
+        options={{ gestureEnabled: false }}
+      />
 
       <MainStack.Screen
         name="PickSport"
