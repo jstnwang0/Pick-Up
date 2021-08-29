@@ -19,11 +19,11 @@ export default function Profile({ navigation }) {
           width: "100%",
           // padding: 5,
           marginTop: 60,
-          // backgroundColor: "red",
           flexDirection: "row",
+          paddingBottom: 10,
         }}
       >
-        <View style={{ flex: 3, paddingLeft: 10 }}>
+        <View style={{ flex: 3, paddingLeft: 20 }}>
           <FontTextBold style={{ fontSize: 24 }}>Jerry Hamada</FontTextBold>
         </View>
         <View
@@ -48,82 +48,86 @@ export default function Profile({ navigation }) {
           />
         </View>
       </View>
-      <View
-        style={{
-          flexDirection: "row",
-          // backgroundColor: "red",
-          width: "100%",
-          paddingVertical: 10,
-        }}
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
       >
-        <View style={{ flex: 2 }}>
-          <Image
-            source={require("../assets/Profile.png")}
-            style={{ width: 85, height: 85, marginLeft: 20 }}
-          />
-        </View>
         <View
           style={{
-            flex: 6,
-            // backgroundColor: "green",
             flexDirection: "row",
-            justifyContent: "space-evenly",
-            alignItems: "center",
+            // backgroundColor: "red",
+            width: "100%",
+            paddingVertical: 10,
           }}
         >
-          <TouchableWithoutFeedback
-            onPress={() => {
-              navigation.navigate("Friends");
-            }}
-          >
-            <View>
-              <View>
-                <FontText style={styles.textStyleOne}>Friends</FontText>
-              </View>
-              <View>
-                <FontTextBold style={styles.textStyleTwo}>200+</FontTextBold>
-              </View>
-            </View>
-          </TouchableWithoutFeedback>
-
+          <View style={{ flex: 2 }}>
+            <Image
+              source={require("../assets/Profile.png")}
+              style={{ width: 85, height: 85, marginLeft: 20 }}
+            />
+          </View>
           <View
             style={{
-              backgroundColor: colors.mediumGray,
-              width: 1,
-              height: 30,
-              borderRadius: 1,
+              flex: 6,
+              // backgroundColor: "green",
+              flexDirection: "row",
+              justifyContent: "space-evenly",
+              alignItems: "center",
             }}
-          />
-          <View>
+          >
+            <TouchableWithoutFeedback
+              onPress={() => {
+                navigation.navigate("Friends");
+              }}
+            >
+              <View>
+                <View>
+                  <FontText style={styles.textStyleOne}>Friends</FontText>
+                </View>
+                <View>
+                  <FontTextBold style={styles.textStyleTwo}>200+</FontTextBold>
+                </View>
+              </View>
+            </TouchableWithoutFeedback>
+
+            <View
+              style={{
+                backgroundColor: colors.mediumGray,
+                width: 1,
+                height: 30,
+                borderRadius: 1,
+              }}
+            />
             <View>
-              <FontText style={styles.textStyleOne}>Posts</FontText>
-            </View>
-            <View>
-              <FontTextBold style={styles.textStyleTwo}>50+</FontTextBold>
+              <View>
+                <FontText style={styles.textStyleOne}>Posts</FontText>
+              </View>
+              <View>
+                <FontTextBold style={styles.textStyleTwo}>50+</FontTextBold>
+              </View>
             </View>
           </View>
         </View>
-      </View>
-      <View
-        style={{
-          width: "100%",
-          paddingHorizontal: 20,
-        }}
-      >
-        <FontText style={{ fontSize: 15 }}>
-          Incoming sophomore at UC Berkeley, transferring to El Camino CC to
-          play juco, then going to the NFL. Future Hall of Famer
-        </FontText>
-      </View>
-      <View
-        style={{
-          width: "90%",
-          height: 1,
-          backgroundColor: colors.mediumGray,
-          marginVertical: 15,
-        }}
-      />
-      <ScrollView style={{ marginBottom: 15 }}>
+        <View
+          style={{
+            width: "100%",
+            paddingHorizontal: 20,
+          }}
+        >
+          <FontText style={{ fontSize: 15 }}>
+            Incoming sophomore at UC Berkeley, transferring to El Camino CC to
+            play juco, then going to the NFL. Future Hall of Famer
+          </FontText>
+        </View>
+        <View
+          style={{
+            width: "90%",
+            height: 1,
+            alignSelf: "center",
+            backgroundColor: colors.mediumGray,
+            marginVertical: 15,
+          }}
+        />
         <View style={styles.pictureRow}>
           <Image
             source={require("../assets/FootballPlayerPost.png")}
@@ -164,7 +168,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     // justifyContent: "center",
-    paddingHorizontal: 10,
+    paddingHorizontal: 6,
   },
   topRightLogos: { height: 25, width: 25 },
   textStyleOne: {
