@@ -6,4 +6,5 @@ export default {
   swipeBar: "#DADFE5",
   blue: "#007aff",
   red: "#ff3b30",
+  lightGreen: "#DCEBE4",
 };

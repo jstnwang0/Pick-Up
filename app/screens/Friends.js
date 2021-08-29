@@ -106,7 +106,7 @@ export default function Friends({ navigation }) {
         <View
           style={{
             position: "absolute",
-            marginTop: 105,
+            marginTop: 115,
             width: width * 0.9,
             height: 60,
             flexDirection: "row",
@@ -166,7 +166,12 @@ export default function Friends({ navigation }) {
         <SearchBar />
       </View>
 
-      <PagerView ref={ref} scrollEnabled={false} style={{ flex: 1 }}>
+      <PagerView
+        ref={ref}
+        scrollEnabled={false}
+        style={{ flex: 1 }}
+        initialPage={1}
+      >
         <View style={{ width: "100%", height: "100%" }}>
           <SuggestionsTab></SuggestionsTab>
         </View>
@@ -184,7 +189,7 @@ export default function Friends({ navigation }) {
 const styles = StyleSheet.create({
   topBar: {
     width: "100%",
-    marginTop: 50,
+    marginTop: 60,
     marginLeft: 50,
     flexDirection: "row",
     alignItems: "center",

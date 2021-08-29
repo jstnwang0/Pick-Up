@@ -13,17 +13,17 @@ import colors from "../config/colors";
 
 export default function Profile({ navigation }) {
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <View
         style={{
           width: "100%",
-          padding: 10,
-          marginTop: 10,
+          // padding: 5,
+          marginTop: 60,
           // backgroundColor: "red",
           flexDirection: "row",
         }}
       >
-        <View style={{ flex: 3, paddingLeft: 15 }}>
+        <View style={{ flex: 3, paddingLeft: 10 }}>
           <FontTextBold style={{ fontSize: 24 }}>Jerry Hamada</FontTextBold>
         </View>
         <View
@@ -64,12 +64,11 @@ export default function Profile({ navigation }) {
         </View>
         <View
           style={{
-            flex: 3,
+            flex: 6,
             // backgroundColor: "green",
             flexDirection: "row",
             justifyContent: "space-evenly",
             alignItems: "center",
-            marginLeft: -80,
           }}
         >
           <TouchableWithoutFeedback
@@ -156,7 +155,7 @@ export default function Profile({ navigation }) {
           />
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -165,7 +164,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     // justifyContent: "center",
-    paddingHorizontal: 20,
+    paddingHorizontal: 10,
   },
   topRightLogos: { height: 25, width: 25 },
   textStyleOne: {
