@@ -63,7 +63,7 @@ export default function Friends({ navigation }) {
 
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
-      <View style={{ alignItems: "center", paddingBottom: 20 }}>
+      <View style={{ alignItems: "center" }}>
         <View style={styles.topBar}>
           <BackButton navigation={navigation} />
           <FontTextBold style={{ fontSize: 20, marginLeft: 15 }}>
@@ -162,7 +162,7 @@ export default function Friends({ navigation }) {
           </TouchableWithoutFeedback>
         </View>
       </View>
-      <View style={{ alignItems: "center" }}>
+      <View style={{ alignItems: "center", marginTop: 10, paddingBottom: 10 }}>
         <SearchBar />
       </View>
 

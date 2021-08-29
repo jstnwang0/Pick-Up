@@ -1,11 +1,19 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, ScrollView } from "react-native";
+import FriendsDisplay from "./FriendDisplay";
 
-export default function FriendsTab() {
+export default function RequestsTab() {
   return (
-    <View style={styles.container}>
-      <Text>FriendsTab Page</Text>
-    </View>
+    <ScrollView style={{ marginBottom: 15 }}>
+      <View style={styles.container}>
+        <FriendsDisplay leftButtonText={"Message"} rightButtonText={"Remove"} />
+        <FriendsDisplay leftButtonText={"Message"} rightButtonText={"Remove"} />
+        <FriendsDisplay leftButtonText={"Message"} rightButtonText={"Remove"} />
+        <FriendsDisplay leftButtonText={"Message"} rightButtonText={"Remove"} />
+        <FriendsDisplay leftButtonText={"Message"} rightButtonText={"Remove"} />
+        <FriendsDisplay leftButtonText={"Message"} rightButtonText={"Remove"} />
+      </View>
+    </ScrollView>
   );
 }
 

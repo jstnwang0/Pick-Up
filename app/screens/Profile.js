@@ -51,13 +51,13 @@ export default function Profile({ navigation }) {
       <ScrollView
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
+        style={{ marginBottom: 15 }}
       >
         <View
           style={{
             flexDirection: "row",
             // backgroundColor: "red",
             width: "100%",
-            paddingVertical: 10,
           }}
         >
           <View style={{ flex: 2 }}>

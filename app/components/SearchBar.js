@@ -15,7 +15,7 @@ export default function SearchBar() {
     <View
       style={{
         width: "90%",
-        height: 60,
+        height: 50,
         backgroundColor: colors.lightGray,
         borderRadius: 15,
         alignItems: "center",
@@ -28,6 +28,7 @@ export default function SearchBar() {
       />
       <TextInput
         returnKeyType="done"
+        autoCorrect={false}
         style={{
           position: "absolute",
           width: "100%",
