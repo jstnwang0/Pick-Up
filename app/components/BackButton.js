@@ -15,7 +15,6 @@ export default function BackButton({ navigation }) {
     <View
       style={{
         height: 40,
-
         width: 40,
         backgroundColor: colors.lightGray,
         justifyContent: "center",

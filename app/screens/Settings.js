@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.lightGray,
     width: "100%",
     borderRadius: 20,
-    marginTop: "2%",
+    marginTop: 10,
     flexDirection: "row",
     height: 70,
   },
