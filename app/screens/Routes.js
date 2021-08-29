@@ -17,6 +17,7 @@ import {
 import HomeTab from "./HomeTab";
 import GameDetails from "./GameDetails";
 import Filters from "./Filters";
+import Settings from "./Settings";
 
 import * as Haptics from "expo-haptics";
 import { CreateGame, PickSport } from "./CreateGame";
@@ -137,6 +138,7 @@ function MainStackScreen() {
         component={CreateGame}
         options={{ presentation: "modal" }}
       />
+      <MainStack.Screen name="Settings" component={Settings} />
       <MainStack.Screen
         name="PickSport"
         component={PickSport}

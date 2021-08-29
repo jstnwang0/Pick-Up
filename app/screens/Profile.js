@@ -7,6 +7,7 @@ import {
   SafeAreaView,
   ScrollView,
   TouchableWithoutFeedback,
+  TouchableOpacity,
 } from "react-native";
 import { FontText, FontTextBold } from "../components/FontText";
 import colors from "../config/colors";
@@ -42,10 +43,17 @@ export default function Profile({ navigation }) {
             source={require("../assets/AddPost.png")}
             style={styles.topRightLogos}
           />
-          <Image
-            source={require("../assets/Settings.png")}
-            style={styles.topRightLogos}
-          />
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("Settings");
+            }}
+            activeOpacity={0.3}
+          >
+            <Image
+              source={require("../assets/Settings.png")}
+              style={styles.topRightLogos}
+            />
+          </TouchableOpacity>
         </View>
       </View>
       <ScrollView
