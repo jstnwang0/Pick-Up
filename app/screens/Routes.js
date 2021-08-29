@@ -6,6 +6,8 @@ import DirectMessages from "./DirectMessages";
 import FindGames from "./FindGames";
 import { ChatIcon, GamesIcon, ProfileIcon } from "./TabBarIcons";
 import MyGames from "./MyGames";
+import AddPost from "./AddPost";
+import EditProfile from "./EditProfile";
 
 import {
   Dimensions,
@@ -138,7 +140,10 @@ function MainStackScreen() {
         component={CreateGame}
         options={{ presentation: "modal" }}
       />
+      <MainStack.Screen name="AddPost" component={AddPost} />
+      <MainStack.Screen name="EditProfile" component={EditProfile} />
       <MainStack.Screen name="Settings" component={Settings} />
+
       <MainStack.Screen
         name="PickSport"
         component={PickSport}

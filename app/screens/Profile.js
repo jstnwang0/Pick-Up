@@ -35,14 +35,30 @@ export default function Profile({ navigation }) {
             alignItems: "center",
           }}
         >
-          <Image
-            source={require("../assets/EditProfile.png")}
-            style={styles.topRightLogos}
-          />
-          <Image
-            source={require("../assets/AddPost.png")}
-            style={styles.topRightLogos}
-          />
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("EditProfile");
+            }}
+            activeOpacity={0.3}
+          >
+            <Image
+              source={require("../assets/EditProfile.png")}
+              style={styles.topRightLogos}
+            />
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("AddPost");
+            }}
+            activeOpacity={0.3}
+          >
+            <Image
+              source={require("../assets/AddPost.png")}
+              style={styles.topRightLogos}
+            />
+          </TouchableOpacity>
+
           <TouchableOpacity
             onPress={() => {
               navigation.navigate("Settings");
