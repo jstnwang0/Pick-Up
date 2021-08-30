@@ -17,6 +17,7 @@ export const FontText = (props) => {
     <Text
       style={{ fontFamily: "Manrope_400Regular", ...props.style }}
       numberOfLines={props.numberOfLines}
+      onPress={props.onPress}
     >
       {props.children}
     </Text>

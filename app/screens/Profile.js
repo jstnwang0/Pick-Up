@@ -74,7 +74,6 @@ export default function Profile({ navigation }) {
       </View>
       <ScrollView
         showsVerticalScrollIndicator={false}
-        showsHorizontalScrollIndicator={false}
         style={{ marginBottom: 15 }}
       >
         <View

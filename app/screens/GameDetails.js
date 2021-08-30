@@ -39,7 +39,7 @@ export default function GameDetails() {
 
   return (
     <View style={{ flex: 1, backgroundColor: "white", alignItems: "center" }}>
-      <View style={{ width: "90%" }}>
+      <View style={{ flex: 1, width: "90%" }}>
         <SwipeDownBar />
         <View
           style={{
@@ -109,232 +109,230 @@ export default function GameDetails() {
             </View>
           </View>
         </View>
-        <View>
-          <ScrollView
-            style={{ height: "76%" }}
-            showsVerticalScrollIndicator={false}
-            showsHorizontalScrollIndicator={false}
-          >
-            <FontTextBold style={{ marginTop: 5, fontSize: 19 }}>
-              About Location
-            </FontTextBold>
-            <View
-              style={{
-                marginTop: 10,
-                height: 200,
-                backgroundColor: colors.lightGray,
-                borderRadius: 10,
-              }}
-            >
-              <View style={{ flex: 1, width: "100%" }}>
-                <MapView
-                  style={styles.map}
-                  mapPadding={{ top: -30, bottom: -40 }}
-                  initialRegion={{
-                    latitude: 37.86792,
-                    longitude: -122.27137,
-                    latitudeDelta: 0.01,
-                    longitudeDelta: 0.01,
-                  }}
-                >
-                  <Marker
-                    key="0"
-                    coordinate={{ latitude: 37.86792, longitude: -122.27137 }}
-                    centerOffset={{ x: 0, y: -25 }}
-                    image={require("../assets/SoccerMarker.png")}
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "space-between",
+          }}
+        >
+          <View style={{ flex: 1 }}>
+            <ScrollView showsVerticalScrollIndicator={false}>
+              <FontTextBold style={{ marginTop: 5, fontSize: 19 }}>
+                About Location
+              </FontTextBold>
+              <View
+                style={{
+                  marginTop: 10,
+                  height: 200,
+                  backgroundColor: colors.lightGray,
+                  borderRadius: 10,
+                }}
+              >
+                <View style={{ flex: 1, width: "100%" }}>
+                  <MapView
+                    style={styles.map}
+                    mapPadding={{ top: -30, bottom: -40 }}
+                    initialRegion={{
+                      latitude: 37.86792,
+                      longitude: -122.27137,
+                      latitudeDelta: 0.01,
+                      longitudeDelta: 0.01,
+                    }}
                   >
-                    <Callout tooltip={true}></Callout>
-                  </Marker>
-                </MapView>
-              </View>
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  padding: 20,
-                }}
-              >
-                <FontText
-                  style={{
-                    fontSize: 15,
-                    textDecorationLine: "underline",
-                  }}
-                  numberOfLines={2}
-                >
-                  1980 Allston Way, Berkeley, CA 94704
-                </FontText>
-              </View>
-              <TouchableWithoutFeedback
-                onPress={() => {
-                  Linking.openURL(
-                    "maps:0,0?q=" +
-                      "1980 Allston Way, Berkeley, CA 94704" +
-                      "@37.86792,-122.27137"
-                  );
-                }}
-              >
+                    <Marker
+                      key="0"
+                      coordinate={{ latitude: 37.86792, longitude: -122.27137 }}
+                      centerOffset={{ x: 0, y: -25 }}
+                      image={require("../assets/SoccerMarker.png")}
+                    >
+                      <Callout tooltip={true}></Callout>
+                    </Marker>
+                  </MapView>
+                </View>
                 <View
                   style={{
-                    width: "100%",
-                    height: "100%",
-                    // backgroundColor: "red",
-                    position: "absolute",
-                  }}
-                ></View>
-              </TouchableWithoutFeedback>
-            </View>
-            <FontTextBold style={{ marginTop: 20, fontSize: 19 }}>
-              Details
-            </FontTextBold>
-            <View
-              style={{
-                marginTop: 5,
-                flexDirection: "row",
-                alignItems: "center",
-              }}
-            >
-              <FontTextBold style={{ fontSize: 16 }}>Sports Type:</FontTextBold>
-              <FontText style={{ marginLeft: 5, fontSize: 16 }}>
-                Soccer
-              </FontText>
-            </View>
-            <ReadMore
-              numberOfLines={3}
-              // renderTruncatedFooter={this.renderTruncatedFooter}
-              // renderRevealedFooter={this.renderRevealedFooter}
-            >
-              <FontText style={{ fontSize: 16, marginTop: 5 }}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Justo
-                cras in at ultricies ut faucibus. Integer lectus et, sit
-                imperdiet quam nunc.ur mom gay Hac pellentesque odio rutrum
-                scelerisque mattis Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit. Justo cras in at ultricies ut faucibus. Integer
-                lectus et, sit imperdiet quam nunc.ur mom gay Hac pellentesque
-                odio rutrum scelerisque mattis
-              </FontText>
-            </ReadMore>
-            <FontTextBold style={{ marginTop: 20, fontSize: 19 }}>
-              Sports Organizer
-            </FontTextBold>
-            <View
-              style={{
-                flexDirection: "row",
-                width: "100%",
-                height: 50,
-                alignItems: "center",
-              }}
-            >
-              <View style={{ flex: 1 }}>
-                <FontTextBold style={{ fontSize: 18 }}>
-                  Jerry Hamada
-                </FontTextBold>
-              </View>
-              <View
-                style={{
-                  flex: 1,
-                  alignItems: "flex-end",
-                  justifyContent: "flex-end",
-                }}
-              >
-                <View
-                  style={{
-                    width: 110,
-                    height: 35,
                     flexDirection: "row",
                     alignItems: "center",
-                    backgroundColor: colors.lightGreen,
-                    borderRadius: 10,
-                    justifyContent: "space-evenly",
+                    padding: 20,
                   }}
                 >
-                  <Image
-                    source={require("../assets/Chat.png")}
-                    style={{ width: 25, height: 25 }}
-                  />
-                  <FontText>Message</FontText>
+                  <FontText
+                    style={{
+                      fontSize: 15,
+                      textDecorationLine: "underline",
+                    }}
+                    numberOfLines={2}
+                  >
+                    1980 Allston Way, Berkeley, CA 94704
+                  </FontText>
                 </View>
+                <TouchableWithoutFeedback
+                  onPress={() => {
+                    Linking.openURL(
+                      "maps:0,0?q=" +
+                        "1980 Allston Way, Berkeley, CA 94704" +
+                        "@37.86792,-122.27137"
+                    );
+                  }}
+                >
+                  <View
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      position: "absolute",
+                    }}
+                  ></View>
+                </TouchableWithoutFeedback>
               </View>
-            </View>
-            <View
-              style={{
-                width: "100%",
-                height: 70,
-                backgroundColor: colors.lightGray,
-                borderRadius: 10,
-                flexDirection: "row",
-                marginTop: 5,
-              }}
-            >
+              <FontTextBold style={{ marginTop: 20, fontSize: 19 }}>
+                Details
+              </FontTextBold>
               <View
                 style={{
-                  flex: 4,
+                  marginTop: 5,
                   flexDirection: "row",
                   alignItems: "center",
-                  marginLeft: 15,
                 }}
               >
-                <Image
-                  source={require("../assets/ProfilePic2.png")}
-                  style={{
-                    width: 40,
-                    height: 40,
-                    zIndex: -1,
-                  }}
-                />
-                <View style={styles.circleView}>
-                  <Image
-                    source={require("../assets/ProfilePic2.png")}
-                    style={{
-                      width: 40,
-                      height: 40,
-                    }}
-                  />
-                </View>
-                <View style={styles.circleView}>
-                  <Image
-                    source={require("../assets/ProfilePic2.png")}
-                    style={{
-                      width: 40,
-                      height: 40,
-                    }}
-                  />
-                </View>
-                <View style={styles.circleView}>
-                  <Image
-                    source={require("../assets/ProfilePic2.png")}
-                    style={{
-                      width: 40,
-                      height: 40,
-                    }}
-                  />
-                </View>
-                <View
-                  style={{ backgroundColor: "#1C2D41", ...styles.circleView }}
-                >
-                  <FontTextBold style={{ color: "white" }}>12</FontTextBold>
-                </View>
-              </View>
-              <View style={{ flex: 3, justifyContent: "center" }}>
-                <FontTextBold style={{ fontSize: 16 }}>16 going</FontTextBold>
-                <FontText style={{ color: colors.mediumGray, fontSize: 15 }}>
-                  only 5 spots left
+                <FontTextBold style={{ fontSize: 16 }}>
+                  Sports Type:
+                </FontTextBold>
+                <FontText style={{ marginLeft: 5, fontSize: 16 }}>
+                  Soccer
                 </FontText>
               </View>
+              <ReadMore
+                numberOfLines={3}
+                renderTruncatedFooter={renderTruncatedFooter}
+                renderRevealedFooter={renderRevealedFooter}
+              >
+                <FontText style={{ fontSize: 16, marginTop: 5 }}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Justo
+                  cras in at ultricies ut faucibus. Integer lectus et, sit
+                  imperdiet quam nunc.ur mom gay Hac pellentesque odio rutrum
+                  scelerisque mattis Lorem ipsum dolor sit amet, consectetur
+                  adipiscing elit. Justo cras in at ultricies ut faucibus.
+                  Integer lectus et, sit imperdiet quam nunc.ur mom gay Hac
+                  pellentesque odio rutrum scelerisque mattis
+                </FontText>
+              </ReadMore>
+              <FontTextBold style={{ marginTop: 20, fontSize: 19 }}>
+                Sports Organizer
+              </FontTextBold>
               <View
                 style={{
-                  flex: 2,
-                  justifyContent: "center",
+                  flexDirection: "row",
+                  width: "100%",
+                  height: 50,
                   alignItems: "center",
                 }}
               >
-                <FontText
-                  style={{ textDecorationLine: "underline", fontSize: 15 }}
+                <View style={{ flex: 1 }}>
+                  <FontTextBold style={{ fontSize: 18 }}>
+                    Jerry Hamada
+                  </FontTextBold>
+                </View>
+                <View
+                  style={{
+                    flex: 1,
+                    alignItems: "flex-end",
+                    justifyContent: "flex-end",
+                  }}
                 >
-                  See all
-                </FontText>
+                  <View
+                    style={{
+                      width: 110,
+                      height: 35,
+                      flexDirection: "row",
+                      alignItems: "center",
+                      backgroundColor: colors.lightGreen,
+                      borderRadius: 10,
+                      justifyContent: "space-evenly",
+                    }}
+                  >
+                    <Image
+                      source={require("../assets/Chat.png")}
+                      style={{ width: 25, height: 25 }}
+                    />
+                    <FontText>Message</FontText>
+                  </View>
+                </View>
               </View>
-            </View>
-          </ScrollView>
+              <View
+                style={{
+                  width: "100%",
+                  height: 70,
+                  backgroundColor: colors.lightGray,
+                  borderRadius: 10,
+                  flexDirection: "row",
+                  marginTop: 5,
+                }}
+              >
+                <View
+                  style={{
+                    flex: 4,
+                    flexDirection: "row",
+                    alignItems: "center",
+                    marginLeft: 15,
+                  }}
+                >
+                  <Image
+                    source={require("../assets/ProfilePic2.png")}
+                    style={{
+                      width: 40,
+                      height: 40,
+                      zIndex: -1,
+                    }}
+                  />
+                  <View style={styles.circleView}>
+                    <Image
+                      source={require("../assets/ProfilePic2.png")}
+                      style={{
+                        width: 40,
+                        height: 40,
+                      }}
+                    />
+                  </View>
+                  <View style={styles.circleView}>
+                    <Image
+                      source={require("../assets/ProfilePic2.png")}
+                      style={{
+                        width: 40,
+                        height: 40,
+                      }}
+                    />
+                  </View>
+                  <View
+                    style={{ backgroundColor: "#1C2D41", ...styles.circleView }}
+                  >
+                    <FontTextBold style={{ color: "white" }}>12</FontTextBold>
+                  </View>
+                </View>
+                <View style={{ flex: 3, justifyContent: "center" }}>
+                  <FontTextBold style={{ fontSize: 16 }}>16 going</FontTextBold>
+                  <FontText style={{ color: colors.mediumGray, fontSize: 15 }}>
+                    only 5 spots left
+                  </FontText>
+                </View>
+                <View
+                  style={{
+                    flex: 2,
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <FontText
+                    style={{ textDecorationLine: "underline", fontSize: 15 }}
+                  >
+                    See all
+                  </FontText>
+                </View>
+              </View>
+            </ScrollView>
+          </View>
+          <View
+            style={{ bottom: 0, height: 120, backgroundColor: "white" }}
+          ></View>
         </View>
       </View>
 
