@@ -31,14 +31,14 @@ export default function FriendsDisplay({ leftButtonText, rightButtonText }) {
               height: 20,
               zIndex: -1,
             }}
-          ></Image>
+          />
           <Image
             source={require("../../assets/ProfilePic2.png")}
             style={{
               width: 20,
               height: 20,
             }}
-          ></Image>
+          />
           <FontText style={{ marginLeft: 5 }}>15 mutual friends</FontText>
         </View>
         <View
