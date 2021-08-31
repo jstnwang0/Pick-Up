@@ -6,6 +6,8 @@ import { LocationPermsContext } from "../contexts/LocationPermsContext";
 import { Button, View } from "react-native";
 import { SportsTypeContext } from "../contexts/SportsTypeContext";
 import { FilterContext } from "../contexts/FilterContext";
+import { Provider } from "react-redux";
+import { store } from "../redux/Store";
 
 export default function Providers() {
   const [locationPerms, setLocationPerms] = useState(false);
@@ -30,8 +32,8 @@ export default function Providers() {
   }, []);
 
   return (
-    <LocationPermsContext.Provider value={locationPerms}>
-      <SportsTypeContext.Provider value={{ sportsCreate, setSportsCreate }}>
+    <Provider store={store}>
+      <LocationPermsContext.Provider value={locationPerms}>
         <FilterContext.Provider
           value={{
             friendsOnly,
@@ -52,7 +54,7 @@ export default function Providers() {
             <Routes />
           </NavigationContainer>
         </FilterContext.Provider>
-      </SportsTypeContext.Provider>
-    </LocationPermsContext.Provider>
+      </LocationPermsContext.Provider>
+    </Provider>
   );
 }

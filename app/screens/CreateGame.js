@@ -21,11 +21,15 @@ import { useCardAnimation } from "@react-navigation/stack";
 import colors from "../config/colors";
 import * as Haptics from "expo-haptics";
 import { SportsTypeContext } from "../contexts/SportsTypeContext";
+import { useSelector, useDispatch } from "react-redux";
+import { setSport } from "../redux/CreateGameSport";
 
 export const PickSport = ({ navigation }) => {
   const { current } = useCardAnimation();
-  const { sportsCreate, setSportsCreate } = useContext(SportsTypeContext);
-  const [initialSport] = useState(sportsCreate);
+  const sportType = useSelector((state) => state.sportType.sport);
+  const dispatch = useDispatch();
+
+  const [initialSport] = useState(sportType);
 
   return (
     <View style={{ flex: 1 }}>
@@ -84,9 +88,9 @@ export const PickSport = ({ navigation }) => {
             }}
           >
             <Picker
-              selectedValue={sportsCreate}
+              selectedValue={sportType}
               onValueChange={(itemValue, itemIndex) => {
-                setSportsCreate(itemValue);
+                dispatch(setSport(itemValue));
               }}
               itemStyle={{ fontFamily: "Manrope_400Regular", fontSize: 18 }}
             >
@@ -139,7 +143,7 @@ export const PickSport = ({ navigation }) => {
               flex: 1,
             }}
             onPress={() => {
-              setSportsCreate(initialSport);
+              dispatch(setSport(initialSport));
               navigation.goBack();
             }}
           >
@@ -154,20 +158,25 @@ export const PickSport = ({ navigation }) => {
 };
 
 export const CreateGame = ({ navigation }) => {
-  const { sportsCreate, setSportsCreate } = useContext(SportsTypeContext);
+  const sportType = useSelector((state) => state.sportType.sport);
 
   const [title, setTitle] = React.useState(null);
   const [details, setDetails] = React.useState(null);
 
   return (
-    <View style={{ flex: 1, alignItems: "center", backgroundColor: "white" }}>
-      <SwipeDownBar />
+    <View
+      style={{
+        flex: 1,
+        alignItems: "center",
+        backgroundColor: "white",
+        paddingTop: 50,
+      }}
+    >
       <View
         style={{
           flex: 1,
           paddingHorizontal: 20,
           width: "100%",
-          marginTop: 20,
         }}
       >
         <View
@@ -195,8 +204,8 @@ export const CreateGame = ({ navigation }) => {
             }}
           >
             <View style={styles.picker}>
-              {sportsCreate ? (
-                <FontText style={{ fontSize: 15 }}>{sportsCreate}</FontText>
+              {sportType ? (
+                <FontText style={{ fontSize: 15 }}>{sportType}</FontText>
               ) : (
                 <FontText style={{ fontSize: 15, color: colors.mediumGray }}>
                   Choose a sport...
@@ -235,7 +244,7 @@ export const CreateGame = ({ navigation }) => {
             }}
           >
             <View style={styles.picker}>
-              <FontText style={{ fontSize: 15 }}>{sportsCreate}</FontText>
+              <FontText style={{ fontSize: 15 }}>{sportType}</FontText>
             </View>
           </TouchableOpacity>
           <FontText style={styles.textTitle}>Time</FontText>
@@ -246,7 +255,7 @@ export const CreateGame = ({ navigation }) => {
             }}
           >
             <View style={styles.picker}>
-              <FontText style={{ fontSize: 15 }}>{sportsCreate}</FontText>
+              <FontText style={{ fontSize: 15 }}>{sportType}</FontText>
             </View>
           </TouchableOpacity>
         </ScrollView>
