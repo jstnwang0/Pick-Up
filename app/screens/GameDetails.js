@@ -12,6 +12,7 @@ import MapView, { Callout, Marker } from "react-native-maps";
 import { FontText, FontTextBold } from "../components/FontText";
 import colors from "../config/colors";
 import SwipeDownBar from "../components/SwipeDownBar";
+import BackButton from "../components/BackButton";
 import ReadMore from "react-native-read-more-text";
 
 export default function GameDetails({ navigation }) {
@@ -40,12 +41,41 @@ export default function GameDetails({ navigation }) {
   return (
     <View style={{ flex: 1, backgroundColor: "white", alignItems: "center" }}>
       <View style={{ flex: 1, width: "90%" }}>
-        <SwipeDownBar />
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "center",
+            ...styles.topBar,
+          }}
+        >
+          <View style={{ flex: 1, flexDirection: "row", alignItems: "center" }}>
+            <BackButton navigation={navigation} />
+          </View>
+
+          <View
+            style={{
+              flex: 0.25,
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+              // backgroundColor: "red",
+            }}
+          >
+            <Image
+              source={require("../assets/EditGameIcon.png")}
+              style={{ height: 25, width: 25 }}
+            />
+            <Image
+              source={require("../assets/ShareIcon.png")}
+              style={{ height: 25, width: 25 }}
+            />
+          </View>
+        </View>
         <View
           style={{
             width: "100%",
             flexDirection: "row",
-            marginTop: 30,
+            marginTop: 10,
             height: 90,
             marginBottom: 15,
           }}
@@ -74,23 +104,6 @@ export default function GameDetails({ navigation }) {
               justifyContent: "space-between",
             }}
           >
-            <View
-              style={{
-                flex: 2,
-                flexDirection: "row",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
-              <Image
-                source={require("../assets/EditGameIcon.png")}
-                style={{ height: 25, width: 25 }}
-              />
-              <Image
-                source={require("../assets/ShareIcon.png")}
-                style={{ height: 25, width: 25 }}
-              />
-            </View>
             <View
               style={{
                 flex: 3,
@@ -394,5 +407,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginLeft: -15,
+  },
+  topBar: {
+    width: "100%",
+    marginTop: 60,
+    // marginLeft: 50,
+    flexDirection: "row",
+    alignItems: "center",
   },
 });

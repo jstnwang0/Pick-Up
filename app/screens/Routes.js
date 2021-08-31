@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import { createStackNavigator } from "@react-navigation/stack";
+import {
+  CardStyleInterpolators,
+  createStackNavigator,
+} from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Profile from "./Profile";
 import DirectMessages from "./DirectMessages";
@@ -118,7 +121,9 @@ function MainStackScreen() {
       <MainStack.Screen
         name="GameDetails"
         component={GameDetails}
-        options={{ presentation: "modal" }}
+        options={{
+          cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
+        }}
       />
       <MainStack.Screen
         name="Filters"

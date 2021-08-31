@@ -302,4 +302,12 @@ const styles = StyleSheet.create({
     backgroundColor: colors.lightGray,
     borderWidth: 0,
   },
+  topBar: {
+    width: "100%",
+    marginTop: 60,
+    marginLeft: 50,
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "red",
+  },
 });
