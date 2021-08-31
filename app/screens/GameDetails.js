@@ -14,7 +14,7 @@ import colors from "../config/colors";
 import SwipeDownBar from "../components/SwipeDownBar";
 import ReadMore from "react-native-read-more-text";
 
-export default function GameDetails() {
+export default function GameDetails({ navigation }) {
   const renderTruncatedFooter = (handlePress) => {
     return (
       <FontText
@@ -258,76 +258,89 @@ export default function GameDetails() {
                   </View>
                 </View>
               </View>
-              <View
-                style={{
-                  width: "100%",
-                  height: 70,
-                  backgroundColor: colors.lightGray,
-                  borderRadius: 10,
-                  flexDirection: "row",
-                  marginTop: 5,
+              <TouchableWithoutFeedback
+                onPress={() => {
+                  navigation.navigate("AllPlayers");
                 }}
               >
                 <View
                   style={{
-                    flex: 4,
+                    width: "100%",
+                    height: 70,
+                    backgroundColor: colors.lightGray,
+                    borderRadius: 10,
                     flexDirection: "row",
-                    alignItems: "center",
-                    marginLeft: 15,
+                    marginTop: 5,
                   }}
                 >
-                  <Image
-                    source={require("../assets/ProfilePic2.png")}
+                  <View
                     style={{
-                      width: 40,
-                      height: 40,
-                      zIndex: -1,
+                      flex: 4,
+                      flexDirection: "row",
+                      alignItems: "center",
+                      marginLeft: 15,
                     }}
-                  />
-                  <View style={styles.circleView}>
+                  >
                     <Image
                       source={require("../assets/ProfilePic2.png")}
                       style={{
                         width: 40,
                         height: 40,
+                        zIndex: -1,
                       }}
                     />
+                    <View style={styles.circleView}>
+                      <Image
+                        source={require("../assets/ProfilePic2.png")}
+                        style={{
+                          width: 40,
+                          height: 40,
+                        }}
+                      />
+                    </View>
+                    <View style={styles.circleView}>
+                      <Image
+                        source={require("../assets/ProfilePic2.png")}
+                        style={{
+                          width: 40,
+                          height: 40,
+                        }}
+                      />
+                    </View>
+                    <View
+                      style={{
+                        backgroundColor: "#1C2D41",
+                        ...styles.circleView,
+                      }}
+                    >
+                      <FontTextBold style={{ color: "white" }}>12</FontTextBold>
+                    </View>
                   </View>
-                  <View style={styles.circleView}>
-                    <Image
-                      source={require("../assets/ProfilePic2.png")}
-                      style={{
-                        width: 40,
-                        height: 40,
-                      }}
-                    />
+                  <View style={{ flex: 3, justifyContent: "center" }}>
+                    <FontTextBold style={{ fontSize: 16 }}>
+                      16 going
+                    </FontTextBold>
+                    <FontText
+                      style={{ color: colors.mediumGray, fontSize: 15 }}
+                    >
+                      only 5 spots left
+                    </FontText>
                   </View>
                   <View
-                    style={{ backgroundColor: "#1C2D41", ...styles.circleView }}
+                    style={{
+                      flex: 2,
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
                   >
-                    <FontTextBold style={{ color: "white" }}>12</FontTextBold>
+                    <FontText
+                      style={{ textDecorationLine: "underline", fontSize: 15 }}
+                    >
+                      See all
+                    </FontText>
                   </View>
                 </View>
-                <View style={{ flex: 3, justifyContent: "center" }}>
-                  <FontTextBold style={{ fontSize: 16 }}>16 going</FontTextBold>
-                  <FontText style={{ color: colors.mediumGray, fontSize: 15 }}>
-                    only 5 spots left
-                  </FontText>
-                </View>
-                <View
-                  style={{
-                    flex: 2,
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <FontText
-                    style={{ textDecorationLine: "underline", fontSize: 15 }}
-                  >
-                    See all
-                  </FontText>
-                </View>
-              </View>
+              </TouchableWithoutFeedback>
             </ScrollView>
           </View>
           <View

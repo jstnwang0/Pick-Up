@@ -24,6 +24,7 @@ import Settings from "./Settings";
 import * as Haptics from "expo-haptics";
 import { CreateGame, PickSport } from "./CreateGame";
 import Friends from "./Friends";
+import AllPlayers from "./AllPlayers";
 
 const width = Dimensions.get("screen").width;
 const MainStack = createStackNavigator();
@@ -153,6 +154,11 @@ function MainStackScreen() {
       <MainStack.Screen
         name="Settings"
         component={Settings}
+        options={{ gestureEnabled: false }}
+      />
+      <MainStack.Screen
+        name="AllPlayers"
+        component={AllPlayers}
         options={{ gestureEnabled: false }}
       />
 
