@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-export default function DirectMessages({ navigation }) {
+export default function ChatTab({ navigation }) {
   return (
     <View style={styles.container}>
       <TouchableOpacity

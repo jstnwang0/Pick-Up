@@ -5,7 +5,7 @@ import {
 } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Profile from "./Profile";
-import DirectMessages from "./DirectMessages";
+import ChatTab from "./ChatTab";
 import FindGames from "./FindGames";
 import { ChatIcon, GamesIcon, ProfileIcon } from "./TabBarIcons";
 import MyGames from "./MyGames";
@@ -33,23 +33,6 @@ import AllPlayers from "./AllPlayers";
 const width = Dimensions.get("screen").width;
 const MainStack = createStackNavigator();
 const MenuTab = createBottomTabNavigator();
-const ChatTab = createBottomTabNavigator();
-
-function ChatTabScreen() {
-  return (
-    <ChatTab.Navigator
-      screenOptions={{
-        headerShown: false,
-        tabBarStyle: { position: "absolute", height: 10 },
-      }}
-    >
-      <ChatTab.Screen
-        name="DirectMessages"
-        component={DirectMessages}
-      ></ChatTab.Screen>
-    </ChatTab.Navigator>
-  );
-}
 
 function MenuTabScreen({ navigation }) {
   return (
@@ -79,7 +62,7 @@ function MenuTabScreen({ navigation }) {
       ></MenuTab.Screen>
       <MenuTab.Screen
         name="ChatTab"
-        component={ChatTabScreen}
+        component={ChatTab}
         options={{
           tabBarIcon: ({ focused }) => <ChatIcon focused={focused} />,
           tabBarButton: (props) => (
