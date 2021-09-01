@@ -11,6 +11,7 @@ import { ChatIcon, GamesIcon, ProfileIcon } from "./TabBarIcons";
 import MyGames from "./MyGames";
 import AddPost from "./AddPost";
 import EditProfile from "./EditProfile";
+import ChatDetails from "./ChatDetails";
 
 import {
   Dimensions,
@@ -164,6 +165,11 @@ function MainStackScreen() {
       <MainStack.Screen
         name="AllPlayers"
         component={AllPlayers}
+        options={{ gestureEnabled: false }}
+      />
+      <MainStack.Screen
+        name="ChatDetails"
+        component={ChatDetails}
         options={{ gestureEnabled: false }}
       />
 
