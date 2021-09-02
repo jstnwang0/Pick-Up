@@ -12,6 +12,15 @@ import colors from "../config/colors";
 
 import * as Haptics from "expo-haptics";
 import { FilterContext } from "../contexts/FilterContext";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  setFriendsOnly,
+  setSports,
+  setTimeFour,
+  setTimeOne,
+  setTimeThree,
+  setTimeTwo,
+} from "../redux/FilterValues";
 
 function FilterButton(props) {
   return (
@@ -37,37 +46,39 @@ function FilterButton(props) {
 }
 
 export default function Filters({ navigation }) {
-  const { friendsOnly, setFriendsOnly } = useContext(FilterContext);
-  const { sportsFilter, setSportsFilter } = useContext(FilterContext);
-  const { timeOne, setTimeOne } = useContext(FilterContext);
-  const { timeTwo, setTimeTwo } = useContext(FilterContext);
-  const { timeThree, setTimeThree } = useContext(FilterContext);
-  const { timeFour, setTimeFour } = useContext(FilterContext);
+  const dispatch = useDispatch();
+
+  const friendsOnly = useSelector((state) => state.filterValues.friendsOnly);
+  const sports = useSelector((state) => state.filterValues.sports);
+  const timeOne = useSelector((state) => state.filterValues.timeOne);
+  const timeTwo = useSelector((state) => state.filterValues.timeTwo);
+  const timeThree = useSelector((state) => state.filterValues.timeThree);
+  const timeFour = useSelector((state) => state.filterValues.timeFour);
 
   const [localFriendsOnly, setLocalFriendsOnly] = useState(friendsOnly);
-  const [localSportsFilter, setLocalSportsFilter] = useState(sportsFilter);
+  const [localSports, setLocalSports] = useState(sports);
   const [localTimeOne, setLocalTimeOne] = useState(timeOne);
   const [localTimeTwo, setLocalTimeTwo] = useState(timeTwo);
   const [localTimeThree, setLocalTimeThree] = useState(timeThree);
   const [localTimeFour, setLocalTimeFour] = useState(timeFour);
 
   const sportsOnPress = (sport) => {
-    if (!localSportsFilter.includes(sport)) {
-      setLocalSportsFilter([...localSportsFilter, sport]);
+    if (!localSports.includes(sport)) {
+      setLocalSports([...localSports, sport]);
     } else {
-      const array = [...localSportsFilter];
+      const array = [...localSports];
       array.splice(array.indexOf(sport), 1);
-      setLocalSportsFilter(array);
+      setLocalSports(array);
     }
   };
 
   const apply = () => {
-    setFriendsOnly(localFriendsOnly);
-    setSportsFilter(localSportsFilter);
-    setTimeOne(localTimeOne);
-    setTimeTwo(localTimeTwo);
-    setTimeThree(localTimeThree);
-    setTimeFour(localTimeFour);
+    dispatch(setFriendsOnly(localFriendsOnly));
+    dispatch(setSports(localSports));
+    dispatch(setTimeOne(localTimeOne));
+    dispatch(setTimeTwo(localTimeTwo));
+    dispatch(setTimeThree(localTimeThree));
+    dispatch(setTimeFour(localTimeFour));
   };
 
   return (
@@ -169,7 +180,7 @@ export default function Filters({ navigation }) {
             onPress={() => {
               sportsOnPress("basketball");
             }}
-            active={localSportsFilter.includes("basketball")}
+            active={localSports.includes("basketball")}
             width={"31%"}
           />
           <FilterButton
@@ -177,7 +188,7 @@ export default function Filters({ navigation }) {
             onPress={() => {
               sportsOnPress("soccer");
             }}
-            active={localSportsFilter.includes("soccer")}
+            active={localSports.includes("soccer")}
             width={"31%"}
           />
           <FilterButton
@@ -185,7 +196,7 @@ export default function Filters({ navigation }) {
             onPress={() => {
               sportsOnPress("volleyball");
             }}
-            active={localSportsFilter.includes("volleyball")}
+            active={localSports.includes("volleyball")}
             width={"31%"}
           />
         </View>
@@ -195,7 +206,7 @@ export default function Filters({ navigation }) {
             onPress={() => {
               sportsOnPress("frisbee");
             }}
-            active={localSportsFilter.includes("frisbee")}
+            active={localSports.includes("frisbee")}
             width={"31%"}
           />
           <FilterButton
@@ -203,7 +214,7 @@ export default function Filters({ navigation }) {
             onPress={() => {
               sportsOnPress("spikeball");
             }}
-            active={localSportsFilter.includes("spikeball")}
+            active={localSports.includes("spikeball")}
             width={"31%"}
           />
           <FilterButton
@@ -211,7 +222,7 @@ export default function Filters({ navigation }) {
             onPress={() => {
               sportsOnPress("football");
             }}
-            active={localSportsFilter.includes("football")}
+            active={localSports.includes("football")}
             width={"31%"}
           />
         </View>

@@ -19,7 +19,7 @@ import {
 } from "react-native";
 import MapView, { Callout, Marker } from "react-native-maps";
 import * as Location from "expo-location";
-import { LocationPermsContext } from "../contexts/LocationPermsContext";
+import { useSelector, useDispatch } from "react-redux";
 import colors from "../config/colors";
 
 import * as Haptics from "expo-haptics";
@@ -27,7 +27,7 @@ import { FontText } from "../components/FontText";
 
 export default function FindGames({ navigation }) {
   const map = useRef(null);
-  let locationPerms = useContext(LocationPermsContext);
+  let locationPerms = useSelector((state) => state.locationPerms.locationPerms);
 
   const [faded, setFaded] = useState(false);
   const [animateValue] = useState(new Animated.Value(1));
@@ -117,40 +117,44 @@ export default function FindGames({ navigation }) {
         </MapView>
       </Pressable>
 
-      <Animated.View
-        style={{
-          position: "absolute",
-          height: 50,
-          width: 50,
-          marginTop: 30,
-          marginLeft: 10,
-          backgroundColor: "white",
-          borderRadius: 15,
-          opacity: animateValue.interpolate({
-            inputRange: [0, 1],
-            outputRange: [0, 1],
-          }),
-          ...styles.shadow,
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <TouchableOpacity
-          activeOpacity={0.3}
-          onPress={moveToMyLocation}
+      {locationPerms ? (
+        <Animated.View
           style={{
-            height: "100%",
-            width: "100%",
+            position: "absolute",
+            height: 50,
+            width: 50,
+            marginTop: 30,
+            marginLeft: 10,
+            backgroundColor: "white",
+            borderRadius: 15,
+            opacity: animateValue.interpolate({
+              inputRange: [0, 1],
+              outputRange: [0, 1],
+            }),
+            ...styles.shadow,
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-          <Image
-            source={require("../assets/NavigationIcon.png")}
-            style={{ height: 25, width: 25 }}
-          />
-        </TouchableOpacity>
-      </Animated.View>
+          <TouchableOpacity
+            activeOpacity={0.3}
+            onPress={moveToMyLocation}
+            style={{
+              height: "100%",
+              width: "100%",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Image
+              source={require("../assets/NavigationIcon.png")}
+              style={{ height: 25, width: 25 }}
+            />
+          </TouchableOpacity>
+        </Animated.View>
+      ) : (
+        <View />
+      )}
 
       <View
         style={{
