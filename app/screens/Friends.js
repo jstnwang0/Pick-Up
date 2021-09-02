@@ -35,7 +35,7 @@ export default function Friends({ navigation }) {
 
   const pressSuggestions = () => {
     setButtonDisabled(true);
-    ref.current.setPageWithoutAnimation(0);
+    ref.current.setPage(0);
     animateSlide(-1);
 
     setTimeout(() => {
@@ -45,7 +45,7 @@ export default function Friends({ navigation }) {
 
   const pressFriends = () => {
     setButtonDisabled(true);
-    ref.current.setPageWithoutAnimation(1);
+    ref.current.setPage(1);
     animateSlide(0);
     setTimeout(() => {
       setButtonDisabled(false);
@@ -54,7 +54,7 @@ export default function Friends({ navigation }) {
 
   const pressRequests = () => {
     setButtonDisabled(true);
-    ref.current.setPageWithoutAnimation(2);
+    ref.current.setPage(2);
     animateSlide(1);
     setTimeout(() => {
       setButtonDisabled(false);
