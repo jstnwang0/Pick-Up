@@ -22,6 +22,8 @@ function HomeTab({ navigation }) {
   const [animateValue] = useState(new Animated.Value(-1));
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
+  const ref = useRef("");
+
   const animateSlide = (newState) => {
     Animated.timing(animateValue, {
       toValue: newState,
@@ -29,8 +31,6 @@ function HomeTab({ navigation }) {
       useNativeDriver: true,
     }).start();
   };
-
-  const ref = useRef("");
 
   const pressFindGames = () => {
     setButtonDisabled(true);
@@ -70,81 +70,83 @@ function HomeTab({ navigation }) {
           ...styles.shadow,
         }}
       >
-        <View
-          style={{
-            marginTop: 50,
-            width: width * 0.9,
-            height: 60,
-            borderRadius: 15,
-            backgroundColor: colors.lightGray,
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Animated.View
+        <View style={{ alignItems: "center", marginTop: 50 }}>
+          <View
+            style={{
+              width: width * 0.9,
+              height: 60,
+              borderRadius: 15,
+              backgroundColor: colors.lightGray,
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Animated.View
+              style={{
+                position: "absolute",
+                backgroundColor: "white",
+                width: (width * 0.9) / 2 - 5,
+                height: 45,
+                borderRadius: 12,
+                transform: [
+                  {
+                    translateX: animateValue.interpolate({
+                      inputRange: [-1, 1],
+                      outputRange: [
+                        (-width * 0.9) / 4 + 5,
+                        (width * 0.9) / 4 - 5,
+                      ],
+                    }),
+                  },
+                ],
+              }}
+            />
+          </View>
+          <View
             style={{
               position: "absolute",
-              backgroundColor: "white",
-              width: (width * 0.9) / 2 - 5,
-              height: 45,
-              borderRadius: 12,
-              transform: [
-                {
-                  translateX: animateValue.interpolate({
-                    inputRange: [-1, 1],
-                    outputRange: [
-                      (-width * 0.9) / 4 + 5,
-                      (width * 0.9) / 4 - 5,
-                    ],
-                  }),
-                },
-              ],
+              width: width * 0.9,
+              height: 60,
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
             }}
-          />
-        </View>
-        <View
-          style={{
-            position: "absolute",
-            marginTop: 50,
-            width: width * 0.9,
-            height: 60,
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <TouchableWithoutFeedback
-            disabled={buttonDisabled}
-            onPress={pressFindGames}
           >
-            <View
-              style={{
-                flex: 1,
-                height: "100%",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
+            <TouchableWithoutFeedback
+              disabled={buttonDisabled}
+              onPress={pressFindGames}
             >
-              <FontText style={{ left: 5, fontSize: 15 }}>Find Games</FontText>
-            </View>
-          </TouchableWithoutFeedback>
+              <View
+                style={{
+                  flex: 1,
+                  height: "100%",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <FontText style={{ left: 5, fontSize: 15 }}>
+                  Find Games
+                </FontText>
+              </View>
+            </TouchableWithoutFeedback>
 
-          <TouchableWithoutFeedback
-            disabled={buttonDisabled}
-            onPress={pressMyGames}
-          >
-            <View
-              style={{
-                flex: 1,
-                height: "100%",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
+            <TouchableWithoutFeedback
+              disabled={buttonDisabled}
+              onPress={pressMyGames}
             >
-              <FontText style={{ right: 5, fontSize: 15 }}>My Games</FontText>
-            </View>
-          </TouchableWithoutFeedback>
+              <View
+                style={{
+                  flex: 1,
+                  height: "100%",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <FontText style={{ right: 5, fontSize: 15 }}>My Games</FontText>
+              </View>
+            </TouchableWithoutFeedback>
+          </View>
         </View>
       </View>
       <PagerView ref={ref} scrollEnabled={false} style={{ flex: 1 }}>

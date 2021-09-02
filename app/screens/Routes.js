@@ -5,7 +5,7 @@ import {
 } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Profile from "./Profile";
-import ChatTab from "./ChatTab";
+import ChatTab from "./chatScreens/ChatTab";
 import FindGames from "./FindGames";
 import { ChatIcon, GamesIcon, ProfileIcon } from "./TabBarIcons";
 import MyGames from "./MyGames";

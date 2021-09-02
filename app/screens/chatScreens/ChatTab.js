@@ -1,27 +1,24 @@
-import React, { Component, useRef, useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   StyleSheet,
   Text,
   TouchableWithoutFeedback,
   View,
-  Image,
-  SafeAreaView,
-  Animated,
+  TouchableOpacity,
   Dimensions,
+  Animated,
 } from "react-native";
-import { FontText, FontTextBold } from "../components/FontText";
-import colors from "../config/colors";
+import { FontText, FontTextBold } from "../../components/FontText";
+import colors from "../../config/colors";
 import PagerView from "react-native-pager-view";
-import SuggestionsTab from "./friendPageTabs/SuggestionsTab";
-import RequestsTab from "./friendPageTabs/RequestsTab";
-import FriendsTab from "./friendPageTabs/FriendsTab";
-import BackButton from "../components/BackButton";
-import SearchBar from "../components/SearchBar";
+import GroupChats from "./GroupChats";
+import DirectMessages from "./DirectMessages";
 
 const width = Dimensions.get("screen").width;
-export default function Friends({ navigation }) {
-  const [animateValue] = useState(new Animated.Value(0));
+export default function ChatTab({ navigation }) {
+  const [animateValue] = useState(new Animated.Value(-1));
   const [buttonDisabled, setButtonDisabled] = useState(false);
+  const ref = useRef("");
 
   const animateSlide = (newState) => {
     Animated.timing(animateValue, {
@@ -31,11 +28,9 @@ export default function Friends({ navigation }) {
     }).start();
   };
 
-  const ref = useRef("");
-
-  const pressSuggestions = () => {
+  const pressDirectMessages = () => {
     setButtonDisabled(true);
-    ref.current.setPageWithoutAnimation(0);
+    ref.current.setPage(0);
     animateSlide(-1);
 
     setTimeout(() => {
@@ -43,18 +38,9 @@ export default function Friends({ navigation }) {
     }, 250);
   };
 
-  const pressFriends = () => {
+  const pressGroupChats = () => {
     setButtonDisabled(true);
-    ref.current.setPageWithoutAnimation(1);
-    animateSlide(0);
-    setTimeout(() => {
-      setButtonDisabled(false);
-    }, 250);
-  };
-
-  const pressRequests = () => {
-    setButtonDisabled(true);
-    ref.current.setPageWithoutAnimation(2);
+    ref.current.setPage(1);
     animateSlide(1);
     setTimeout(() => {
       setButtonDisabled(false);
@@ -62,15 +48,17 @@ export default function Friends({ navigation }) {
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: "white" }}>
-      <View style={{ alignItems: "center" }}>
-        <View style={styles.topBar}>
-          <BackButton navigation={navigation} />
-          <FontTextBold style={{ fontSize: 20, marginLeft: 15 }}>
-            Friends
-          </FontTextBold>
-        </View>
-        <View style={{ alignItems: "center", marginTop: 20 }}>
+    <View style={styles.container}>
+      <View
+        style={{
+          width: "100%",
+          marginTop: 60,
+        }}
+      >
+        <FontTextBold style={{ fontSize: 24 }}>Messages</FontTextBold>
+        <View
+          style={{ alignItems: "center", marginTop: 30, paddingBottom: 20 }}
+        >
           <View
             style={{
               width: width * 0.9,
@@ -86,7 +74,7 @@ export default function Friends({ navigation }) {
               style={{
                 position: "absolute",
                 backgroundColor: "white",
-                width: (width * 0.9) / 3 - 5,
+                width: (width * 0.9) / 2 - 5,
                 height: 45,
                 borderRadius: 12,
                 transform: [
@@ -94,8 +82,8 @@ export default function Friends({ navigation }) {
                     translateX: animateValue.interpolate({
                       inputRange: [-1, 1],
                       outputRange: [
-                        (-width * 0.9) / 3 + 5,
-                        (width * 0.9) / 3 - 5,
+                        (-width * 0.9) / 4 + 5,
+                        (width * 0.9) / 4 - 5,
                       ],
                     }),
                   },
@@ -115,7 +103,7 @@ export default function Friends({ navigation }) {
           >
             <TouchableWithoutFeedback
               disabled={buttonDisabled}
-              onPress={pressSuggestions}
+              onPress={pressDirectMessages}
             >
               <View
                 style={{
@@ -126,14 +114,14 @@ export default function Friends({ navigation }) {
                 }}
               >
                 <FontText style={{ left: 5, fontSize: 15 }}>
-                  Suggestions
+                  Direct Messages
                 </FontText>
               </View>
             </TouchableWithoutFeedback>
 
             <TouchableWithoutFeedback
               disabled={buttonDisabled}
-              onPress={pressFriends}
+              onPress={pressGroupChats}
             >
               <View
                 style={{
@@ -143,45 +131,20 @@ export default function Friends({ navigation }) {
                   alignItems: "center",
                 }}
               >
-                <FontText style={{ fontSize: 15 }}>Friends</FontText>
-              </View>
-            </TouchableWithoutFeedback>
-            <TouchableWithoutFeedback
-              disabled={buttonDisabled}
-              onPress={pressRequests}
-            >
-              <View
-                style={{
-                  flex: 1,
-                  height: "100%",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <FontText style={{ right: 5, fontSize: 15 }}>Requests</FontText>
+                <FontText style={{ right: 5, fontSize: 15 }}>
+                  Group Chats
+                </FontText>
               </View>
             </TouchableWithoutFeedback>
           </View>
         </View>
       </View>
-      <View style={{ alignItems: "center", marginTop: 10, paddingBottom: 10 }}>
-        <SearchBar />
-      </View>
-
-      <PagerView
-        ref={ref}
-        scrollEnabled={false}
-        style={{ flex: 1 }}
-        initialPage={1}
-      >
+      <PagerView ref={ref} scrollEnabled={false} style={{ flex: 1 }}>
         <View style={{ width: "100%", height: "100%" }}>
-          <SuggestionsTab></SuggestionsTab>
+          <DirectMessages navigation={navigation}></DirectMessages>
         </View>
         <View style={{ width: "100%", height: "100%" }}>
-          <FriendsTab></FriendsTab>
-        </View>
-        <View style={{ width: "100%", height: "100%" }}>
-          <RequestsTab></RequestsTab>
+          <GroupChats></GroupChats>
         </View>
       </PagerView>
     </View>
@@ -189,11 +152,9 @@ export default function Friends({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  topBar: {
-    width: "100%",
-    marginTop: 60,
-    marginLeft: 50,
-    flexDirection: "row",
-    alignItems: "center",
+  container: {
+    flex: 1,
+    paddingHorizontal: 20,
+    backgroundColor: "white",
   },
 });
