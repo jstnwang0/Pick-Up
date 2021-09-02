@@ -24,12 +24,12 @@ export default function Profile({ navigation }) {
           paddingBottom: 10,
         }}
       >
-        <View style={{ flex: 3, paddingLeft: 20 }}>
-          <FontTextBold style={{ fontSize: 24 }}>Jerry Hamada</FontTextBold>
+        <View style={{ flex: 4, paddingLeft: 20 }}>
+          <FontTextBold style={{ fontSize: 25 }}>Jerry Hamada</FontTextBold>
         </View>
         <View
           style={{
-            flex: 2,
+            flex: 3,
             flexDirection: "row",
             justifyContent: "space-evenly",
             alignItems: "center",

@@ -26,14 +26,18 @@ export default function EditProfile({ navigation }) {
                 navigation.goBack();
               }}
             >
-              <FontText style={{ color: colors.mediumGray }}>Cancel</FontText>
+              <FontText style={{ color: colors.mediumGray, fontSize: 16 }}>
+                Cancel
+              </FontText>
             </TouchableOpacity>
           </View>
           <View style={{ flex: 1, alignItems: "center" }}>
             <FontTextBold style={{ fontSize: 18 }}>Edit Profile</FontTextBold>
           </View>
           <View style={{ flex: 1, alignItems: "flex-end" }}>
-            <FontText style={{ color: colors.darkGreen }}>Save</FontText>
+            <FontText style={{ color: colors.darkGreen, fontSize: 16 }}>
+              Save
+            </FontText>
           </View>
         </View>
         <View
