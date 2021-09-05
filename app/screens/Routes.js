@@ -10,7 +10,7 @@ import { ChatIcon, GamesIcon, ProfileIcon } from "./TabBarIcons";
 import AddPost from "./AddPost";
 import EditProfile from "./EditProfile";
 import ChatDetails from "./chatScreens/ChatDetails";
-import { NewMessage } from "./chatScreens/NewMessage";
+import NewMessage from "./chatScreens/NewMessage";
 import {
   Dimensions,
   StyleSheet,

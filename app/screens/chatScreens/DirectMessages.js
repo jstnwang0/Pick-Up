@@ -4,7 +4,7 @@ import { FontText, FontTextBold } from "../../components/FontText";
 import colors from "../../config/colors";
 import ChatBox from "./ChatBox";
 
-const DirectMessages = ({ navigation }) => {
+export default function DirectMessages({ navigation }) {
   return (
     <View>
       <TouchableOpacity
@@ -38,6 +38,4 @@ const DirectMessages = ({ navigation }) => {
       </View>
     </View>
   );
-};
-
-export default DirectMessages;
+}
