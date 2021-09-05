@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Dimensions,
   Animated,
+  Image,
 } from "react-native";
 import { FontText, FontTextBold } from "../../components/FontText";
 import colors from "../../config/colors";
@@ -55,7 +56,30 @@ export default function ChatTab({ navigation }) {
           marginTop: 60,
         }}
       >
-        <FontTextBold style={{ fontSize: 24 }}>Messages</FontTextBold>
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <View style={{ flex: 3 }}>
+            <FontTextBold style={{ fontSize: 24 }}>Messages</FontTextBold>
+            <FontText style={{ fontSize: 18 }}>
+              You have 4 unseen messages
+            </FontText>
+          </View>
+          <View
+            style={{
+              width: 40,
+              height: 40,
+              backgroundColor: colors.lightGray,
+              borderRadius: 5,
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Image
+              source={require("../../assets/AddIcon.png")}
+              style={{ width: 30, height: 30 }}
+            />
+          </View>
+        </View>
+
         <View
           style={{ alignItems: "center", marginTop: 30, paddingBottom: 20 }}
         >

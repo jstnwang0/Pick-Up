@@ -6,13 +6,11 @@ import {
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Profile from "./Profile";
 import ChatTab from "./chatScreens/ChatTab";
-import FindGames from "./FindGames";
 import { ChatIcon, GamesIcon, ProfileIcon } from "./TabBarIcons";
-import MyGames from "./MyGames";
 import AddPost from "./AddPost";
 import EditProfile from "./EditProfile";
-import ChatDetails from "./ChatDetails";
-
+import ChatDetails from "./chatScreens/ChatDetails";
+import { NewMessage } from "./chatScreens/NewMessage";
 import {
   Dimensions,
   StyleSheet,
@@ -165,6 +163,13 @@ function MainStackScreen() {
           //   open: { animation: "timing", config: { duration: 100 } },
           //   close: { animation: "timing", config: { duration: 150 } },
           // },
+        }}
+      />
+      <MainStack.Screen
+        name="NewMessage"
+        component={NewMessage}
+        options={{
+          presentation: "transparentModal",
         }}
       />
     </MainStack.Navigator>
