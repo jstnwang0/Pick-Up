@@ -11,6 +11,7 @@ import AddPost from "./AddPost";
 import EditProfile from "./EditProfile";
 import ChatDetails from "./chatScreens/ChatDetails";
 import NewMessage from "./chatScreens/NewMessage";
+import Chat from "./chatScreens/Chat";
 import {
   Dimensions,
   StyleSheet,
@@ -168,6 +169,13 @@ function MainStackScreen() {
       <MainStack.Screen
         name="NewMessage"
         component={NewMessage}
+        options={{
+          presentation: "transparentModal",
+        }}
+      />
+      <MainStack.Screen
+        name="Chat"
+        component={Chat}
         options={{
           presentation: "transparentModal",
         }}
