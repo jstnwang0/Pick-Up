@@ -63,21 +63,28 @@ export default function ChatTab({ navigation }) {
               You have 4 unseen messages
             </FontText>
           </View>
-          <View
-            style={{
-              width: 40,
-              height: 40,
-              backgroundColor: colors.lightGray,
-              borderRadius: 5,
-              alignItems: "center",
-              justifyContent: "center",
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("NewMessage");
             }}
+            activeOpacity={0.3}
           >
-            <Image
-              source={require("../../assets/AddIcon.png")}
-              style={{ width: 30, height: 30 }}
-            />
-          </View>
+            <View
+              style={{
+                width: 40,
+                height: 40,
+                backgroundColor: colors.lightGray,
+                borderRadius: 5,
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Image
+                source={require("../../assets/AddIcon.png")}
+                style={{ width: 30, height: 30 }}
+              />
+            </View>
+          </TouchableOpacity>
         </View>
 
         <View
