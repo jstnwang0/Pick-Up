@@ -23,13 +23,17 @@ import * as Haptics from "expo-haptics";
 import { SportsTypeContext } from "../contexts/SportsTypeContext";
 import { useSelector, useDispatch } from "react-redux";
 import { setSport } from "../redux/CreateGameSport";
+import DateTimePicker from "@react-native-community/datetimepicker";
+import { setDate } from "../redux/CreateGameDate";
 
-export const PickSport = ({ navigation }) => {
+export const CreateGamePopup = ({ navigation, route }) => {
   const { current } = useCardAnimation();
-  const sportType = useSelector((state) => state.sportType.sport);
+  const [canceled, setCanceled] = useState(false);
+  const [initialSport] = useState(
+    useSelector((state) => state.sportType.sport)
+  );
+  const [initialDate] = useState(useSelector((state) => state.date.date));
   const dispatch = useDispatch();
-
-  const [initialSport] = useState(sportType);
 
   return (
     <View style={{ flex: 1 }}>
@@ -74,8 +78,8 @@ export const PickSport = ({ navigation }) => {
               alignItems: "center",
             }}
           >
-            <FontTextBold style={{ fontSize: 18, color: colors.mediumGray }}>
-              Sports Type
+            <FontTextBold style={{ fontSize: 20, color: colors.mediumGray }}>
+              {route.params.type == "sport" ? "Sport Type" : "Date"}
             </FontTextBold>
           </View>
 
@@ -87,21 +91,7 @@ export const PickSport = ({ navigation }) => {
               borderBottomWidth: 0.5,
             }}
           >
-            <Picker
-              selectedValue={sportType}
-              onValueChange={(itemValue, itemIndex) => {
-                dispatch(setSport(itemValue));
-              }}
-              itemStyle={{ fontFamily: "Manrope_400Regular", fontSize: 18 }}
-            >
-              <Picker.Item label="Choose a sport..." value={null} />
-              <Picker.Item label="Football" value="Football" />
-              <Picker.Item label="Soccer" value="Soccer" />
-              <Picker.Item label="Basketball" value="Basketball" />
-              <Picker.Item label="Spikeball" value="Spikeball" />
-              <Picker.Item label="Frisbee" value="Frisbee" />
-              <Picker.Item label="Volleyball" value="Volleyball" />
-            </Picker>
+            {route.params.type == "sport" ? <PickSport /> : <PickDate />}
           </View>
 
           <View
@@ -143,7 +133,15 @@ export const PickSport = ({ navigation }) => {
               flex: 1,
             }}
             onPress={() => {
-              dispatch(setSport(initialSport));
+              if (route.params.type == "sport") {
+                setTimeout(() => {
+                  dispatch(setSport(initialSport));
+                }, 100);
+              } else {
+                setTimeout(() => {
+                  dispatch(setDate(initialDate));
+                }, 100);
+              }
               navigation.goBack();
             }}
           >
@@ -157,8 +155,58 @@ export const PickSport = ({ navigation }) => {
   );
 };
 
-export const CreateGame = ({ navigation }) => {
+export const PickSport = ({ navigation }) => {
   const sportType = useSelector((state) => state.sportType.sport);
+  const dispatch = useDispatch();
+
+  return (
+    <Picker
+      selectedValue={sportType}
+      onValueChange={(itemValue, itemIndex) => {
+        dispatch(setSport(itemValue));
+      }}
+      // itemStyle={{ fontFamily: "Manrope_400Regular", fontSize: 18 }}
+    >
+      <Picker.Item label="Choose a sport..." value={null} />
+      <Picker.Item label="Football" value="Football" />
+      <Picker.Item label="Soccer" value="Soccer" />
+      <Picker.Item label="Basketball" value="Basketball" />
+      <Picker.Item label="Spikeball" value="Spikeball" />
+      <Picker.Item label="Frisbee" value="Frisbee" />
+      <Picker.Item label="Volleyball" value="Volleyball" />
+    </Picker>
+  );
+};
+
+export const PickDate = ({ navigation }) => {
+  const date = useSelector((state) => state.date.date);
+  const dispatch = useDispatch();
+
+  return (
+    <DateTimePicker
+      value={new Date(JSON.parse(date))}
+      onChange={(event, date) => {
+        dispatch(setDate(JSON.stringify(date)));
+      }}
+      minuteInterval={5}
+      minimumDate={new Date()}
+      maximumDate={new Date(Date.now() + 12096e5)}
+      mode="datetime"
+      display="spinner"
+    />
+  );
+};
+
+export const CreateGame = ({ navigation }) => {
+  const dispatch = useDispatch();
+  const sportType = useSelector((state) => state.sportType.sport);
+
+  const date = useSelector((state) => state.date.date);
+  useEffect(() => {
+    if (date == null) {
+      dispatch(setDate(JSON.stringify(new Date())));
+    }
+  });
 
   const [title, setTitle] = React.useState(null);
   const [details, setDetails] = React.useState(null);
@@ -169,7 +217,7 @@ export const CreateGame = ({ navigation }) => {
         flex: 1,
         alignItems: "center",
         backgroundColor: "white",
-        paddingTop: 50,
+        paddingTop: 20,
       }}
     >
       <View
@@ -200,7 +248,7 @@ export const CreateGame = ({ navigation }) => {
           <TouchableOpacity
             activeOpacity={0.3}
             onPress={() => {
-              navigation.navigate("PickSport");
+              navigation.navigate("CreateGamePopup", { type: "sport" });
             }}
           >
             <View style={styles.picker}>
@@ -236,26 +284,20 @@ export const CreateGame = ({ navigation }) => {
             blurOnSubmit={true}
             autoCorrect={false}
           />
-          <FontText style={styles.textTitle}>Date</FontText>
+          <FontText style={styles.textTitle}>Date and Time</FontText>
           <TouchableOpacity
             activeOpacity={0.3}
             onPress={() => {
-              navigation.navigate("PickSport");
+              navigation.navigate("CreateGamePopup", { type: "date" });
             }}
           >
             <View style={styles.picker}>
-              <FontText style={{ fontSize: 15 }}>{sportType}</FontText>
-            </View>
-          </TouchableOpacity>
-          <FontText style={styles.textTitle}>Time</FontText>
-          <TouchableOpacity
-            activeOpacity={0.3}
-            onPress={() => {
-              navigation.navigate("PickSport");
-            }}
-          >
-            <View style={styles.picker}>
-              <FontText style={{ fontSize: 15 }}>{sportType}</FontText>
+              <FontText style={{ fontSize: 15 }}>
+                {new Date(JSON.parse(date)).toLocaleString("en-US", {
+                  dateStyle: "medium",
+                  timeStyle: "short",
+                })}
+              </FontText>
             </View>
           </TouchableOpacity>
         </ScrollView>
