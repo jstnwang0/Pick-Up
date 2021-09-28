@@ -1,9 +1,9 @@
 import React from "react";
 import { StyleSheet, Text, View, Switch, Image } from "react-native";
-import BackButton from "../components/BackButton";
-import { FontText, FontTextBold } from "../components/FontText";
-import { PlayerViewBox } from "../components/PlayerViewBox";
-import colors from "../config/colors";
+import BackButton from "../../components/BackButton";
+import { FontText, FontTextBold } from "../../components/FontText";
+import { PlayerViewBox } from "../../components/PlayerViewBox";
+import colors from "../../config/colors";
 
 export default function GroupDetails({ navigation }) {
   const [isEnabled, setIsEnabled] = React.useState(false);
