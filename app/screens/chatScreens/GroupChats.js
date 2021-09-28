@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import ChatBox from "./ChatBox";
+import GroupChatBox from "./GroupChatBox";
 
 export default function GroupChats({ navigation }) {
   return (
@@ -13,11 +13,11 @@ export default function GroupChats({ navigation }) {
     >
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate("DirectChatMessage");
+          navigation.navigate("GroupChatMessage");
         }}
         activeOpacity={0.3}
       >
-        <ChatBox
+        <GroupChatBox
           name="Sunday Soccer"
           messagePreview="Where can we find parking?"
           numOfUnread="7"
@@ -25,7 +25,7 @@ export default function GroupChats({ navigation }) {
         />
       </TouchableOpacity>
 
-      <ChatBox
+      <GroupChatBox
         name="Justin"
         messagePreview="I'm gay, very gay"
         numOfUnread="1"

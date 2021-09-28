@@ -13,8 +13,8 @@ export const PlayerViewBox = ({ name, type }) => {
           style={{ width: 55, height: 55, borderRadius: 55 / 2 }}
         />
       </View>
-      <View style={{ flex: 4, justifyContent: "center" }}>
-        <FontTextBold style={{ fontSize: 20 }}>{name}</FontTextBold>
+      <View style={{ flex: 4.5, justifyContent: "center" }}>
+        <FontText style={{ fontSize: 18 }}>{name}</FontText>
       </View>
       <View
         style={{

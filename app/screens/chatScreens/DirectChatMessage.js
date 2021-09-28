@@ -5,7 +5,7 @@ import { FontTextBold, FontText } from "../../components/FontText";
 import SearchBar from "../../components/SearchBar";
 import colors from "../../config/colors";
 
-export default function DirectChatMessage({ navigation }) {
+export default function Chat({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.topBar}>

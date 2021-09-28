@@ -19,22 +19,46 @@ export default function GroupsChatMessage({ navigation }) {
             alignItems: "center",
           }}
         >
-          <View>
+          <View
+            style={{
+              justifyContent: "center",
+              alignItems: "flex-start",
+            }}
+          >
             <Image
-              source={require("../../assets/ProfilePic.png")}
-              style={{ width: 45, height: 45 }}
+              source={{ url: "https://picsum.photos/200" }}
+              style={{ width: 45, height: 45, borderRadius: 45 / 2 }}
             />
+            <View
+              style={{
+                borderWidth: 5,
+                width: 28,
+                height: 28,
+                borderRadius: 14,
+                borderColor: "white",
+                justifyContent: "center",
+                alignItems: "center",
+                zIndex: 3,
+                marginLeft: 25,
+                marginTop: -25,
+              }}
+            >
+              <Image
+                source={{ url: "https://picsum.photos/200" }}
+                style={{ width: 24, height: 24, borderRadius: 24 / 2 }}
+              />
+            </View>
           </View>
           <View>
             <FontTextBold style={{ fontSize: 20, marginLeft: 10 }}>
-              Jerry Hamada
+              Sunday Soccer
             </FontTextBold>
           </View>
         </View>
         <View style={{ flex: 1.1 }}>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("ChatDetails");
+              navigation.navigate("GroupChatDetails");
             }}
           >
             <Image

@@ -14,10 +14,10 @@ export default function AllPlayers({ navigation }) {
           Players
         </FontTextBold>
       </View>
-      <View style={{ width: "90%", marginTop: 35 }}>
-        <PlayerViewBox name={"Ur mom"} type={"Add Friend"} />
-        <PlayerViewBox name={"Justin's mom"} type={"Requested"} />
-        <PlayerViewBox name={"Ur mom"} type={"Message"} />
+      <View style={{ width: "90%", marginTop: 15 }}>
+        <PlayerViewBox name={"Jerry Hamada"} type={"Add Friend"} />
+        <PlayerViewBox name={"Victor Rodgers"} type={"Requested"} />
+        <PlayerViewBox name={"Justin Wang"} type={"Message"} />
       </View>
     </View>
   );
