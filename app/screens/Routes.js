@@ -26,7 +26,7 @@ import Filters from "./Filters";
 import Settings from "./Settings";
 
 import * as Haptics from "expo-haptics";
-import { CreateGame, PickSport } from "./CreateGame";
+import { CreateGame, CreateGamePopup } from "./CreateGame";
 import Friends from "./Friends";
 import AllPlayers from "./AllPlayers";
 
@@ -167,8 +167,8 @@ function MainStackScreen() {
       />
 
       <MainStack.Screen
-        name="PickSport"
-        component={PickSport}
+        name="CreateGamePopup"
+        component={CreateGamePopup}
         options={{
           presentation: "transparentModal",
           // transitionSpec: {
