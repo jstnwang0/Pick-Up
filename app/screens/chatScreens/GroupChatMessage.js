@@ -58,7 +58,7 @@ export default function GroupsChatMessage({ navigation }) {
         <View style={{ flex: 1.1 }}>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("GroupChatDetails");
+              navigation.navigate("GroupDetails");
             }}
           >
             <Image
