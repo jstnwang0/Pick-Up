@@ -11,7 +11,8 @@ import AddPost from "./AddPost";
 import EditProfile from "./EditProfile";
 import ChatDetails from "./chatScreens/ChatDetails";
 import NewMessage from "./chatScreens/NewMessage";
-import Chat from "./chatScreens/Chat";
+import DirectChatMessage from "./chatScreens/DirectChatMessage";
+import GroupChatMessage from "./chatScreens/GroupChatMessage";
 import {
   Dimensions,
   StyleSheet,
@@ -154,6 +155,16 @@ function MainStackScreen() {
         component={ChatDetails}
         options={{ gestureEnabled: false }}
       />
+      <MainStack.Screen
+        name="DirectChatMessage"
+        component={DirectChatMessage}
+        options={{ gestureEnabled: false }}
+      />
+      <MainStack.Screen
+        name="GroupChatMessage"
+        component={GroupChatMessage}
+        options={{ gestureEnabled: false }}
+      />
 
       <MainStack.Screen
         name="PickSport"
@@ -169,13 +180,6 @@ function MainStackScreen() {
       <MainStack.Screen
         name="NewMessage"
         component={NewMessage}
-        options={{
-          presentation: "transparentModal",
-        }}
-      />
-      <MainStack.Screen
-        name="Chat"
-        component={Chat}
         options={{
           presentation: "transparentModal",
         }}

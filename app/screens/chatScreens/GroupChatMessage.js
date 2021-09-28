@@ -5,7 +5,7 @@ import { FontTextBold, FontText } from "../../components/FontText";
 import SearchBar from "../../components/SearchBar";
 import colors from "../../config/colors";
 
-export default function Chat({ navigation }) {
+export default function GroupsChatMessage({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.topBar}>
@@ -14,7 +14,7 @@ export default function Chat({ navigation }) {
         </View>
         <View
           style={{
-            flex: 4,
+            flex: 5,
             flexDirection: "row",
             alignItems: "center",
           }}
@@ -22,16 +22,16 @@ export default function Chat({ navigation }) {
           <View>
             <Image
               source={require("../../assets/ProfilePic.png")}
-              style={{ width: 50, height: 50 }}
+              style={{ width: 45, height: 45 }}
             />
           </View>
           <View>
-            <FontTextBold style={{ fontSize: 20, marginLeft: 5 }}>
+            <FontTextBold style={{ fontSize: 20, marginLeft: 10 }}>
               Jerry Hamada
             </FontTextBold>
           </View>
         </View>
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1.1 }}>
           <TouchableOpacity
             onPress={() => {
               navigation.navigate("ChatDetails");
@@ -39,7 +39,7 @@ export default function Chat({ navigation }) {
           >
             <Image
               source={require("../../assets/ThreeDots.png")}
-              style={{ width: 30, height: 30 }}
+              style={{ width: 27, height: 27 }}
             />
           </TouchableOpacity>
         </View>

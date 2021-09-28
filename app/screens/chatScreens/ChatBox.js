@@ -33,7 +33,7 @@ export default function ChatBox({ name, messagePreview, numOfUnread, time }) {
       </View>
       <View
         style={{
-          flex: 2.5,
+          flex: 3.25,
           justifyContent: "center",
           borderBottomWidth: 1,
           borderBottomColor: colors.lightGray,
@@ -48,8 +48,8 @@ export default function ChatBox({ name, messagePreview, numOfUnread, time }) {
       </View>
       <View
         style={{
-          flex: 1,
-          alignItems: "flex-end",
+          flex: 0.5,
+          alignItems: "center",
           justifyContent: "center",
           borderBottomWidth: 1,
           borderBottomColor: colors.lightGray,

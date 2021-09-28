@@ -1,7 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity, Image } from "react-native";
-import { FontText, FontTextBold } from "../../components/FontText";
-import colors from "../../config/colors";
+import { View, Text, TouchableOpacity } from "react-native";
 import ChatBox from "./ChatBox";
 
 export default function DirectMessages({ navigation }) {
@@ -16,7 +14,7 @@ export default function DirectMessages({ navigation }) {
       >
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("Chat");
+            navigation.navigate("DirectChatMessage");
           }}
           activeOpacity={0.3}
         >
