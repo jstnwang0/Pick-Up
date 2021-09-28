@@ -5,7 +5,7 @@ import { FontTextBold, FontText } from "../../components/FontText";
 import SearchBar from "../../components/SearchBar";
 import colors from "../../config/colors";
 
-export default function Chat({ navigation }) {
+export default function DirectChatMessage({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.topBar}>
@@ -34,7 +34,7 @@ export default function Chat({ navigation }) {
         <View style={{ flex: 1.1 }}>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("ChatDetails");
+              navigation.navigate("GroupDetails");
             }}
           >
             <Image

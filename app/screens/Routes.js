@@ -157,6 +157,11 @@ function MainStackScreen() {
         options={{ gestureEnabled: false }}
       />
       <MainStack.Screen
+        name="GroupDetails"
+        component={GroupDetails}
+        options={{ gestureEnabled: false }}
+      />
+      <MainStack.Screen
         name="DirectChatMessage"
         component={DirectChatMessage}
         options={{ gestureEnabled: false }}
