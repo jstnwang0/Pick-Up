@@ -175,7 +175,7 @@ export default function ChatTab({ navigation }) {
           <DirectMessages navigation={navigation}></DirectMessages>
         </View>
         <View style={{ width: "100%", height: "100%" }}>
-          <GroupChats></GroupChats>
+          <GroupChats navigation={navigation}></GroupChats>
         </View>
       </PagerView>
     </View>
