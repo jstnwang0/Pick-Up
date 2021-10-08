@@ -30,9 +30,12 @@ import * as Haptics from "expo-haptics";
 import { CreateGame, CreateGamePopup } from "./CreateGame";
 import Friends from "./Friends";
 import AllPlayers from "./AllPlayers";
+import Landing from "./Landing";
 
 const width = Dimensions.get("screen").width;
+const AppStack = createStackNavigator();
 const MainStack = createStackNavigator();
+const LoginStack = createStackNavigator();
 const MenuTab = createBottomTabNavigator();
 
 function MenuTabScreen({ navigation }) {
@@ -194,8 +197,29 @@ function MainStackScreen() {
   );
 }
 
+function LoginStackScreen() {
+  return (
+    <LoginStack.Navigator
+      screenOptions={{ headerShown: false, gestureEnabled: false }}
+    >
+      <LoginStack.Screen name="Landing" component={Landing} />
+    </LoginStack.Navigator>
+  );
+}
+
+function AppStackScreen() {
+  return (
+    <AppStack.Navigator
+      screenOptions={{ headerShown: false, gestureEnabled: false }}
+    >
+      <AppStack.Screen name="LoginStack" component={LoginStackScreen} />
+      <AppStack.Screen name="MainStack" component={MainStackScreen} />
+    </AppStack.Navigator>
+  );
+}
+
 function Routes() {
-  return <MainStackScreen></MainStackScreen>;
+  return <AppStackScreen></AppStackScreen>;
 }
 
 export default Routes;
