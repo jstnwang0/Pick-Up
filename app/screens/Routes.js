@@ -32,6 +32,7 @@ import { CreateGamePopup } from "./createGame/components/Popups";
 import Friends from "./Friends";
 import AllPlayers from "./AllPlayers";
 import Landing from "./landing/Landing";
+import SetLocation from "./createGame/SetLocation";
 
 const width = Dimensions.get("screen").width;
 const AppStack = createStackNavigator();
@@ -134,6 +135,11 @@ function MainStackScreen() {
       <MainStack.Screen
         name="CreateGame"
         component={CreateGame}
+        options={{ presentation: "modal" }}
+      />
+      <MainStack.Screen
+        name="SetLocation"
+        component={SetLocation}
         options={{ presentation: "modal" }}
       />
       <MainStack.Screen

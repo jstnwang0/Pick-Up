@@ -132,21 +132,32 @@ export default function GameDetails({ navigation }) {
                 <View style={{ flex: 1, width: "100%" }}>
                   <MapView
                     style={styles.map}
-                    mapPadding={{ top: -30, bottom: -40 }}
+                    mapPadding={{ top: -30, bottom: -30 }}
                     initialRegion={{
-                      latitude: 37.86792,
-                      longitude: -122.27137,
+                      latitude: 37.86488414606986,
+                      longitude: -122.26747442584312,
                       latitudeDelta: 0.01,
                       longitudeDelta: 0.01,
                     }}
                   >
                     <Marker
                       key="0"
-                      coordinate={{ latitude: 37.86792, longitude: -122.27137 }}
-                      centerOffset={{ x: 0, y: -25 }}
-                      image={require("../assets/SoccerMarker.png")}
+                      coordinate={{
+                        latitude: 37.86488414606986,
+                        longitude: -122.26747442584312,
+                      }}
+                      onPress={() => {
+                        navigation.navigate("GameDetails");
+                      }}
                     >
-                      <Callout tooltip={true}></Callout>
+                      <Image
+                        style={{
+                          height: 60,
+                          resizeMode: "contain",
+                          bottom: 23,
+                        }}
+                        source={require("../assets/SoccerMarker.png")}
+                      />
                     </Marker>
                   </MapView>
                 </View>
@@ -355,9 +366,8 @@ export default function GameDetails({ navigation }) {
           height: 70,
           width: "90%",
           backgroundColor: colors.darkGreen,
-          borderRadius: 10,
           position: "absolute",
-          borderRadius: 10,
+          borderRadius: 20,
           bottom: 0,
           marginBottom: 30,
           justifyContent: "center",

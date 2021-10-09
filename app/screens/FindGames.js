@@ -105,14 +105,22 @@ export default function FindGames({ navigation }) {
         >
           <Marker
             key="0"
-            coordinate={{ latitude: 37.86792, longitude: -122.27137 }}
-            centerOffset={{ x: 0, y: -25 }}
-            image={require("../assets/SoccerMarker.png")}
+            coordinate={{
+              latitude: 37.86488414606986,
+              longitude: -122.26747442584312,
+            }}
             onPress={() => {
               navigation.navigate("GameDetails");
             }}
           >
-            <Callout tooltip={true}></Callout>
+            <Image
+              style={{
+                height: 80,
+                resizeMode: "contain",
+                bottom: 30,
+              }}
+              source={require("../assets/SoccerMarker.png")}
+            />
           </Marker>
         </MapView>
       </Pressable>

@@ -24,12 +24,15 @@ import { SportsTypeContext } from "../../contexts/SportsTypeContext";
 import { useSelector, useDispatch } from "react-redux";
 import { setSport } from "../../redux/CreateGameSport";
 import { setDate } from "../../redux/CreateGameDate";
+import MapView, { Marker } from "react-native-maps";
 
 export default CreateGame = ({ navigation }) => {
   const dispatch = useDispatch();
   const sportType = useSelector((state) => state.sportType.sport);
 
   const date = useSelector((state) => state.date.date);
+  const location = useSelector((state) => state.location.location);
+
   useEffect(() => {
     if (date == null) {
       dispatch(setDate(JSON.stringify(new Date())));
@@ -48,27 +51,16 @@ export default CreateGame = ({ navigation }) => {
         paddingTop: 20,
       }}
     >
+      <SwipeDownBar />
       <View
         style={{
           flex: 1,
           paddingHorizontal: 20,
           width: "100%",
+          paddingTop: 10,
         }}
       >
-        <View
-          style={{
-            flexDirection: "row",
-            width: "100%",
-            height: 40,
-            alignItems: "center",
-            backgroundColor: "white",
-          }}
-        >
-          <BackButton navigation={navigation} />
-          <FontTextBold style={{ fontSize: 20, marginLeft: 15 }}>
-            Create a Game
-          </FontTextBold>
-        </View>
+        <FontTextBold style={{ fontSize: 25 }}>Create a Game</FontTextBold>
 
         <ScrollView style={{ marginTop: 10 }}>
           <FontText style={styles.textTitle}>Sports Type</FontText>
@@ -116,16 +108,67 @@ export default CreateGame = ({ navigation }) => {
 
           <TouchableOpacity
             activeOpacity={0.3}
-            // onPress={() => {
-            //   navigation.navigate("CreateGamePopup", { type: "date" });
-            // }}
+            disabled={location}
+            onPress={() => {
+              navigation.navigate("SetLocation");
+            }}
           >
             <View
-              style={{ ...styles.picker, height: 150, alignItems: "center" }}
+              style={{
+                ...styles.picker,
+                paddingLeft: 0,
+                height: 150,
+                alignItems: "center",
+              }}
             >
-              <FontText style={{ fontSize: 15, color: colors.mediumGray }}>
-                Set Location
-              </FontText>
+              {location ? (
+                <View style={{ flex: 1, width: "100%" }}>
+                  <MapView
+                    style={styles.map}
+                    mapPadding={{ top: -30, bottom: -30 }}
+                    initialRegion={{
+                      latitude: location.latitude,
+                      longitude: location.longitude,
+                      latitudeDelta: 0.005,
+                      longitudeDelta: 0.005,
+                    }}
+                  >
+                    <Marker
+                      key="0"
+                      coordinate={{
+                        latitude: location.latitude,
+                        longitude: location.longitude,
+                      }}
+                    >
+                      <Image
+                        style={{
+                          height: 50,
+                          resizeMode: "contain",
+                          bottom: 18,
+                        }}
+                        source={require("../../assets/locationMarker.png")}
+                      />
+                    </Marker>
+                  </MapView>
+                  <TouchableWithoutFeedback
+                    onPress={() => {
+                      navigation.navigate("SetLocation");
+                    }}
+                  >
+                    <View
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        position: "absolute",
+                      }}
+                    ></View>
+                  </TouchableWithoutFeedback>
+                </View>
+              ) : (
+                <FontText style={{ fontSize: 15, color: colors.mediumGray }}>
+                  Set Location
+                </FontText>
+              )}
             </View>
           </TouchableOpacity>
 
@@ -152,6 +195,10 @@ export default CreateGame = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
+  map: {
+    borderRadius: 8,
+    ...StyleSheet.absoluteFillObject,
+  },
   picker: {
     backgroundColor: colors.lightGray,
     height: 50,
