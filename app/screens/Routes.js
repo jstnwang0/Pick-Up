@@ -32,6 +32,8 @@ import { CreateGamePopup } from "./createGame/components/Popups";
 import Friends from "./Friends";
 import AllPlayers from "./AllPlayers";
 import Landing from "./landing/Landing";
+import Login from "./landing/Login";
+import SignUp from "./landing/SignUp";
 
 const width = Dimensions.get("screen").width;
 const AppStack = createStackNavigator();
@@ -199,7 +201,8 @@ function LoginStackScreen() {
       screenOptions={{ headerShown: false, gestureEnabled: false }}
     >
       <LoginStack.Screen name="Landing" component={Landing} />
-      {/* <LoginStack.Screen name="Landing2" component={Landing2} /> */}
+      <LoginStack.Screen name="Login" component={Login} />
+      <LoginStack.Screen name="SignUp" component={SignUp} />
     </LoginStack.Navigator>
   );
 }
