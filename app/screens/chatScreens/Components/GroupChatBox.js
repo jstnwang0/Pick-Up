@@ -6,8 +6,8 @@ import {
   StyleSheet,
   TouchableWithoutFeedback,
 } from "react-native";
-import colors from "../../config/colors";
-import { FontText, FontTextBold } from "../../components/FontText";
+import colors from "../../../config/colors";
+import { FontText, FontTextBold } from "../../../components/FontText";
 import { withSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function GroupChatBox({
