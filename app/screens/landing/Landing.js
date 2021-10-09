@@ -12,10 +12,38 @@ import {
 import { FontText, FontTextBold } from "../../components/FontText";
 import colors from "../../config/colors";
 import PagerView from "react-native-pager-view";
+import { ExpandingDot } from "react-native-animated-pagination-dots";
 
 const width = Dimensions.get("screen").width;
 export default function Landing({ navigation }) {
   const ref = useRef("");
+  const scrollOffsetAnimatedValue = React.useRef(new Animated.Value(0)).current;
+  const positionAnimatedValue = React.useRef(new Animated.Value(0)).current;
+  const scrollX = Animated.add(
+    scrollOffsetAnimatedValue,
+    positionAnimatedValue
+  ).interpolate({
+    inputRange: [0, 2],
+    outputRange: [0, 2 * width],
+  });
+
+  const onPageScroll = React.useMemo(
+    () =>
+      Animated.event(
+        [
+          {
+            nativeEvent: {
+              offset: scrollOffsetAnimatedValue,
+              position: positionAnimatedValue,
+            },
+          },
+        ],
+        {
+          useNativeDriver: false,
+        }
+      ),
+    []
+  );
   return (
     <View style={styles.container}>
       <FontTextBold style={{ marginTop: 50, fontSize: 30, marginLeft: "10%" }}>
@@ -24,7 +52,7 @@ export default function Landing({ navigation }) {
       <PagerView
         ref={ref}
         style={{ flex: 1, marginTop: 25, marginBottom: 20 }}
-        showPageIndicator={true}
+        onPageScroll={onPageScroll}
       >
         <View style={{ flex: 1, alignItems: "center" }}>
           <View style={{ width: "90%", alignItems: "center" }}>
@@ -83,6 +111,21 @@ export default function Landing({ navigation }) {
           </View>
         </View>
       </PagerView>
+      <ExpandingDot
+        data={[1, 2]}
+        activeDotColor={colors.darkGreen}
+        inActiveDotColor={colors.mediumGray}
+        expandingDotWidth={30}
+        scrollX={scrollX}
+        inActiveDotOpacity={0.6}
+        dotStyle={{
+          width: 10,
+          height: 10,
+          backgroundColor: "red",
+          borderRadius: 5,
+          marginHorizontal: 5,
+        }}
+      />
     </View>
   );
 }
