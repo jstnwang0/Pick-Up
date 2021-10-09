@@ -269,11 +269,11 @@ export default function Filters({ navigation }) {
             width: "100%",
             height: 60,
             backgroundColor: colors.darkGreen,
-            borderRadius: 10,
+            borderRadius: 20,
           }}
         >
           <TouchableOpacity
-            activeOpacity={0.6}
+            activeOpacity={0.5}
             style={{
               width: "100%",
               height: "100%",
@@ -288,9 +288,7 @@ export default function Filters({ navigation }) {
               navigation.goBack();
             }}
           >
-            <FontTextBold style={{ fontSize: 20, color: "white" }}>
-              APPLY
-            </FontTextBold>
+            <FontText style={{ fontSize: 20, color: "white" }}>APPLY</FontText>
           </TouchableOpacity>
         </View>
       </View>

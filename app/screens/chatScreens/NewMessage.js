@@ -155,9 +155,7 @@ export default function NewMessage({ navigation }) {
                 />
               </View>
               <View style={{ flex: 0.8, justifyContent: "center" }}>
-                <FontTextBold style={{ fontSize: 18 }}>
-                  {contact.name}
-                </FontTextBold>
+                <FontText style={{ fontSize: 18 }}>{contact.name}</FontText>
               </View>
               <View
                 style={{
@@ -197,8 +195,8 @@ export default function NewMessage({ navigation }) {
           width: "90%",
           height: 75,
           borderRadius: 15,
-          backgroundColor:
-            selected.length == 0 ? colors.lightGreen : colors.darkGreen,
+          opacity: selected.length == 0 ? 0.5 : 1,
+          backgroundColor: colors.darkGreen,
           alignSelf: "center",
           marginBottom: "5%",
           alignItems: "center",
@@ -208,19 +206,17 @@ export default function NewMessage({ navigation }) {
         {(() => {
           if (selected.length == 1) {
             return (
-              <FontTextBold style={styles.bottomButtonText}>
+              <FontText style={styles.bottomButtonText}>
                 START DIRECT MESSAGE
-              </FontTextBold>
+              </FontText>
             );
           } else if (selected.length == 0) {
-            return (
-              <FontTextBold style={styles.bottomButtonText}>CHAT</FontTextBold>
-            );
+            return <FontText style={styles.bottomButtonText}>CHAT</FontText>;
           }
           return (
-            <FontTextBold style={styles.bottomButtonText}>
+            <FontText style={styles.bottomButtonText}>
               CREATE A GROUP CHAT
-            </FontTextBold>
+            </FontText>
           );
         })()}
       </View>

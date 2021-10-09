@@ -204,7 +204,7 @@ export default function FindGames({ navigation }) {
           width: 150,
           height: 45,
           alignSelf: "center",
-          borderRadius: 30,
+          borderRadius: 15,
           bottom: 0,
           marginBottom: 30,
           backgroundColor: colors.darkGreen,
