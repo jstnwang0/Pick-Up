@@ -71,8 +71,8 @@ export default function FindGames({ navigation }) {
         const region = {
           latitude: latitude,
           longitude: longitude,
-          latitudeDelta: 0.05,
-          longitudeDelta: 0.05,
+          latitudeDelta: 0.03,
+          longitudeDelta: 0.03,
         };
         map.current.animateToRegion(region);
         animateValue.setValue(1);
