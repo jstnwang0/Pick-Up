@@ -186,13 +186,7 @@ function MainStackScreen() {
           // },
         }}
       />
-      <MainStack.Screen
-        name="NewMessage"
-        component={NewMessage}
-        options={{
-          presentation: "transparentModal",
-        }}
-      />
+      <MainStack.Screen name="NewMessage" component={NewMessage} />
     </MainStack.Navigator>
   );
 }

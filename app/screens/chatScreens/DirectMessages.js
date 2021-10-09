@@ -16,7 +16,7 @@ export default function DirectMessages({ navigation }) {
           onPress={() => {
             navigation.navigate("DirectChatMessage");
           }}
-          activeOpacity={0.3}
+          activeOpacity={0.5}
         >
           <ChatBox
             name="Jerry"

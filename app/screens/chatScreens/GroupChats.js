@@ -15,7 +15,7 @@ export default function GroupChats({ navigation }) {
         onPress={() => {
           navigation.navigate("GroupChatMessage");
         }}
-        activeOpacity={0.3}
+        activeOpacity={0.5}
       >
         <GroupChatBox
           name="Sunday Soccer"
