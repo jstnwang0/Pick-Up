@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Image, StyleSheet, Text, View, Switch } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  Text,
+  View,
+  Switch,
+  TouchableOpacity,
+} from "react-native";
 import BackButton from "../components/BackButton";
 import { FontText, FontTextBold } from "../components/FontText";
 import colors from "../config/colors";
@@ -83,7 +90,9 @@ export default function Settings({ navigation }) {
             />
           </View>
         </View>
-        <View
+        <TouchableOpacity
+          activeOpacity={0.5}
+          onPress={() => navigation.navigate("Landing")}
           style={{
             position: "absolute",
             marginBottom: 30,
@@ -113,7 +122,7 @@ export default function Settings({ navigation }) {
               style={{ width: 30, height: 30 }}
             />
           </View>
-        </View>
+        </TouchableOpacity>
       </View>
     </View>
   );

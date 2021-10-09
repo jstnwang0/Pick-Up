@@ -27,7 +27,7 @@ export default function GroupChats({ navigation }) {
 
       <GroupChatBox
         name="Justin"
-        messagePreview="I'm gay, very gay"
+        messagePreview="I enjoy beans"
         numOfUnread="1"
         time="2:12"
       />

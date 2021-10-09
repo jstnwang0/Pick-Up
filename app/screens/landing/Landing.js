@@ -15,6 +15,8 @@ import colors from "../../config/colors";
 import PagerView from "react-native-pager-view";
 import { ExpandingDot } from "react-native-animated-pagination-dots";
 
+import * as Haptics from "expo-haptics";
+
 const width = Dimensions.get("screen").width;
 export default function Landing({ navigation }) {
   const ref = useRef("");
@@ -108,6 +110,9 @@ export default function Landing({ navigation }) {
             >
               <TouchableOpacity
                 activeOpacity={0.5}
+                onPressIn={() => {
+                  Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+                }}
                 onPress={() => {
                   navigation.navigate("MainStack");
                 }}
@@ -120,11 +125,9 @@ export default function Landing({ navigation }) {
                   alignItems: "center",
                 }}
               >
-                <View>
-                  <FontText style={{ color: "white", fontSize: 18 }}>
-                    Log In
-                  </FontText>
-                </View>
+                <FontText style={{ color: "white", fontSize: 18 }}>
+                  Log In
+                </FontText>
               </TouchableOpacity>
               <View
                 style={{

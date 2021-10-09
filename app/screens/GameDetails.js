@@ -134,7 +134,7 @@ export default function GameDetails({ navigation }) {
                     style={styles.map}
                     mapPadding={{ top: -30, bottom: -30 }}
                     initialRegion={{
-                      latitude: 37.86488414606986,
+                      latitude: 37.86488414606986 + 0.001,
                       longitude: -122.26747442584312,
                       latitudeDelta: 0.01,
                       longitudeDelta: 0.01,
@@ -221,11 +221,11 @@ export default function GameDetails({ navigation }) {
                 <FontText style={{ fontSize: 16, marginTop: 5 }}>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Justo
                   cras in at ultricies ut faucibus. Integer lectus et, sit
-                  imperdiet quam nunc.ur mom gay Hac pellentesque odio rutrum
-                  scelerisque mattis Lorem ipsum dolor sit amet, consectetur
-                  adipiscing elit. Justo cras in at ultricies ut faucibus.
-                  Integer lectus et, sit imperdiet quam nunc.ur mom gay Hac
-                  pellentesque odio rutrum scelerisque mattis
+                  imperdiet quam nunc. Hac pellentesque odio rutrum scelerisque
+                  mattis Lorem ipsum dolor sit amet, consectetur adipiscing
+                  elit. Justo cras in at ultricies ut faucibus. Integer lectus
+                  et, sit imperdiet quam nunc. Hac pellentesque odio rutrum
+                  scelerisque mattis
                 </FontText>
               </ReadMore>
               <FontTextBold style={{ marginTop: 20, fontSize: 19 }}>

@@ -28,7 +28,7 @@ export default function DirectMessages({ navigation }) {
 
         <ChatBox
           name="Justin"
-          messagePreview="I'm gay, very gay"
+          messagePreview="I enjoy beans"
           numOfUnread="1"
           time="2:12"
         />

@@ -127,7 +127,7 @@ export default CreateGame = ({ navigation }) => {
                     style={styles.map}
                     mapPadding={{ top: -30, bottom: -30 }}
                     initialRegion={{
-                      latitude: location.latitude,
+                      latitude: location.latitude + 0.0005,
                       longitude: location.longitude,
                       latitudeDelta: 0.005,
                       longitudeDelta: 0.005,
