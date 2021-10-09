@@ -109,9 +109,10 @@ function MainStackScreen() {
       <MainStack.Screen
         name="GameDetails"
         component={GameDetails}
-        options={{
-          cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
-        }}
+        options={{ presentation: "modal" }}
+        // options={{
+        //   cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
+        // }}
       />
       <MainStack.Screen
         name="Filters"
@@ -152,7 +153,7 @@ function MainStackScreen() {
       <MainStack.Screen
         name="AllPlayers"
         component={AllPlayers}
-        options={{ gestureEnabled: false }}
+        options={{ presentation: "modal" }}
       />
       <MainStack.Screen
         name="ChatDetails"
