@@ -17,6 +17,10 @@ export default function NewMessage({ navigation }) {
   const [contacts, setContacts] = useState([
     { name: "Justin", selected: false },
     { name: "Jerry", selected: false },
+    { name: "Justin", selected: false },
+    { name: "Jerry", selected: false },
+    { name: "Justin", selected: false },
+    { name: "Jerry", selected: false },
   ]);
 
   const [selected, setSelected] = useState([]);

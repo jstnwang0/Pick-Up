@@ -27,7 +27,8 @@ import Filters from "./Filters";
 import Settings from "./Settings";
 
 import * as Haptics from "expo-haptics";
-import { CreateGame, CreateGamePopup } from "./CreateGame";
+import CreateGame from "./createGame/CreateGame";
+import { CreateGamePopup } from "./createGame/components/Popups";
 import Friends from "./Friends";
 import AllPlayers from "./AllPlayers";
 import Landing from "./landing/Landing";
@@ -109,9 +110,10 @@ function MainStackScreen() {
       <MainStack.Screen
         name="GameDetails"
         component={GameDetails}
-        options={{
-          cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
-        }}
+        options={{ presentation: "modal" }}
+        // options={{
+        //   cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
+        // }}
       />
       <MainStack.Screen
         name="Filters"
@@ -152,7 +154,7 @@ function MainStackScreen() {
       <MainStack.Screen
         name="AllPlayers"
         component={AllPlayers}
-        options={{ gestureEnabled: false }}
+        options={{ presentation: "modal" }}
       />
       <MainStack.Screen
         name="ChatDetails"

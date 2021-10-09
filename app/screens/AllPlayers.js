@@ -4,12 +4,13 @@ import BackButton from "../components/BackButton";
 import { FontText, FontTextBold } from "../components/FontText";
 import colors from "../config/colors";
 import { PlayerViewBox } from "../components/PlayerViewBox";
+import SwipeDownBar from "../components/SwipeDownBar";
 
 export default function AllPlayers({ navigation }) {
   return (
     <View style={styles.container}>
+      <SwipeDownBar />
       <View style={styles.topBar}>
-        <BackButton navigation={navigation} />
         <FontTextBold style={{ fontSize: 20, marginLeft: 15 }}>
           Players
         </FontTextBold>
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
   },
   topBar: {
     width: "100%",
-    marginTop: 60,
+    marginTop: 30,
     marginLeft: 50,
     flexDirection: "row",
     alignItems: "center",
