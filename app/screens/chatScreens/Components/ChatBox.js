@@ -6,8 +6,8 @@ import {
   StyleSheet,
   TouchableWithoutFeedback,
 } from "react-native";
-import colors from "../../config/colors";
-import { FontText, FontTextBold } from "../../components/FontText";
+import colors from "../../../config/colors";
+import { FontText, FontTextBold } from "../../../components/FontText";
 
 export default function ChatBox({ name, messagePreview, numOfUnread, time }) {
   return (

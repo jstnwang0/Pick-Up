@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import ChatBox from "./ChatBox";
+import ChatBox from "../chatScreens/Components/ChatBox";
 
 export default function DirectMessages({ navigation }) {
   return (

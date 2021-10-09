@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import GroupChatBox from "./GroupChatBox";
+import GroupChatBox from "../chatScreens/Components/GroupChatBox";
 
 export default function GroupChats({ navigation }) {
   return (
